@@ -554,7 +554,6 @@ section
 }
 .navbar_menu li a
 {
-	display: block;
 	color: #1e1e27;
 	font-size: 13px;
 	font-weight: 500;
@@ -635,8 +634,9 @@ section
 
 .hamburger_container
 {
-	display: none;
+	display: block;
 	margin-left: 40px;
+	margin-left: 50px;
 }
 .hamburger_container i
 {
