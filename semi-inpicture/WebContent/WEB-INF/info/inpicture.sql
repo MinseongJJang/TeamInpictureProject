@@ -120,5 +120,13 @@ create table bid(
 	constraint pk_bid primary key(id,auction_no)
 	)
 
+alter table auction add(auction_final_bidder varchar2(100) not null)
+alter table auction drop(auction_final_bidder)
+
+ㄴㅇㄹㄴ이리ㅏㄴㅇ리ㅏㅓ
+
+
+
+
 
 
