@@ -103,6 +103,7 @@ create table auction(
 	auction_state number default 0,
 	auction_main_pic varchar2(100) not null,
 	auction_begin_price number not null,
+	auction_final_bidder varchar2(100) not null,
 	constraint fk_auction_auction_no foreign key(auction_no) references auction_apply(auction_no) on delete cascade
 )
 
@@ -119,5 +120,7 @@ create table bid(
 	constraint pk_bid primary key(id,auction_no)
 	)
 
+alter table auction add(auction_final_bidder varchar2(100) not null)
+alter table auction drop(auction_final_bidder)
 
 
