@@ -2,32 +2,21 @@ package semi.inpicture.model.dto;
 
 public class AuctionDTO {
 	private AuctionApplyDTO auctionApplyDTO;
-	private String auctionTitle;
-	private String auctionContent;
-	private String auctionBeginTime;
-	private String auctionEndTime;
 	private int auctionFinalBidPrice;
 	private InpictureMemberDTO inpictureMemberDTO;
 	private int auctionPromptlyPrice;
 	private boolean auctionState;
-	private String auctionMainPic;
-	private int auctionBeginPrice;
 	private String auctionFinalBidder;
 	
-	public AuctionDTO(AuctionApplyDTO auctionApplyDTO, String auctionTitle, String auctionContent,
-			String auctionBeginTime, String auctionEndTime, InpictureMemberDTO inpictureMemberDTO,
-			int auctionPromptlyPrice, boolean auctionState, String auctionMainPic, int auctionBeginPrice) {
+	public AuctionDTO(AuctionApplyDTO auctionApplyDTO, int auctionFinalBidPrice, InpictureMemberDTO inpictureMemberDTO,
+			int auctionPromptlyPrice, boolean auctionState, String auctionFinalBidder) {
 		super();
 		this.auctionApplyDTO = auctionApplyDTO;
-		this.auctionTitle = auctionTitle;
-		this.auctionContent = auctionContent;
-		this.auctionBeginTime = auctionBeginTime;
-		this.auctionEndTime = auctionEndTime;
+		this.auctionFinalBidPrice = auctionFinalBidPrice;
 		this.inpictureMemberDTO = inpictureMemberDTO;
 		this.auctionPromptlyPrice = auctionPromptlyPrice;
 		this.auctionState = auctionState;
-		this.auctionMainPic = auctionMainPic;
-		this.auctionBeginPrice = auctionBeginPrice;
+		this.auctionFinalBidder = auctionFinalBidder;
 	}
 
 	public AuctionDTO() {
@@ -40,38 +29,6 @@ public class AuctionDTO {
 
 	public void setAuctionApplyDTO(AuctionApplyDTO auctionApplyDTO) {
 		this.auctionApplyDTO = auctionApplyDTO;
-	}
-
-	public String getAuctionTitle() {
-		return auctionTitle;
-	}
-
-	public void setAuctionTitle(String auctionTitle) {
-		this.auctionTitle = auctionTitle;
-	}
-
-	public String getAuctionContent() {
-		return auctionContent;
-	}
-
-	public void setAuctionContent(String auctionContent) {
-		this.auctionContent = auctionContent;
-	}
-
-	public String getAuctionBeginTime() {
-		return auctionBeginTime;
-	}
-
-	public void setAuctionBeginTime(String auctionBeginTime) {
-		this.auctionBeginTime = auctionBeginTime;
-	}
-
-	public String getAuctionEndTime() {
-		return auctionEndTime;
-	}
-
-	public void setAuctionEndTime(String auctionEndTime) {
-		this.auctionEndTime = auctionEndTime;
 	}
 
 	public int getAuctionFinalBidPrice() {
@@ -106,22 +63,6 @@ public class AuctionDTO {
 		this.auctionState = auctionState;
 	}
 
-	public String getAuctionMainPic() {
-		return auctionMainPic;
-	}
-
-	public void setAuctionMainPic(String auctionMainPic) {
-		this.auctionMainPic = auctionMainPic;
-	}
-
-	public int getAuctionBeginPrice() {
-		return auctionBeginPrice;
-	}
-
-	public void setAuctionBeginPrice(int auctionBeginPrice) {
-		this.auctionBeginPrice = auctionBeginPrice;
-	}
-
 	public String getAuctionFinalBidder() {
 		return auctionFinalBidder;
 	}
@@ -132,11 +73,11 @@ public class AuctionDTO {
 
 	@Override
 	public String toString() {
-		return "AuctionDTO [auctionTitle=" + auctionTitle + ", auctionContent=" + auctionContent + ", auctionBeginTime="
-				+ auctionBeginTime + ", auctionEndTime=" + auctionEndTime + ", auctionFinalBidPrice="
-				+ auctionFinalBidPrice + ", inpictureMemberDTO=" + inpictureMemberDTO + ", auctionPromptlyPrice="
-				+ auctionPromptlyPrice + ", auctionState=" + auctionState + ", auctionMainPic=" + auctionMainPic
-				+ ", auctionBeginPrice=" + auctionBeginPrice + ", auctionFinalBidder=" + auctionFinalBidder + "]";
+		return "AuctionDTO [auctionApplyDTO=" + auctionApplyDTO + ", auctionFinalBidPrice=" + auctionFinalBidPrice
+				+ ", inpictureMemberDTO=" + inpictureMemberDTO + ", auctionPromptlyPrice=" + auctionPromptlyPrice
+				+ ", auctionState=" + auctionState + ", auctionFinalBidder=" + auctionFinalBidder + "]";
 	}
+	
+	
 	
 }
