@@ -65,7 +65,7 @@
 							<a href="#"><img src="${pageContext.request.contextPath}/temp_images/logo.jpg" width="80px"></a>
 						</div>
 						<nav class="navbar">
-							<ul class="navbar_menu">
+							<ul class="navbar_menu">  
 								<li><a href="#">SERVICE</a></li>
 								<li><a href="#">ARTIST</a></li>
 								<li><a href="#">APPLY</a></li>
