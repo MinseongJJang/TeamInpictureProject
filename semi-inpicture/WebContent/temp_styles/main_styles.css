@@ -707,16 +707,17 @@ section
 }
 .hambuger_logo
 {
+	background: rgba(255,255,255,0.01);
 	padding-top: 50px;
-	padding-left : 105px;
+	padding-left : 118px;
 	width : 100px;
 	color: black;
 }
 .hamburgerlogo
 {
-	background :rgba(255,255,255,0.95);
-	width: 200px;
-	height: 130px;
+	
+	width: 170px;
+	height: 110px;
 }
 
 .hamburger_close:hover i
@@ -1636,7 +1637,7 @@ section
 
 .footer_nav_container
 {
-	height: 130px;
+	height: 250px;
 }
 .cr
 {
@@ -1647,20 +1648,32 @@ section
 	display: inline-block;
 	margin-right: 45px;
 }
+.footer_img
+{
+	width: 200px;
+	height: 150px;
+}
 .footer_nav li:last-child
 {
 	margin-right: 0px;
 }
 .footer_nav li a, .cr
 {
-	font-size: 14px;
+	font-size: 13px;
 	color: #51545f;
-	line-height: 30px;
+	line-height: 50px;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-ms-transition: all 300ms ease;
 	-o-transition: all 300ms ease;
 	transition: all 300ms ease;
+}
+.footer_font
+{
+	margin-top : 25px;
+	font-size: 14px;
+	color: #400040;
+	margin-left: 110px;
 }
 .footer_nav li a:hover, .cr a, .cr i
 {
@@ -1687,7 +1700,7 @@ section
 	-ms-transition: all 300ms ease;
 	-o-transition: all 300ms ease;
 	transition: all 300ms ease;
-	padding: 10px;
+	padding: 0px;
 }
 .footer_social ul li:last-child a
 {
@@ -1696,4 +1709,16 @@ section
 .footer_social ul li a:hover
 {
 	color: #fe4c50;
+}
+.footer_social_img
+{
+	width: 70px;
+	height: 50px;
+	padding: 10px;
+}
+
+.footer_social_area
+{
+	margin-top: 62px;
+	margin-left: 70px;
 }
