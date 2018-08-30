@@ -9,8 +9,6 @@
 			src="${pageContext.request.contextPath }/temp_images/hamburgerlogo.png"
 			class="hamburgerlogo"><br>
 		</a>
-<<<<<<< HEAD
-=======
 		</div>
 		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
 		<div class="hamburger_menu_content ">
@@ -36,23 +34,7 @@
 				<li class="menu_item"><a href="#">Q&A</a></li>
 			</ul>
 		</div>
->>>>>>> branch 'master' of https://github.com/MinseongJJang/TeamInpictureProject.git
 	</div>
-	<div class="hamburger_close">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</div>
-	<div class="hamburger_menu_content ">
-
-		<ul class="menu_top_nav">
-			<li class="menu_item has-children"><a href="#"> 로그인 </a></li>
-			<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
-			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
-			<li class="menu_item"><a href="#">NOTICE</a></li>
-			<li class="menu_item"><a href="#">FAQ</a></li>
-			<li class="menu_item"><a href="#">Q&A</a></li>
-		</ul>
-	</div>
-</div>
 
 <!-- Slider -->
 
@@ -251,7 +233,6 @@
 							<h3>경매중인 인디그림5</h3>
 						</a>
 					</figure>
-
 				</div>
 			</section>
 			<nav id="navigation">
