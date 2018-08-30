@@ -1,261 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div class="fs_menu_overlay"></div>
-	<div class="hamburger_menu">
-		<div class="hambuger_logo">
-		<a href="#">
-			<img alt="" src="${pageContext.request.contextPath }/temp_images/hamburgerlogo.png" class="hamburgerlogo"><br>		
+<div class="fs_menu_overlay"></div>
+<div class="hamburger_menu">
+	<div class="hambuger_logo">
+		<a href="#"> <img alt=""
+			src="${pageContext.request.contextPath }/temp_images/hamburgerlogo.png"
+			class="hamburgerlogo"><br>
 		</a>
-		</div>
-		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-		<div class="hamburger_menu_content ">
-		
-			<ul class="menu_top_nav">
-				<li class="menu_item has-children">
-					<a href="#">
-						로그인
-					</a>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						회원가입
-					</a>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						공지사항
-					</a>
-				</li>
-				<li class="menu_item"><a href="#">NOTICE</a></li>
-				<li class="menu_item"><a href="#">FAQ</a></li>
-				<li class="menu_item"><a href="#">Q&A</a></li>
-			</ul>
-		</div>
 	</div>
-
-	<!-- Slider -->
-
-	<div class="main_slider" style="background-image:url(${pageContext.request.contextPath}/temp_images/slider_1.jpg)">
-		<div class="container fill_height">
-			<div class="row align-items-center fill_height">
-				<div class="col">
-					<div class="main_slider_content">
-						<h6>Spring / Summer Collection 2017</h6>
-						<h1>Get up to 30% Off New Arrivals</h1>
-						<div class="red_button shop_now_button"><a href="#"></a></div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="hamburger_close">
+		<i class="fa fa-times" aria-hidden="true"></i>
 	</div>
+	<div class="hamburger_menu_content ">
 
+		<ul class="menu_top_nav">
+			<li class="menu_item has-children"><a href="#"> 로그인 </a></li>
+			<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
+			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
+			<li class="menu_item"><a href="#">NOTICE</a></li>
+			<li class="menu_item"><a href="#">FAQ</a></li>
+			<li class="menu_item"><a href="#">Q&A</a></li>
+		</ul>
+	</div>
+</div>
 
-	<!-- New Arrivals -->
+<!-- Slider -->
 
-	<div class="new_arrivals">
+<%-- <div class="deal_ofthe_week">
 		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="section_title new_arrivals_title">
-						<h2>New Arrivals</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="col text-center">
-					<div class="new_arrivals_sorting">
-						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">ARTIST</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">ART</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">AUCTION</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-
-						<!-- Product 1 -->
-
-						<div class="product-item men">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_1.png" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-									<div class="product_price">$520.00<span>$590.00</span></div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 2 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_2.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-									<div class="product_price">$610.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 3 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_3.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-									<div class="product_price">$120.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 4 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_4.png" alt="">
-								</div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-									<div class="product_price">$410.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 5 -->
-
-						<div class="product-item women men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_5.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-									<div class="product_price">$180.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 6 -->
-
-						<div class="product-item accessories">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_6.png" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="#single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-									<div class="product_price">$520.00<span>$590.00</span></div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 7 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_7.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-									<div class="product_price">$610.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 8 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_8.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-									<div class="product_price">$120.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 9 -->
-
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_9.png" alt="">
-								</div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-									<div class="product_price">$410.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 10 -->
-
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath}/temp_images/product_10.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-									<div class="product_price">$180.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Deal of the week -->
-
-	<div class="deal_ofthe_week">
-		<div class="container">
-			<div class="row align-items-center">
+			<div class="row align-items-center deal_ofthe_week_img text-right deal_ofthe_week_col">
 				<div class="col-lg-6">
 					<div class="deal_ofthe_week_img">
-						<img src="${pageContext.request.contextPath}/temp_images/deal_ofthe_week.png" alt="">
+						<img src="${pageContext.request.contextPath}/auction_main_pic/auctionart1.jpg" alt="">
 					</div>
 				</div>
 				<div class="col-lg-6 text-right deal_ofthe_week_col">
@@ -286,79 +64,551 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
+<!-- 새로운 carousel -->
+<div class="deal_ofthe_week">
+	<div
+		class="carousel-padding align-items-center deal_ofthe_week_img text-right deal_ofthe_week_col">
+		<div class="container ">
+			<div class="background"></div>
+			<section class="carousel_container">
+				<div id="carousel">
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
+							<h3>경매중인 인디그림1</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
+							<h3>경매중인 인디그림2</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
+							<h3>경매중인 인디그림3</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
+							<h3>경매중인 인디그림4</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
+							<h3>경매중인 인디그림5</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
+							<h3>경매중인 인디그림1</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
+							<h3>경매중인 인디그림2</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
+							<h3>경매중인 인디그림3</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
+							<h3>경매중인 인디그림4</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
+							<h3>경매중인 인디그림5</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
+							<h3>경매중인 인디그림1</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
+							<h3>경매중인 인디그림2</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
+							<h3>경매중인 인디그림3</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
+							<h3>경매중인 인디그림4</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
+							<h3>경매중인 인디그림5</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
+							<h3>경매중인 인디그림1</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
+							<h3>경매중인 인디그림2</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
+							<h3>경매중인 인디그림3</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
+							<h3>경매중인 인디그림4</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
+							<h3>경매중인 인디그림5</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
+							<h3>경매중인 인디그림1</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
+							<h3>경매중인 인디그림2</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
+							<h3>경매중인 인디그림3</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
+							<h3>경매중인 인디그림4</h3>
+						</a>
+					</figure>
+					<figure>
+						<a href="#"> <img
+							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
+							<h3>경매중인 인디그림5</h3>
+						</a>
+					</figure>
 
-
-
-	<!-- Benefit -->
-
-	<div class="benefit">
-		<div class="container">
-			<div class="row benefit_row">
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>free shipping</h6>
-							<p>Suffered Alteration in Some Form</p>
-						</div>
-					</div>
 				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>cach on delivery</h6>
-							<p>The Internet Tend To Repeat</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>45 days return</h6>
-							<p>Making it Look Like Readable</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>opening all week</h6>
-							<p>8AM - 09PM</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			</section>
+			<nav id="navigation">
+				<span class="navigation-control left" data-increment="1"></span> <span
+					class="navigation-control right" data-increment="-1"></span>
+			</nav>
 		</div>
 	</div>
+</div>
 
-	
-	<!-- Newsletter -->
-
-	<div class="newsletter">
+<!-- New Arrivals -->
+<div class="container">
+	<div class="new_arrivals">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
-					<div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
-						<h4>Auction</h4>
-						<p>오늘 경매 작품을 확인하세요</p>
+				<div class="col text-center">
+					<div class="section_title new_arrivals_title">
+						<h2>New Arrivals</h2>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<form action="post">
-						<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
-							<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">경매하러가기</button>
+			</div>
+			<div class="row align-items-center">
+				<div class="col text-center">
+					<div class="new_arrivals_sorting">
+						<ul
+							class="arrivals_grid_sorting clearfix button-group filters-button-group">
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active"
+								data-filter=".women">ARTIST</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								data-filter=".accessories">ART</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								data-filter=".men">AUCTION</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="product-grid"
+						data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+						<!-- Product 1 -->
+
+						<div class="product-item women">
+							<div class="product discount product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art1.jpg"
+										alt="">
+								</div>
+
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Guillaume Kashima</a>
+									</h6>
+									<div class="product_price">좋은그림1</div>
+								</div>
+							</div>
 						</div>
-					</form>
+
+						<!-- Product 2 -->
+
+						<div class="product-item women">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art2.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Séverine Assous</a>
+									</h6>
+									<div class="product_price">좋은그림2</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 3 -->
+
+						<div class="product-item women">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art3.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Andrés Gallardo Albajar</a>
+									</h6>
+									<div class="product_price">좋은그림3</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 4 -->
+
+						<div class="product-item women">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art4.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Tom Haugomat</a>
+									</h6>
+									<div class="product_price">좋은그림4</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 5 -->
+
+						<div class="product-item women">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art5.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Michela Picchi</a>
+									</h6>
+									<div class="product_price">좋은그림5</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 6 -->
+
+						<div class="product-item accessories">
+							<div class="product discount product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art1.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Guillaume Kashima</a>
+									</h6>
+									<div class="product_price">좋은그림6</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 7 -->
+
+						<div class="product-item accessories">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art2.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Andrés Gallardo Albajar</a>
+									</h6>
+									<div class="product_price">좋은그림7</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 8 -->
+
+						<div class="product-item accessories">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art3.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Blue Yeti USB Microphone Blackout Edition</a>
+									</h6>
+									<div class="product_price">좋은그림8</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 9 -->
+
+						<div class="product-item accessories">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art4.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Tom Haugomat</a>
+									</h6>
+									<div class="product_price">좋은그림9</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Product 10 -->
+
+						<div class="product-item accessories">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/art_images/art5.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Michela Picchi</a>
+									</h6>
+									<div class="product_price">좋은그림10</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="product-item men">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/auction_main_pic/auctionart1.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Five Color Mix Rice</a>
+									</h6>
+									<div class="product_price">경매그림1</div>
+								</div>
+							</div>
+						</div>
+
+							<div class="product-item men">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/auction_main_pic/auctionart2.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Inpicture</a>
+									</h6>
+									<div class="product_price">경매그림2</div>
+								</div>
+							</div>
+						</div>
+							<div class="product-item men">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/auction_main_pic/auctionart3.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Minseong</a>
+									</h6>
+									<div class="product_price">경매그림3</div>
+								</div>
+							</div>
+						</div>
+							<div class="product-item men">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/auction_main_pic/auctionart4.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Kosta</a>
+									</h6>
+									<div class="product_price">경매그림4</div>
+								</div>
+							</div>
+						</div>
+							<div class="product-item men">
+							<div class="product product_filter">
+								<div class="product_image">
+									<img
+										src="${pageContext.request.contextPath}/auction_main_pic/auctionart5.jpg"
+										alt="">
+								</div>
+								<div class="product_info">
+									<h6 class="product_name">
+										<a href="#">Kakao</a>
+									</h6>
+									<div class="product_price">경매그림5</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<!-- Deal of the week -->
 
-	<!-- Footer -->
+
+
+
+
+<!-- Benefit -->
+
+<div class="benefit">
+	<div class="container">
+		<div class="row benefit_row">
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon">
+						<img src="${pageContext.request.contextPath }/temp_images/technology.png" />
+					</div>
+					<div class="benefit_content">
+						<h6>Technology</h6>
+						<p>인픽쳐만의 그림 경매 시스템을 구축하여 더욱 만족도 높은 서비스를 제공</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon">
+						<img src="${pageContext.request.contextPath }/temp_images/value.png" />
+					</div>
+					<div class="benefit_content">
+						<h6>Invaluable</h6>
+						<p> 지불한 금액의 가치를 넘어서는 경매품을 제공하여 높은 만족도를 제공</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon">
+						<img src="${pageContext.request.contextPath }/temp_images/service.png" />
+					</div>
+					<div class="benefit_content">
+						<h6>Service</h6>
+						<p>회원들과의 지속적인 피드백과 정보 수집을 통해 원하는 정보와 서비스 제공</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon">
+						<img src="${pageContext.request.contextPath }/temp_images/community.png" />
+					</div>
+					<div class="benefit_content">
+						<h6>Community</h6>
+						<p>많은 인디 작가와의 제휴를 통한 작가 활동을 권유하고, 회원들과의 활발한 교류의 장 제공</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+	<div class="container">
+		
+			<a href="#">
+			<img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg" class="newsletter_img"></img>
+				<div class="newsletter_text">
+					<p>
+					<h3>Apply Artist</h3>
+					</p>
+				</div>
+		</a>
+			
+	</div>
+</div>
+
+<!-- Footer -->
 
 
 
