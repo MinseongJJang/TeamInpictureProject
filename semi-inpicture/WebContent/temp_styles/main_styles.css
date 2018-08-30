@@ -282,6 +282,10 @@ section
 	color: #b5aec4;
 	text-transform: uppercase;
 }
+.top_nav li
+{
+	padding-top:100px;
+}
 
 /*********************************
 3.1 Currency
@@ -709,15 +713,15 @@ section
 {
 	background: rgba(255,255,255,0.01);
 	padding-top: 50px;
-	padding-left : 118px;
+	padding-left : 124px;
 	width : 100px;
 	color: black;
 }
 .hamburgerlogo
 {
 	
-	width: 170px;
-	height: 110px;
+	width: 160px;
+	height: 130px;
 }
 
 .hamburger_close:hover i
@@ -743,7 +747,7 @@ section
 	color: #1e1e27;
 	font-weight: 500;
 	height: 50px;
-	line-height: 50px;
+	line-height: 80px;
 	font-size: 20px;
 	text-transform: uppercase;
 }
@@ -1712,13 +1716,13 @@ section
 }
 .footer_social_img
 {
-	width: 70px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	padding: 10px;
 }
 
 .footer_social_area
 {
-	margin-top: 62px;
+	margin-top: 50px;
 	margin-left: 70px;
 }
