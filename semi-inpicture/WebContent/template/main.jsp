@@ -14,7 +14,7 @@
 		
 			<ul class="menu_top_nav">
 				<li class="menu_item has-children">
-					<a href="#">
+					<a href="${pageContext.request.contextPath }/front?command=LoginForm">
 						로그인
 					</a>
 				</li>
