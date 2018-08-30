@@ -44,7 +44,7 @@ public class InpictureMemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			con = dataSource.getConnection();
+			con = getConnection();
 			String sql = "select name,point from inpicture_member where id=? and password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
