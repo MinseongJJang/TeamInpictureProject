@@ -19,7 +19,7 @@ public class HandlerMapping {
 			controller=new LoginController();
 		}else if(command.equals("Logout")){
 			controller=new LogoutController();
-		}else if(command.equals("LoginForm")){
+		}/*else if(command.equals("LoginForm")){
 			controller=new LoginFormController();
 		}else if(command.equals("RegisterMemberForm")) {
 			controller=new RegisterMemberFormController();
@@ -33,7 +33,9 @@ public class HandlerMapping {
 		}else if(command.equals("ApplyArtistForm")) {
 			controller=new ApplyArtistFormController();
 			//작가 신청 폼으로 이동하는 controller
-		}else if(command.equals("ApplyArtistList")) {
+		}*/else if(command.equals("ApplyArtist")){
+			controller = new ApplyArtistController();
+		}/*else if(command.equals("ApplyArtistList")) {
 			controller=new ApplyArtistListController();
 			//작가 신청 목록을 보여주는 controller
 		}else if(command.equals("ChangeMemberType")) {
@@ -72,7 +74,7 @@ public class HandlerMapping {
 		}else if(command.equals("Bid")) {
 			controller=new BidController();
 			//입찰 controller
-		}
+		}*/
 		return controller;
 	}
 }
