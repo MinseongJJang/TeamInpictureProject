@@ -8,13 +8,22 @@ create table inpicture_member(
 	point number default 1000000,
 	member_type number default 1
 )
+select * from inpicture_member;
+
+insert into inpicture_member values('test', '1234', '테스트', '서울', '90', 'test@test', 10,1);
+insert into inpicture_member values('artist', '1234', '테스트', '서울', '90', 'test@test', 100,2);
+insert into inpicture_member values('admin', '1234', '테스트', '서울', '90', 'test@test', 1000,3);
 
 create table artist(
 	id varchar2(100) not null,
 	artist_intro clob not null,
 	constraint fk_artist_id foreign key(id) references inpicture_member(id) on delete cascade 
 )
+select * from artist;
 
+insert into artist values('test', '나는 일반회원이다');
+insert into artist values('artist', '나는 artist다');
+insert into artist values('admin', '나는 관리자다');
 
 create table auction_apply(
 	auction_no number primary key,
@@ -42,10 +51,14 @@ create table artist_apply_board(
 	constraint fk_artist_apply_board_id foreign key(id) references inpicture_member(id) on delete cascade
 )
 
+
 create sequence artist_apply_board_seq
 start with 1
 nocache
-
+insert into artist_apply_board values(artist_apply_board_seq.nextval, '작가 신청5', '작가 신청 합니다.', sysdate, '사진', 'test'); select artist_apply_board_seq.currval from dual;
+insert into artist_apply_board values(artist_apply_board_seq.nextval,'1','1',sysdate,'1','test');
+select artist_apply_board_seq.currval from dual;
+select * from artist_apply_board;
 create table art(
 	art_no number primary key,
 	art_title varchar2(100) not null,
@@ -54,6 +67,9 @@ create table art(
 	id varchar2(100) not null,
 	constraint fk_art_id foreign key(id) references inpicture_member(id) on delete cascade
 )
+
+insert into art values(art_seq.nextval, '테스트 작품', '사회의 비판이 주제다', '사진', 'artist');
+
 
 create sequence art_seq
 start with 1
@@ -65,7 +81,7 @@ create table artist_attachment_path(
 	artist_post_no number not null,
 	constraint fk_artist_path_no foreign key(artist_post_no) references artist_apply_board(artist_post_no) on delete cascade
 )
-
+select *from artist_attachment_path
 create sequence artist_attachment_no_seq
 start with 1
 nocache
