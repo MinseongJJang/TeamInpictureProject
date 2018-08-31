@@ -72,6 +72,9 @@ public class HandlerMapping {
 		}else if(command.equals("Bid")) {
 			controller=new BidController();
 			//입찰 controller
+		}else if(command.equals("GetAllInfoList")) {
+			controller=new GetAllInfoListController();
+			//server 시작시에 경매목록 + 작가목록 + 작품목록을 불러오는 controller
 		}
 		return controller;
 	}

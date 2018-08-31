@@ -9,32 +9,36 @@
 			src="${pageContext.request.contextPath }/temp_images/hamburgerlogo.png"
 			class="hamburgerlogo"><br>
 		</a>
-		</div>
-		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-		<div class="hamburger_menu_content ">
-		
-			<ul class="menu_top_nav">
-				<li class="menu_item has-children">
-					<a href="${pageContext.request.contextPath }/front?command=LoginForm">
-						로그인
-					</a>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						회원가입
-					</a>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						공지사항
-					</a>
-				</li>
-				<li class="menu_item"><a href="#">NOTICE</a></li>
-				<li class="menu_item"><a href="#">FAQ</a></li>
-				<li class="menu_item"><a href="#">Q&A</a></li>
-			</ul>
-		</div>
 	</div>
+	<div class="hamburger_close">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</div>
+	<div class="hamburger_menu_content ">
+
+		<ul class="menu_top_nav">
+			<c:choose>
+				<c:when test="${sessionScope.mvo != null }">
+					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
+					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
+					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
+					<li class="menu_item has-children"><a
+						href="${pageContext.request.contextPath }/front?command=Logout">
+							로그아웃</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="menu_item has-children"><a
+						href="${pageContext.request.contextPath }/front?command=LoginForm">
+							로그인 </a></li>
+					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
+				</c:otherwise>
+			</c:choose>
+			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
+			<li class="menu_item"><a href="#">NOTICE</a></li>
+			<li class="menu_item"><a href="#">FAQ</a></li>
+			<li class="menu_item"><a href="#">Q&A</a></li>
+		</ul>
+	</div>
+</div>
 
 <!-- Slider -->
 
@@ -474,7 +478,7 @@
 							</div>
 						</div>
 
-							<div class="product-item men">
+						<div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img
@@ -489,7 +493,7 @@
 								</div>
 							</div>
 						</div>
-							<div class="product-item men">
+						<div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img
@@ -504,7 +508,7 @@
 								</div>
 							</div>
 						</div>
-							<div class="product-item men">
+						<div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img
@@ -519,7 +523,7 @@
 								</div>
 							</div>
 						</div>
-							<div class="product-item men">
+						<div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img
@@ -554,7 +558,8 @@
 			<div class="col-lg-3 benefit_col">
 				<div class="benefit_item d-flex flex-row align-items-center">
 					<div class="benefit_icon">
-						<img src="${pageContext.request.contextPath }/temp_images/technology.png" />
+						<img
+							src="${pageContext.request.contextPath }/temp_images/technology.png" />
 					</div>
 					<div class="benefit_content">
 						<h6>Technology</h6>
@@ -565,18 +570,20 @@
 			<div class="col-lg-3 benefit_col">
 				<div class="benefit_item d-flex flex-row align-items-center">
 					<div class="benefit_icon">
-						<img src="${pageContext.request.contextPath }/temp_images/value.png" />
+						<img
+							src="${pageContext.request.contextPath }/temp_images/value.png" />
 					</div>
 					<div class="benefit_content">
 						<h6>Invaluable</h6>
-						<p> 지불한 금액의 가치를 넘어서는 경매품을 제공하여 높은 만족도를 제공</p>
+						<p>지불한 금액의 가치를 넘어서는 경매품을 제공하여 높은 만족도를 제공</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-3 benefit_col">
 				<div class="benefit_item d-flex flex-row align-items-center">
 					<div class="benefit_icon">
-						<img src="${pageContext.request.contextPath }/temp_images/service.png" />
+						<img
+							src="${pageContext.request.contextPath }/temp_images/service.png" />
 					</div>
 					<div class="benefit_content">
 						<h6>Service</h6>
@@ -587,7 +594,8 @@
 			<div class="col-lg-3 benefit_col">
 				<div class="benefit_item d-flex flex-row align-items-center">
 					<div class="benefit_icon">
-						<img src="${pageContext.request.contextPath }/temp_images/community.png" />
+						<img
+							src="${pageContext.request.contextPath }/temp_images/community.png" />
 					</div>
 					<div class="benefit_content">
 						<h6>Community</h6>
@@ -604,16 +612,17 @@
 
 <div class="newsletter">
 	<div class="container">
-		
-			<a href="#">
-			<img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg" class="newsletter_img"></img>
-				<div class="newsletter_text">
-					<p>
-					<h3>Apply Artist</h3>
-					</p>
-				</div>
+
+		<a href="#"> <img
+			src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg"
+			class="newsletter_img"></img>
+			<div class="newsletter_text">
+				<p>
+				<h3>Apply Artist</h3>
+				</p>
+			</div>
 		</a>
-			
+
 	</div>
 </div>
 
