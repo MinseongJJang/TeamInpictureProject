@@ -9,8 +9,6 @@ Five Color Mix Rice Team Inpicture
 
 #180830
 - footer sns이미지 수정 및 메뉴 로고 사이즈 수정
-
-#180830
 - main ui 작업 끝
 - multi file upload 분석필요
 - 그 외 작업 
