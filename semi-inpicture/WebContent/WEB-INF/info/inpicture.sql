@@ -125,7 +125,7 @@ alter table auction drop(auction_final_bidder)
 
 
 
-
+select * from inpicture_member;
 
 
 

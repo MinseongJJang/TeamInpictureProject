@@ -30,7 +30,7 @@
 <body>
 <div class="super_container">
 	<c:import url="header.jsp"/>
-	<c:import url="main.jsp"/>
+	<c:import url="${requestScope.url }"/>
 	<c:import url="footer.jsp"/>
 </div>
 </body>

@@ -1,7 +1,9 @@
 package semi.inpicture.controller;
 
 import java.io.File;
+import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,7 @@ import semi.inpicture.model.dto.ArtistApplyBoardDTO;
 public class ApplyArtistController implements Controller {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest multi = null;
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
 		String workspacePath="C:\\Users\\15zd\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_upload\\";

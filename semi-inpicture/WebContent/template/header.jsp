@@ -21,8 +21,7 @@
 						<ul class="navbar_user">
 							<li><a href="#"><i class="fa fa-search"
 									aria-hidden="true"></i></a></li>
-							<li><a
-								href="${pageContext.request.contextPath }/front?command=LoginForm"><i
+							<li><a href="${pageContext.request.contextPath }/front?command=LoginForm"><i
 									class="fa fa-user" aria-hidden="true"></i></a></li>
 						</ul>
 						<div class="hamburger_container">
