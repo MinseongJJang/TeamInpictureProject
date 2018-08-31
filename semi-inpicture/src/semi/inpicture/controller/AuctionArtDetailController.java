@@ -14,5 +14,4 @@ public class AuctionArtDetailController implements Controller {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

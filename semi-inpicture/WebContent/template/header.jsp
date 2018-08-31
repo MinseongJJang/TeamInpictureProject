@@ -21,8 +21,10 @@
 						<ul class="navbar_user">
 							<li><a href="#"><i class="fa fa-search"
 									aria-hidden="true"></i></a></li>
-							<li><a href="${pageContext.request.contextPath }/front?command=LoginForm"><i
-									class="fa fa-user" aria-hidden="true"></i></a></li>
+							<c:if test="${sessionScope.mvo == null }">
+								<li><a href="${pageContext.request.contextPath }/front?command=LoginForm"><i
+										class="fa fa-user" aria-hidden="true"></i></a></li>
+							</c:if>
 						</ul>
 						<div class="hamburger_container">
 							<i class="fa fa-bars" aria-hidden="true"></i>
