@@ -80,6 +80,8 @@ public class HandlerMapping {
 			//server 시작시에 경매목록 + 작가목록 + 작품목록을 불러오는 controller
 		}else if(command.equals("IdCheck")) {
 			controller = new IdCheckController();
+		}else if(command.equals("Update")) {
+			controller = new UpdateController();
 		}
 		return controller;
 	}
