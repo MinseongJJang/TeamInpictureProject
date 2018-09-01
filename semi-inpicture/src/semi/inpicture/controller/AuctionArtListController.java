@@ -18,7 +18,7 @@ public class AuctionArtListController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		AuctionDAO dao = AuctionDAO.getInstance();
-		String url = "/template/layout";
+		String url = "/template/layout.jsp";
 		try {
 			HashMap<AuctionDTO,BidderDTO> map =(HashMap<AuctionDTO, BidderDTO>) dao.getAuctionList();
 			request.setAttribute("auctionList", map);

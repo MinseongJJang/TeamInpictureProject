@@ -87,4 +87,6 @@ public class AuctionDAO {
 		}
 		return map;
 	}
+	
+	
 }

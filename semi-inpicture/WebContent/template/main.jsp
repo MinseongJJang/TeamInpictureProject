@@ -2,44 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="fs_menu_overlay"></div>
-<div class="hamburger_menu">
-	<div class="hambuger_logo">
-		<a href="#"> <img alt=""
-			src="${pageContext.request.contextPath }/temp_images/hamburgerlogo.png"
-			class="hamburgerlogo"><br>
-		</a>
-	</div>
-	<div class="hamburger_close">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</div>
-	<div class="hamburger_menu_content ">
-
-		<ul class="menu_top_nav">
-			<c:choose>
-				<c:when test="${sessionScope.mvo != null }">
-					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
-					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
-					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
-					<li class="menu_item has-children"><a
-						href="${pageContext.request.contextPath }/front?command=Logout">
-							로그아웃</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="menu_item has-children"><a
-						href="${pageContext.request.contextPath }/front?command=LoginForm">
-							로그인 </a></li>
-					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
-				</c:otherwise>
-			</c:choose>
-			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
-			<li class="menu_item"><a href="#">NOTICE</a></li>
-			<li class="menu_item"><a href="#">FAQ</a></li>
-			<li class="menu_item"><a href="#">Q&A</a></li>
-		</ul>
-	</div>
-</div>
-
 <!-- Slider -->
 
 <%-- <div class="deal_ofthe_week">

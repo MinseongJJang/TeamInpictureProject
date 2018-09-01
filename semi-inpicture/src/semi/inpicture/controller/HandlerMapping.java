@@ -54,7 +54,7 @@ public class HandlerMapping {
 			controller=new RegisterMyArtController();
 			//작품을 등록하는 controller
 		}else if(command.equals("ApplyAuctionArtForm")) {
-			controller=new ApplyAuctionArtForm();
+			controller=new ApplyAuctionArtFormController();
 			//경매 신청하는 폼 controller
 		}else if(command.equals("ApplyAuctionArt")) {
 			controller=new ApplyAuctionArtController();
