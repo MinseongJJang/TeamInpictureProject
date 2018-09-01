@@ -21,11 +21,7 @@ public class DispatcherServlet extends HttpServlet {
 		if(request.getContentType() != null && request.getContentType().toLowerCase().indexOf("multipart/form-data") > -1) {				
 			//공통 부분을 어떻게 처리할까?
 			//String savePath = request.getServletContext().getRealPath("uploadImages");	
-			/*String workspacePath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
-			int fileMaxSize = 10*1024*1024;
-			MultipartRequest multi = new MultipartRequest(request, workspacePath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());*/
-			command="ApplyArtist";
-			System.out.println("파일업로드요청 "+command);
+			command="Update";
 		}else {//일반요청이면 
 			command=request.getParameter("command");
 	    }
