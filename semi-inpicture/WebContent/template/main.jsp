@@ -255,7 +255,7 @@
 
 								<div class="product_info">
 									<h6 class="product_name">
-										<a href="#">Guillaume Kashima</a>
+										<a href="${pageContext.request.contextPath }/fornt?command=DetailArt&art_no=">Guillaume Kashima</a>
 									</h6>
 									<div class="product_price">좋은그림1</div>
 								</div>
