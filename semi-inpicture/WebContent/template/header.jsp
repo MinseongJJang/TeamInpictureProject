@@ -56,7 +56,6 @@
 				<c:when test="${sessionScope.mvo != null }">
 					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
 					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
-					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
 					<li class="menu_item has-children"><a
 						href="${pageContext.request.contextPath }/front?command=Logout">
 							로그아웃</a></li>
@@ -75,8 +74,4 @@
 		</ul>
 	</div>
 </div>
-
-
-
-
 </header>
