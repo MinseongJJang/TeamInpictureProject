@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import semi.inpicture.model.dto.ArtistAttachmentPathDTO;
+
 public class ArtistAttachmentPathDAO {
 	private DataSource dataSource;
 	private static ArtistAttachmentPathDAO instance;
@@ -35,5 +37,19 @@ public class ArtistAttachmentPathDAO {
 
 	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
 		closeAll(pstmt, null, con);
+	}
+	public void upload(ArtistAttachmentPathDTO attachDto) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "insert into artist_attachment_path values (artist_attachment_no_seq.nextval,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, attachDto.getArtAttachmentPath());
+			pstmt.setInt(2, attachDto.getArtist_post_no());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
 	}
 }

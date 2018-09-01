@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<table>
+	<tr>
+		<th>글 번호</th><th>제목</th><th>등록일</th><th>아이디</th>
+	</tr>
+	<tr>
+	
+	</tr>
+</table>
 </body>
 </html>
