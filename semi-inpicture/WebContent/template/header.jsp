@@ -16,7 +16,7 @@
 							<li><a href="#">SERVICE</a></li>
 							<li><a href="#">ARTIST</a></li>
 							<li><a href="#">APPLY</a></li>
-							<li><a href="#">AUCTION</a></li>
+							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
 						</ul>
 						<ul class="navbar_user">
 							<li><a href="#"><i class="fa fa-search"
