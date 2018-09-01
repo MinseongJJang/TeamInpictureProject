@@ -99,7 +99,7 @@ public class ArtDAO {
 			closeAll(pstmt,null,con);
 		}
 	}
-	public ArrayList<ArtDTO> getPostingList(PagingBean pagingBean) throws SQLException {
+	public ArrayList<ArtDTO> artAll(PagingBean pagingBean) throws SQLException {
 	      ArrayList<ArtDTO> list = new ArrayList<ArtDTO>();
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
@@ -107,13 +107,7 @@ public class ArtDAO {
 	      try {
 	         con = getConnection();
 	         StringBuilder sql = new StringBuilder();
-	         sql.append("select  a.art_no,a.art_title,a.art_main_pic ");
-	         sql.append("from( ");
-	         sql.append("SELECT ");
-	         sql.append("art_no,art_title,art_main_pic,id,row_number() over(order by art_no desc) as rnum ");
-	         sql.append("FROM art ");
-	         sql.append(") a ,artist b WHERE a.id=b.id AND rnum BETWEEN ? AND ? ");
-	         sql.append("ORDER BY art_no DESC");
+	         sql.append("select * from art");	        
 	         pstmt = con.prepareStatement(sql.toString());
 	         // start, endRowNumber 할당해야 한다
 	         pstmt.setInt(1, pagingBean.getStartRowNumber());

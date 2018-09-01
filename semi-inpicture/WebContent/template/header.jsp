@@ -65,7 +65,7 @@
 					<li class="menu_item has-children"><a
 						href="${pageContext.request.contextPath }/front?command=LoginForm">
 							로그인 </a></li>
-					<li class="menu_item has-children"><a href="#"> 회원가입 </a></li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMemberForm"> 회원가입 </a></li>
 				</c:otherwise>
 			</c:choose>
 			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>

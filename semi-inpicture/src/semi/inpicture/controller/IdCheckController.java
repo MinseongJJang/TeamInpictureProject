@@ -9,24 +9,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi.inpicture.model.dao.InpictureMemberDAO;
 
-public class RegisterMemberController implements Controller {
+public class IdCheckController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String address = request.getParameter("address");
-		String ssn = request.getParameter("ssn");
-		String email = request.getParameter("email");
+		int idCheck = 0;
 		try {
-			InpictureMemberDAO.getInstance().registerInpictureMember(id, password, name, address, ssn, email);
-			
+			idCheck = InpictureMemberDAO.getInstance().idCheck(id);
+			if(idCheck==0) {
+				request.setAttribute("responsebody","ok");
+			}else {
+				request.setAttribute("responsebody","fail");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "index.jsp";
+		return "AjaxView";
 	}
 
 }
