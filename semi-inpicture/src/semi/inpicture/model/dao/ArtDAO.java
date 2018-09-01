@@ -40,7 +40,7 @@ public class ArtDAO {
 	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
 		closeAll(pstmt, null, con);
 	}
-	public ArtDTO artDetail(String artNo) throws SQLException {
+	public ArtDTO artDetail(String art_no) throws SQLException {
 		ArtDTO artDTO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -51,11 +51,11 @@ public class ArtDAO {
 					+ "from artist a,art b "
 					+ "where a.id=b.id and art_no=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1,artNo);
+			pstmt.setInt(1,Integer.parseInt(art_no));
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				artDTO = new ArtDTO();
-				artDTO.setArtNo(artNo);
+				artDTO.setArtNo(art_no);
 				artDTO.setArtTitle(rs.getString(2));
 				artDTO.setArtContent(rs.getString(3));
 				artDTO.setArtMainPic(rs.getString(4));
@@ -66,7 +66,6 @@ public class ArtDAO {
 		}finally {
 			closeAll(pstmt,rs,con);
 		}
-		
 		return artDTO;
 	}
 	public void artRegister(String artTilte,String artContent,String artMainPic,String id) throws SQLException {
