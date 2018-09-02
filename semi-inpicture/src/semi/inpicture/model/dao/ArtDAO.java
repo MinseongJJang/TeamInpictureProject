@@ -68,7 +68,7 @@ public class ArtDAO {
 		}
 		return artDTO;
 	}
-	public void artRegister(String artTilte,String artContent,String artMainPic,String id) throws SQLException {
+	public void artRegister(ArtDTO aDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -76,10 +76,10 @@ public class ArtDAO {
 			String sql = "insert into art(art_no,art_title,art_content,art_main_pic,id) "
 					+ "values(art_seq.nextval,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, artTilte);
-			pstmt.setString(2, artContent);
-			pstmt.setString(3, artMainPic);
-			pstmt.setString(4, id);
+			pstmt.setString(1, aDTO.getArtTitle());
+			pstmt.setString(2, aDTO.getArtContent());
+			pstmt.setString(3, aDTO.getArtMainPic());
+			pstmt.setString(4, aDTO.getInpictureMemberDTO().getId());
 			pstmt.executeUpdate();
 		}finally {
 			closeAll(pstmt,null,con);
