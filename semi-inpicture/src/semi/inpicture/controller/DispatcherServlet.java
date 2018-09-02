@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 @WebServlet("/front")
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,8 +18,16 @@ public class DispatcherServlet extends HttpServlet {
 		String command = null;
 		if(request.getContentType() != null && request.getContentType().toLowerCase().indexOf("multipart/form-data") > -1) {				
 			//공통 부분을 어떻게 처리할까?
-			command="ApplyArtist"; 
-			System.out.println("파일업로드요청 "+command);
+			/*
+			 *  공통 부분을 처리하기 위하여 ApplyArtist , ApplyAuction , RegisterMyArt
+			 *  로 command값이 요청된다면 해당 요청으로 넘어오는 form은 enc-type이 multipart이다.
+			 *  따라서 보통의 요청인 request로 요청이 들어오지 않고 multipartrequest로 들어오게 된다.
+			 *  현재의 mvc(model2) 패턴에서는 FrontController+Factory 패턴이 적용되어 각각의 요청을 
+			 *  따로 처리할 수 없다. 그렇기에 enc-type이 multipart이면 모두 UpdateController로 이동시킨다.
+			 *  -kms
+			 */
+			//String savePath = request.getServletContext().getRealPath("uploadImages");	
+			command="Update";
 		}else {//일반요청이면 
 			command=request.getParameter("command");
 	    }

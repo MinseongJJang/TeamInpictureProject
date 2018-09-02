@@ -24,7 +24,7 @@ public class ApplyArtistController implements Controller {
 		MultipartRequest multi = null;
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
 		
-		String workspacePath="C:\\Users\\15zd\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_upload\\";
+		String workspacePath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
 		//String savePath = request.getServletContext().getRealPath("artist_upload");	
 		multi = new MultipartRequest(request, workspacePath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());
 		

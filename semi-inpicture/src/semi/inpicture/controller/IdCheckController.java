@@ -7,24 +7,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.inpicture.model.dao.ArtDAO;
-import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dao.InpictureMemberDAO;
 
-public class DetailArtController implements Controller {
+public class IdCheckController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String art_no=request.getParameter("art_no");
+		String id = request.getParameter("id");
+		int idCheck = 0;
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(art_no);
-			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/layout/artdetail.jsp");
-			
+			idCheck = InpictureMemberDAO.getInstance().idCheck(id);
+			if(idCheck==0) {
+				request.setAttribute("responsebody","ok");
+			}else {
+				request.setAttribute("responsebody","fail");
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/template/layout.jsp";
+		return "AjaxView";
 	}
+
 }

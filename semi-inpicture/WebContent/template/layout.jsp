@@ -25,7 +25,7 @@
 <script src="${pageContext.request.contextPath}/temp_plugins/easing/easing.js"></script>
 <script src="${pageContext.request.contextPath}/temp_js/custom.js"></script>
 <!--  -->
-<title>Insert title here</title>
+<title>Inpicture</title>
 </head>
 <body>
 <div class="super_container">

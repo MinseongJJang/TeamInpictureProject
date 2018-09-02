@@ -58,7 +58,9 @@ nocache
 insert into artist_apply_board values(artist_apply_board_seq.nextval, '작가 신청5', '작가 신청 합니다.', sysdate, '사진', 'test'); select artist_apply_board_seq.currval from dual;
 insert into artist_apply_board values(artist_apply_board_seq.nextval,'1','1',sysdate,'1','test');
 select artist_apply_board_seq.currval from dual;
+
 select * from artist_apply_board;
+
 create table art(
 	art_no number primary key,
 	art_title varchar2(100) not null,
@@ -82,6 +84,7 @@ create table artist_attachment_path(
 	constraint fk_artist_path_no foreign key(artist_post_no) references artist_apply_board(artist_post_no) on delete cascade
 )
 select *from artist_attachment_path
+
 create sequence artist_attachment_no_seq
 start with 1
 nocache

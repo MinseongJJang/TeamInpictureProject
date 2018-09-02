@@ -39,5 +39,13 @@ public class BidderDTO {
 	public void setAuctionBidPrice(int auctionBidPrice) {
 		this.auctionBidPrice = auctionBidPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "BidderDTO [inpictureMemberDTO=" + inpictureMemberDTO + ", auctionDTO=" + auctionDTO
+				+ ", auctionBidPrice=" + auctionBidPrice + "]";
+	}
+	
+	
 	
 }

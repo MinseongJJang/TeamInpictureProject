@@ -45,18 +45,55 @@ public class InpictureMemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			String sql = "select name,point from inpicture_member where id=? and password=?";
+			String sql = "select name,point,member_type from inpicture_member where id=? and password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dto = new InpictureMemberDTO(id, null, rs.getString(1), null, 
-						null, null, rs.getInt(2), null);
+						null, null, rs.getInt(2), rs.getString(3));
 			}
 		} finally {
 			closeAll(pstmt, rs, con);
 		}
 		return dto;
+	}
+	public void registerInpictureMember(String id,String password,String name,String address,String ssn,String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "insert into inpicture_member(id,password,name,address,ssn,email) values(?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,password);
+			pstmt.setString(3,name);
+			pstmt.setString(4,address);
+			pstmt.setString(5,ssn);
+			pstmt.setString(6,email);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt,null,con);
+		}
+	}
+	public int idCheck(String id) throws SQLException {		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			con = getConnection();
+			String sql = "select count(*) from inpicture_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}finally {
+			closeAll(pstmt,rs,con);
+		}
+		return count;
 	}
 }

@@ -6,13 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ApplyAuctionArtForm implements Controller {
+public class ApplyAuctionArtFormController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		String url = "/template/layout.jsp";
+		request.setAttribute("url", "/auction/apply_auction_form.jsp");
+		return url;
 	}
 
 }
