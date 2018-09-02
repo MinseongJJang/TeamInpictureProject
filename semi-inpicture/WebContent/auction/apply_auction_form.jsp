@@ -34,6 +34,7 @@
 		});//keyup
 	});//ready
 </script>
+<div style="padding-top:300px;">
 <form method="post" action="${pageContext.request.contextPath}/front" enctype="multipart/form-data" id="auctionForm">
 	<table>
 	<input type="hidden" name="command" value="ApplyAuctionArt">
@@ -64,3 +65,4 @@
 		</tr>
 	</table>
 </form>
+</div>

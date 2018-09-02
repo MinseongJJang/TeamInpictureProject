@@ -44,17 +44,17 @@ public class AuctionApplyDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			String sql = "insert into auction_apply(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_main_pic,auction_promptly_price,auction_begin_price,id) values"
-					+ "(auction_apply_seq.nextval,?,?,to_date(?,'YYYY-MM-DD HH:MI:SS'),to_date(?,'YYYY-MM-DD HH:MI:SS'),?,?,?,?)";
+			String sql = "insert into auction_apply(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_main_pic,auction_promptly_price,id,auction_begin_price) values"
+					+ "(auction_apply_seq.nextval,?,?,to_date(?,'MM/DD/YYYY HH:MI'),to_date(?,'MM/DD/YYYY HH:MI'),?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auction.getAuctionTitle());
 			pstmt.setString(2, auction.getAuctionContent());
 			pstmt.setString(3, auction.getAuctionBeginTime());
 			pstmt.setString(4, auction.getAuctionEndTime());
-			pstmt.setString(6, auction.getAuctionMainPic());
-			pstmt.setInt(7, auction.getAuctionPromptlyPrice());
+			pstmt.setString(5, auction.getAuctionMainPic());
+			pstmt.setInt(6, auction.getAuctionPromptlyPrice());
+			pstmt.setString(7, auction.getInpictureMemberDTO().getId());
 			pstmt.setInt(8, auction.getAuctionBeginPrice());
-			pstmt.setString(9, auction.getInpictureMemberDTO().getId());
 			
 			pstmt.executeUpdate();
 			

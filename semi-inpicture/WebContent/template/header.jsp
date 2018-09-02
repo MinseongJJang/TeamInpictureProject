@@ -13,10 +13,20 @@
 					</div>
 					<nav class="navbar">
 						<ul class="navbar_menu">
+							
 							<li><a href="#">SERVICE</a></li>
 							<li><a href="#">ARTIST</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
-							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"">APPLY</a></li>
+							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLYARTIST</a></li>
+							<c:choose>
+								<c:when test="${sessionScope.mvo.memberType eq '3'}">
+									<li><a href="#">작가신청목록</a></li>
+									<li><a href="#">경매신청목록</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLYAUCTION</a></li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 						<ul class="navbar_user">
 							<li><a href="#"><i class="fa fa-search"

@@ -1,5 +1,6 @@
 package semi.inpicture.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -19,16 +20,23 @@ public class UpdateController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		/*
+		 *  UpdateController는 파일이 업로드되는 요청을 모두 받아오는 Controller이다.
+		 *  파일업로드 요청을 받았을 때 contextPath의 uploadImages로 파일을 업로드 시킨다.
+		 *  그 후 MultiPartRequest의 getparameter command값으로 if , else if 조건문을 통해
+		 *  요청에 따른 로직 수행을 하도록 한다.
+		 */
 		String url = "";
-		MultipartRequest multi = null;
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
-		String workspacePath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+		String oriPath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+		String afterPath ="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
 		//String savePath = request.getServletContext().getRealPath("artist_upload");	
-		multi = new MultipartRequest(request, workspacePath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());
-		String command = multi.getParameter("command");
+		MultipartRequest multi = new MultipartRequest(request, oriPath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());
+		String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
 		if(command.equals("ApplyArtist")) {
 			
 		}else if(command.equals("ApplyAuctionArt")) {
+			
 			//form에서 받아온 값들
 			String auctionTitle = multi.getParameter("auctionTitle");
 			String auctionContent = multi.getParameter("auctionContent");
@@ -40,29 +48,46 @@ public class UpdateController implements Controller {
 			int auctionPromptlyPrice = Integer.parseInt(multi.getParameter("promptlyPrice"));
 			int auctionBeginPrice = Integer.parseInt(multi.getParameter("beginPrice"));
 			
+			/*
+			 *  모든 파일을 uploadImages라는 folder에 저장시키기 때문에
+			 *  command값별로 File을 이동시키는 부분
+			 *  kms
+			 */
+			File file1 = new File(oriPath+auctionMainPic);
+			File file2 = new File(afterPath+auctionMainPic);
+			if(!file2.isDirectory()) {
+				//해당 디렉토리가 존재하지 않는다면 생성
+				new File(afterPath).mkdirs();
+			}
+			file1.renameTo(file2);
+			
+			
 			//auction을 신청하기 위해서 session에 저장된 ID를 받아와 MEMBER를 반환받는다.
 			HttpSession session = request.getSession(false);
 			InpictureMemberDTO member = null;
 			if(session != null) {
+				//만약 session이 만료된 상태에서의 요청이라면 error.jsp로 이동하게 된다.
+				
 				member = (InpictureMemberDTO)session.getAttribute("mvo");
+				AuctionApplyDTO dto = new AuctionApplyDTO();
+				dto.setAuctionTitle(auctionTitle);
+				dto.setAuctionContent(auctionContent);
+				dto.setAuctionBeginTime(beginTime1+ " "+beginTime2);
+				dto.setAuctionEndTime(endTime1 + " " + endTime2);
+				dto.setAuctionMainPic(auctionMainPic);
+				dto.setAuctionPromptlyPrice(auctionPromptlyPrice);
+				dto.setAuctionBeginPrice(auctionBeginPrice);
+				dto.setInpictureMemberDTO(member);
+				AuctionApplyDAO dao = AuctionApplyDAO.getInstance();
+				try {
+					dao.appyAuction(dto);
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				url = "/error.jsp";
 			}
-			AuctionApplyDTO dto = new AuctionApplyDTO();
-			dto.setAuctionTitle(auctionTitle);
-			dto.setAuctionContent(auctionContent);
-			dto.setAuctionBeginTime(beginTime1+ " "+beginTime2);
-			dto.setAuctionEndTime(endTime1 + " " + endTime2);
-			dto.setAuctionMainPic(auctionMainPic);
-			dto.setAuctionPromptlyPrice(auctionPromptlyPrice);
-			dto.setAuctionBeginPrice(auctionBeginPrice);
-			dto.setInpictureMemberDTO(member);
-			AuctionApplyDAO dao = AuctionApplyDAO.getInstance();
-			try {
-				dao.appyAuction(dto);
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			url = "/template/auction_list.jsp";
-			request.setAttribute("url", "/front?command=AuctionArtList");
+			url = "redirect:index.jsp";
 		}else if(command.equals("RegisterMyArt")) {
 			
 		}

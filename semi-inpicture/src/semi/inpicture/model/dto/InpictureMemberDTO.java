@@ -8,10 +8,10 @@ public class InpictureMemberDTO {
 	private String ssn;
 	private String email;
 	private int point;
-	private String member_type;
+	private String memberType;
 	
 	public InpictureMemberDTO(String id, String password, String name, String address, String ssn, String email,
-			int point, String member_type) {
+			int point, String memberType) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -20,7 +20,7 @@ public class InpictureMemberDTO {
 		this.ssn = ssn;
 		this.email = email;
 		this.point = point;
-		this.member_type = member_type;
+		this.memberType = memberType;
 	}
 
 	public InpictureMemberDTO() {
@@ -83,18 +83,18 @@ public class InpictureMemberDTO {
 		this.point = point;
 	}
 
-	public String getMember_type() {
-		return member_type;
+	public String getMemberType() {
+		return memberType;
 	}
 
-	public void setMember_type(String member_type) {
-		this.member_type = member_type;
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
 	}
 
 	@Override
 	public String toString() {
 		return "InpictureMemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address
-				+ ", ssn=" + ssn + ", email=" + email + ", point=" + point + ", member_type=" + member_type + "]";
+				+ ", ssn=" + ssn + ", email=" + email + ", point=" + point + ", memberType=" + memberType + "]";
 	}
 	
 }

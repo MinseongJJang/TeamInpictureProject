@@ -45,14 +45,14 @@ public class InpictureMemberDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			String sql = "select name,point from inpicture_member where id=? and password=?";
+			String sql = "select name,point,member_type from inpicture_member where id=? and password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dto = new InpictureMemberDTO(id, null, rs.getString(1), null, 
-						null, null, rs.getInt(2), null);
+						null, null, rs.getInt(2), rs.getString(3));
 			}
 		} finally {
 			closeAll(pstmt, rs, con);
