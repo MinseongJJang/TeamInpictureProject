@@ -82,6 +82,9 @@ public class HandlerMapping {
 			controller = new IdCheckController();
 		}else if(command.equals("Update")) {
 			controller = new UpdateController();
+		}else if(command.equals("ApplyAuctionArtList")) {
+			controller = new ApplyAuctionArtListController();
+			//Auction을 신청한 list를 받아오는 controller
 		}
 		return controller;
 	}

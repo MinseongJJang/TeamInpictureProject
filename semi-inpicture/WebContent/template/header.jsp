@@ -21,7 +21,7 @@
 							<c:choose>
 								<c:when test="${sessionScope.mvo.memberType eq '3'}">
 									<li><a href="#">작가신청목록</a></li>
-									<li><a href="#">경매신청목록</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList">경매신청목록</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLYAUCTION</a></li>
