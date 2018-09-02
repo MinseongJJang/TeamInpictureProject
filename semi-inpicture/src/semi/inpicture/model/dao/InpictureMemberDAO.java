@@ -96,4 +96,40 @@ public class InpictureMemberDAO {
 		}
 		return count;
 	}
+	   public InpictureMemberDTO myInfoById(String id) throws SQLException {
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rs = null;
+		      InpictureMemberDTO imDTO = null;
+		      try {
+		         con = getConnection();
+		         String sql = "select id,password,name,address,ssn,email,point,member_type from INPICTURE_MEMBER where id=?";
+		         pstmt = con.prepareStatement(sql);
+		         pstmt.setString(1, id);
+		         rs = pstmt.executeQuery();
+		         if(rs.next()) {
+		            imDTO = new InpictureMemberDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
+		         }
+		      }finally {
+		         closeAll(pstmt,rs,con);
+		      }
+		      
+		      return imDTO;
+		   }
+		   public void memberUpdate (InpictureMemberDTO imDTO) throws SQLException {
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      try {
+		         con = getConnection();
+		         String sql = "update INPICTURE_MEMBER set password=?,address=?,email=? where id=?";
+		         pstmt = con.prepareStatement(sql);
+		         pstmt.setString(1,imDTO.getPassword());
+		         pstmt.setString(2,imDTO.getAddress());
+		         pstmt.setString(3,imDTO.getEmail());
+		         pstmt.setString(4,imDTO.getId());
+		         pstmt.executeUpdate();
+		      }finally {
+		         closeAll(pstmt,null,con);
+		      }
+		   }
 }
