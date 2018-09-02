@@ -53,7 +53,7 @@ public class ApplyAuctionArtController implements Controller {
 		dto.setAuctionBeginPrice(auctionBeginPrice);
 		dto.setInpictureMemberDTO(member);
 		url = "/template/layout.jsp";
-		request.setAttribute("url", "/front?command=AuctionArtList");
+		request.setAttribute("url", "redirect:/front?command=AuctionArtList");
 		return url;
 	}
 

@@ -33,7 +33,7 @@ public class MemberUpdateController implements Controller {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	      }
-	      return "index.jsp";
+	      return "redirect:index.jsp";
 	}
 
 }

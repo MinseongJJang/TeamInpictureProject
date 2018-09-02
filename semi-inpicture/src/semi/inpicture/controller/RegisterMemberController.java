@@ -25,8 +25,8 @@ public class RegisterMemberController implements Controller {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return "index.jsp";
+		} 
+		return "redirect:index.jsp";
 	}
 
 }
