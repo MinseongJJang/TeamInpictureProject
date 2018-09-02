@@ -81,9 +81,10 @@ public class AuctionApplyDAO {
 		ArrayList<AuctionApplyDTO> auctionList = new ArrayList<AuctionApplyDTO>();
 		try {
 			con = getConnection();
-			//join을 사용해 auction_apply의 title과 no inpicture_member의 name을 받아온다.
-			String sql = "select a.auction_no,a.auction_title,m.name from "
-					+ "(select auction_no,auction_title,row_number() over(order by auction_no desc) as rnum from auction_apply) a "
+			//paging 처리를 하기 위하여 auction_no에 row_number를 부여.
+			//join과 subquery를 사용
+			String sql = "select a.auction_no,a.auction_title,a.id,m.name from "
+					+ "(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum from auction_apply) a "
 					+ ", inpicture_member m "
 					+ " where a.id=m.id and rnum between ? and ? order by a.auction_no desc";
 			pstmt = con.prepareStatement(sql);
@@ -105,7 +106,7 @@ public class AuctionApplyDAO {
 		}
 		return auctionList;
 	}
-	
+	//경매신청의 상세정보를 가져온다.
 	public AuctionApplyDTO getAuctionApplyDetailInfo(String auctionNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -119,7 +120,7 @@ public class AuctionApplyDAO {
 					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH:MI'),"
 					+ "a.auction_main_pic,a.auction_promptly_price,a.auction_begin_price,"
 					+ "m.id,m.name from auction_apply a , inpicture_member m "
-					+ "where m.id=a.id and auction_no=?";
+					+ "where m.id=a.id and a.auction_no=? and a.auction_state = '0'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auctionNo);
 			rs = pstmt.executeQuery();
@@ -160,5 +161,19 @@ public class AuctionApplyDAO {
 			closeAll(pstmt, rs, con);
 		}
 		return totalCount;
+	}
+	
+	public void deleteAuctionApply(String auctionNo) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "delete from auction_apply where auctionNo=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		}finally {
+			closeAll(pstmt, con);
+		}
 	}
 }

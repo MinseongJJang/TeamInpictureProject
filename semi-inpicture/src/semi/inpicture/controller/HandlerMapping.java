@@ -85,6 +85,9 @@ public class HandlerMapping {
 		}else if(command.equals("ApplyAuctionArtList")) {
 			controller = new ApplyAuctionArtListController();
 			//Auction을 신청한 list를 받아오는 controller
+		}else if(command.equals("ApplyAuctionDetail")) {
+			controller = new ApplyAuctionDetailController();
+			//경매신청 상세페이지
 		}
 		return controller;
 	}
