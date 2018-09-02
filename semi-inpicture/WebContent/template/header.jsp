@@ -15,7 +15,7 @@
 						<ul class="navbar_menu">
 							<li><a href="#">SERVICE</a></li>
 							<li><a href="#">ARTIST</a></li>
-							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"">APPLY</a></li>
+							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLY</a></li>
 							<li><a href="#">AUCTION</a></li>
 						</ul>
 						<ul class="navbar_user">
