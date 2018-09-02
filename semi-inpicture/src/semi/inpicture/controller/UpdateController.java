@@ -2,6 +2,7 @@ package semi.inpicture.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import semi.inpicture.model.dao.ArtDAO;
 import semi.inpicture.model.dao.AuctionApplyDAO;
+import semi.inpicture.model.dto.ArtDTO;
 import semi.inpicture.model.dto.AuctionApplyDTO;
 import semi.inpicture.model.dto.InpictureMemberDTO;
 
@@ -89,7 +92,31 @@ public class UpdateController implements Controller {
 			}
 			url = "redirect:index.jsp";
 		}else if(command.equals("RegisterMyArt")) {
-			
+
+			try {
+				
+				HttpSession session = request.getSession(false);
+				// 로그인 회원 아이디 뽑아오려고 세션씀
+				ArtDTO aDTO = new ArtDTO();
+				InpictureMemberDTO imDTO = new InpictureMemberDTO();
+				if(session != null) {
+					InpictureMemberDTO mvo = (InpictureMemberDTO)session.getAttribute("mvo");
+					// 작품등록할때 등록한 작품명,소개 등등
+					aDTO.setArtTitle(multi.getParameter("artName"));
+					aDTO.setArtContent(multi.getParameter("content"));
+					String fileName = multi.getFilesystemName("picture");
+					aDTO.setArtMainPic(fileName);
+					imDTO.setId(mvo.getId());
+					aDTO.setInpictureMemberDTO(imDTO);
+					ArtDAO.getInstance().artRegister(aDTO);
+				}else {
+					url="error.jsp";
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			url = "redirect:index.jsp";
 		}
 		
 		return url;
