@@ -38,6 +38,9 @@ public class HandlerMapping {
 		}else if(command.equals("ApplyArtistList")) {
 			controller=new ApplyArtistListController();
 			//작가 신청 목록을 보여주는 controller
+		}else if(command.equals("ApplyArtistDetail")) {
+			controller=new ApplyArtistDetailController();
+			// 작가 신청글 상세보기
 		}else if(command.equals("ChangeMemberType")) {
 			controller=new ChangeMemberTypeController();
 			//작가 신청 후 관리자가 멤버 타입을 변경시켜주는 controller

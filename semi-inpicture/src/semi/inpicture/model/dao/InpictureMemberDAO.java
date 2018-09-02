@@ -132,4 +132,17 @@ public class InpictureMemberDAO {
 		         closeAll(pstmt,null,con);
 		      }
 		   }
+		   public void changeMemberType(String id) throws SQLException {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				try {
+					con = getConnection();
+					String sql = "update inpicture_member set member_type=2 where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+				} finally {
+					closeAll(pstmt, con);
+				}
+			}
 }
