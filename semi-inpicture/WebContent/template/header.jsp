@@ -21,7 +21,7 @@
 							<c:choose>
 								<c:when test="${sessionScope.mvo.memberType eq '3'}">
 									<li><a href="#">작가신청목록</a></li>
-									<li><a href="#">경매신청목록</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList">경매신청목록</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLYAUCTION</a></li>
@@ -66,6 +66,8 @@
 				<c:when test="${sessionScope.mvo != null }">
 					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
 					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=MemberUpdateForm&id=${sessionScope.mvo.id}">회원정보수정</a></li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMyArtForm">작품등록</a></li>
 					<li class="menu_item has-children"><a
 						href="${pageContext.request.contextPath }/front?command=Logout">
 							로그아웃</a></li>

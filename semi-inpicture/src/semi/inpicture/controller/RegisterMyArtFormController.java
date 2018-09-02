@@ -11,8 +11,8 @@ public class RegisterMyArtFormController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		request.setAttribute("url","/template/artregister.jsp");
+		return "/template/layout.jsp";
 	}
 
 }
