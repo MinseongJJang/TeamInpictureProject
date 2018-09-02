@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
 import semi.inpicture.model.dto.AuctionApplyDTO;
+import semi.inpicture.model.dto.AuctionDTO;
+import semi.inpicture.model.dto.InpictureMemberDTO;
 
 public class AuctionApplyDAO {
 	private DataSource dataSource;
@@ -38,7 +41,12 @@ public class AuctionApplyDAO {
 	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
 		closeAll(pstmt, null, con);
 	}
-	
+	/**
+	 * auction을 신청하는 로직
+	 * auction을 신청하면 form값을 받아와
+	 * auction_apply table에 추가함
+	 * @kms
+	 */
 	public void appyAuction(AuctionApplyDTO auction) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -61,5 +69,96 @@ public class AuctionApplyDAO {
 		}finally {
 			closeAll(pstmt, con);
 		}
+	}
+	/**
+	 * auction신청 list를 받아오는 로직
+	 * @kms
+	 */
+	public ArrayList<AuctionApplyDTO> getAllAuctionApplyList(PagingBean pb) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<AuctionApplyDTO> auctionList = new ArrayList<AuctionApplyDTO>();
+		try {
+			con = getConnection();
+			//join을 사용해 auction_apply의 title과 no inpicture_member의 name을 받아온다.
+			String sql = "select a.auction_no,a.auction_title,m.name from "
+					+ "(select auction_no,auction_title,row_number() over(order by auction_no desc) as rnum from auction_apply) a "
+					+ ", inpicture_member m "
+					+ " where a.id=m.id and rnum between ? and ? order by a.auction_no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pb.getStartRowNumber());
+			pstmt.setInt(2, pb.getEndRowNumber());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				//setter를 통해 dto에 값을 넣어준다.
+				AuctionApplyDTO auctionDTO = new AuctionApplyDTO();
+				InpictureMemberDTO memberDTO = new InpictureMemberDTO();
+				memberDTO.setName(rs.getString(3));	
+				auctionDTO.setAuctionNo(rs.getString(1));
+				auctionDTO.setAuctionTitle(rs.getString(2));
+				auctionDTO.setInpictureMemberDTO(memberDTO);
+				auctionList.add(auctionDTO);
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return auctionList;
+	}
+	
+	public AuctionApplyDTO getAuctionApplyDetailInfo(String auctionNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AuctionApplyDTO auctionDTO = new AuctionApplyDTO();
+		try {
+			con = getConnection();
+			String sql ="select "
+					+ "a.auction_title,a.auction_content,"
+					+ "to_char(a.auction_begin_time,'YYYY-MM-DD HH:MI'),"
+					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH:MI'),"
+					+ "a.auction_main_pic,a.auction_promptly_price,a.auction_begin_price,"
+					+ "m.id,m.name from auction_apply a , inpicture_member m "
+					+ "where m.id=a.id and auction_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, auctionNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				InpictureMemberDTO memberDTO = new InpictureMemberDTO();
+				memberDTO.setId(rs.getString(8));
+				memberDTO.setName(rs.getString(9));
+				auctionDTO.setAuctionNo(auctionNo);
+				auctionDTO.setAuctionTitle(rs.getString(1));
+				auctionDTO.setAuctionContent(rs.getString(2));
+				auctionDTO.setAuctionBeginTime(rs.getString(3));
+				auctionDTO.setAuctionEndTime(rs.getString(4));
+				auctionDTO.setAuctionMainPic(rs.getString(5));
+				auctionDTO.setAuctionPromptlyPrice(rs.getInt(6));
+				auctionDTO.setAuctionBeginPrice(rs.getInt(7));
+				auctionDTO.setInpictureMemberDTO(memberDTO);
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return auctionDTO;
+	}
+	
+	public int getAuctionApplyListCount() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int totalCount = 0;
+		try {
+			con = getConnection();
+			String sql = "select count(-1) from auction_apply";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return totalCount;
 	}
 }
