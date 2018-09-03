@@ -19,7 +19,12 @@
 		<th>Writer &nbsp;&nbsp;${requestScope.auctionDTO.inpictureMemberDTO.name }&nbsp;&nbsp;</th>
 	</tr>
 	<tr>
-		<td colspan="3"><textarea readonly="readonly" cols="100" rows="1">${requestScope.auctionDTO.auctionContent }</textarea></td>
+		<td colspan="3"><img src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionMainPic}"> </td>
+	</tr>
+	<tr>
+		<td colspan="3"><textarea readonly="readonly" cols="100" rows="1">
+		${requestScope.auctionDTO.auctionContent }
+		</textarea></td>
 	</tr>
 	<tr>
 		<td colspan="3">경매 시작가 &nbsp;&nbsp;${requestScope.auctionDTO.auctionBeginPrice }</td>
