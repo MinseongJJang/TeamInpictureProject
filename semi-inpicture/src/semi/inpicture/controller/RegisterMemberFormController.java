@@ -12,7 +12,7 @@ public class RegisterMemberFormController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("url","/template/registermember.jsp");
+		request.setAttribute("url","/member/registermember.jsp");
 		return "/template/layout.jsp";
 	}
 
