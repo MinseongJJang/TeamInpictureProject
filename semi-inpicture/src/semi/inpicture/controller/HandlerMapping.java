@@ -106,6 +106,8 @@ public class HandlerMapping {
 			//경매승인
 		}else if(command.equals("DeleteMyArt")) {
 			controller = new DeleteMyArtController();
+		}else if(command.equals("UpdateMyArtForm")) {
+			controller = new UpdateMyArtFormController();
 		}
 		return controller;
 	}

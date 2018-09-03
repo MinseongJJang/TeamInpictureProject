@@ -136,4 +136,20 @@ public class ArtDAO {
 	     }
 		
 	}
+	public void updateMyArt(ArtDTO aDTO) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement pstmt = null;
+	     try {
+	    	 con = getConnection();
+	    	 String sql = "update ART set art_title=?,art_content=?,art_main_pic=? where art_no=?";
+	    	 pstmt = con.prepareStatement(sql);
+	    	 pstmt.setString(1,aDTO.getArtTitle());
+	    	 pstmt.setString(2, aDTO.getArtContent());
+	    	 pstmt.setString(3, aDTO.getArtMainPic());
+	    	 pstmt.setInt(4, Integer.parseInt(aDTO.getArtNo()));
+	    	 pstmt.executeUpdate();
+	     }finally {
+	    	 closeAll(pstmt,null,con);
+	     }
+	}
 }

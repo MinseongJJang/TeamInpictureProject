@@ -179,6 +179,24 @@ public class UpdateController implements Controller {
 				e.printStackTrace();
 			}
 			url = "redirect:index.jsp";
+		}else if(command.equals("UpdateMyArt")) {
+			HttpSession session = request.getSession(false);
+			if(session != null) {
+				ArtDTO aDTO = new ArtDTO();
+				aDTO.setArtTitle(multi.getParameter("artName"));
+				aDTO.setArtContent(multi.getParameter("content"));
+				aDTO.setArtNo(multi.getParameter("artNo"));
+				fileName = multi.getFilesystemName("picture");
+				aDTO.setArtMainPic(fileName);
+				try {
+					ArtDAO.getInstance().updateMyArt(aDTO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				url="redirect:index.jsp";
+			}else {
+				url="error.jsp";
+			}
 		}
 		
 		
