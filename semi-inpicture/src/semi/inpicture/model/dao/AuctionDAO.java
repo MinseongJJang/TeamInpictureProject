@@ -49,7 +49,7 @@ public class AuctionDAO {
 	 * map을 반환
 	 * @kms
 	 */
-	public Map<AuctionDTO,BidderDTO> getAuctionList() throws SQLException{
+	public Map<AuctionDTO,BidderDTO> getAuctionList(PagingBean pb) throws SQLException{
 		Map<AuctionDTO, BidderDTO> map = new HashMap<AuctionDTO,BidderDTO>();
 		
 		Connection con = null;
@@ -57,12 +57,18 @@ public class AuctionDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			String sql = "select auction_no,auction_title,auction_promptly_price,(select max(auction_bid_price) " + 
-					"from bid where auction_no = a.auction_no) as auction_bid_price, to_char(auction_end_time,'HH:MI:SS') " + 
-					"from auction a ";
-			// 현재 경매 진행중인 전체 경매 상품의 no,title,promptlyprice,최고입찰가,endtime을 받아온다.
+			String sql = "select a.auction_no,a.auction_title,a.auction_promptly_price," + 
+					"a.auction_bid_price,auction_begin_time,auction_end_time, " + 
+					"from "+
+					"(select auction_no,auction_title,auction_promptly_price,(select max(auction_bid_price) from bid where auction_no = a.auction_no),"+
+					"to_char(auction_begin_time, 'HH24:MI'),to_char(auction_end_time, 'HH24:MI'),row_number() over(order by auction_no desc) as rnum from auction) a "+
+					"where rnum between ? and ? a.auction_state = '0' order by a.auction_no desc";
+					// 현재 경매 진행중인 전체 경매 상품의 no,title,promptlyprice,최고입찰가,endtime을 받아온다.
+			
 			// 각각의 no의 해당되는 최고입찰가를 받아옴
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pb.getStartRowNumber());
+			pstmt.setInt(2, pb.getEndRowNumber());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AuctionDTO auction = new AuctionDTO();
@@ -88,13 +94,14 @@ public class AuctionDAO {
 		return map;
 	}
 	
-	public void registerAuction(AuctionApplyDTO applyDTO) throws SQLException {
+	public int registerAuction(AuctionApplyDTO applyDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		int result = 0;
 		try {
 			con = getConnection();
-			String sql = "insert into auction(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_final_bid_price,auction_final_bidder,auction_seller,auction_promptly_price,auction_main_pic,auction_begin_price "
-					+ "values(?,?,?,to_date(?,'MM/DD/YYYY HH:MI'),to_date(?,'MM/DD/YYYY HH:MI'),0,'',?,?,?,?)";
+			String sql = "insert into auction(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_final_bid_price,auction_final_bidder,auction_seller,auction_promptly_price,auction_main_pic,auction_begin_price) "
+					+ "values(?,?,?,to_date(?,'YYYY-MM-DD HH24:MI'),to_date(?,'YYYY-MM-DD HH24:MI'),0,'a',?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, applyDTO.getAuctionNo());
 			pstmt.setString(2, applyDTO.getAuctionTitle());
@@ -105,10 +112,34 @@ public class AuctionDAO {
 			pstmt.setInt(7, applyDTO.getAuctionPromptlyPrice());
 			pstmt.setString(8, applyDTO.getAuctionMainPic());
 			pstmt.setInt(9, applyDTO.getAuctionBeginPrice());
+			result = pstmt.executeUpdate();
 		}finally {
 			closeAll(pstmt, con);
 		}
+		return result;
 	}
+	
+	public int getAuctionListCount() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = getConnection();
+			String sql = "select count(-1) from auction where auction_state='0'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+		
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return result;
+	}
+	
+	
 	
 	
 }

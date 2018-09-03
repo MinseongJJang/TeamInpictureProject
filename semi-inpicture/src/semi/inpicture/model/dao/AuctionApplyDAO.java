@@ -53,7 +53,7 @@ public class AuctionApplyDAO {
 		try {
 			con = getConnection();
 			String sql = "insert into auction_apply(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_main_pic,auction_promptly_price,id,auction_begin_price) values"
-					+ "(auction_apply_seq.nextval,?,?,to_date(?,'MM/DD/YYYY HH:MI'),to_date(?,'MM/DD/YYYY HH:MI'),?,?,?,?)";
+					+ "(auction_apply_seq.nextval,?,?,to_date(?,'MM/DD/YYYY HH24:MI'),to_date(?,'MM/DD/YYYY HH24:MI'),?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auction.getAuctionTitle());
 			pstmt.setString(2, auction.getAuctionContent());
@@ -118,8 +118,8 @@ public class AuctionApplyDAO {
 			con = getConnection();
 			String sql ="select "
 					+ "a.auction_title,a.auction_content,"
-					+ "to_char(a.auction_begin_time,'YYYY-MM-DD HH:MI'),"
-					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH:MI'),"
+					+ "to_char(a.auction_begin_time,'YYYY-MM-DD HH24:MI'),"
+					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH24:MI'),"
 					+ "a.auction_main_pic,a.auction_promptly_price,a.auction_begin_price,"
 					+ "m.id,m.name,a.auction_state from auction_apply a , inpicture_member m "
 					+ "where m.id=a.id and a.auction_no=? and a.auction_state = 0";
@@ -179,5 +179,22 @@ public class AuctionApplyDAO {
 		}finally {
 			closeAll(pstmt, con);
 		}
+	}
+	
+	public int changeApplyAuctionState(String auctionNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = getConnection();
+			String sql = "update auction_apply set auction_state=1 where auction_no =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, auctionNo);
+			result = pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+		
+		return result;
 	}
 }

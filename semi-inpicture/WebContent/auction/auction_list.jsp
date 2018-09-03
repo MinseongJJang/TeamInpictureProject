@@ -12,7 +12,7 @@
 				<div class="product-item women">
 					<div class="product discount product_filter">
 						<div class="product_image">
-							<img src="${pageContext.request.contextPath}/uploadImages/${list.key.auctionApplyDTO.auctionMainPic }"
+							<img src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }"
 								alt="">
 						</div>
 
