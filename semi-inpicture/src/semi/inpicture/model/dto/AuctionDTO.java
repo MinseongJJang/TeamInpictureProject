@@ -5,11 +5,11 @@ public class AuctionDTO {
 	private int auctionFinalBidPrice;
 	private InpictureMemberDTO inpictureMemberDTO;
 	private int auctionPromptlyPrice;
-	private boolean auctionState;
+	private String auctionState;
 	private String auctionFinalBidder;
 	
 	public AuctionDTO(AuctionApplyDTO auctionApplyDTO, int auctionFinalBidPrice, InpictureMemberDTO inpictureMemberDTO,
-			int auctionPromptlyPrice, boolean auctionState, String auctionFinalBidder) {
+			int auctionPromptlyPrice, String auctionState, String auctionFinalBidder) {
 		super();
 		this.auctionApplyDTO = auctionApplyDTO;
 		this.auctionFinalBidPrice = auctionFinalBidPrice;
@@ -55,11 +55,11 @@ public class AuctionDTO {
 		this.auctionPromptlyPrice = auctionPromptlyPrice;
 	}
 
-	public boolean isAuctionState() {
+	public String isAuctionState() {
 		return auctionState;
 	}
 
-	public void setAuctionState(boolean auctionState) {
+	public void setAuctionState(String auctionState) {
 		this.auctionState = auctionState;
 	}
 

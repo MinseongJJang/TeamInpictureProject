@@ -45,7 +45,7 @@ public class AuctionDAO {
 	
 	/**
 	 * 경매의 전체목록을 불러오기 위하여
-	 * self join과 subquery 사용 후
+	 * join과 subquery 사용 후
 	 * map을 반환
 	 * @kms
 	 */
@@ -105,7 +105,10 @@ public class AuctionDAO {
 		int result = 0;
 		try {
 			con = getConnection();
-			String sql = "insert into auction(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_final_bid_price,auction_final_bidder,auction_seller,auction_promptly_price,auction_main_pic,auction_begin_price) "
+			String sql = "insert into auction"
+					+ "(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,"
+					+ "auction_final_bid_price,auction_final_bidder,auction_seller,auction_promptly_price,"
+					+ "auction_main_pic,auction_begin_price) "
 					+ "values(?,?,?,to_date(?,'YYYY-MM-DD HH24:MI'),to_date(?,'YYYY-MM-DD HH24:MI'),0,'a',?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, applyDTO.getAuctionNo());
@@ -144,7 +147,38 @@ public class AuctionDAO {
 		return result;
 	}
 	
-	
+	public AuctionDTO getAuctionDetailInfo(String auctionNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AuctionDTO dto = new AuctionDTO();
+		try {
+			con = getConnection();
+			String sql = "select a.auction_title,a.auction_content,"
+					+    "to_char(a.auction_begin_time,'YYYY-MM-DD HH24:MI'),"
+					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH24:MI'),a.auction_seller,"
+					+ "a.auction_promptly_price,a.auction_state,a.auction_main_pic,"
+					+ "a.auction_begin_price from auction a where a.auction_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, auctionNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.getAuctionApplyDTO().setAuctionNo(auctionNo);
+				dto.getAuctionApplyDTO().setAuctionTitle(rs.getString(1));
+				dto.getAuctionApplyDTO().setAuctionContent(rs.getString(2));
+				dto.getAuctionApplyDTO().setAuctionBeginTime(rs.getString(3));
+				dto.getAuctionApplyDTO().setAuctionEndTime(rs.getString(4));
+				dto.getAuctionApplyDTO().getInpictureMemberDTO().setName(rs.getString(5));
+				dto.getAuctionApplyDTO().setAuctionPromptlyPrice(rs.getInt(6));
+				dto.setAuctionState(rs.getString(7));
+				dto.getAuctionApplyDTO().setAuctionMainPic(rs.getString(8));
+				dto.getAuctionApplyDTO().setAuctionBeginPrice(rs.getInt(9));
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return dto;
+	}
 	
 	
 }

@@ -12,8 +12,9 @@
 				<div class="product-item women">
 					<div class="product discount product_filter">
 						<div class="product_image">
+							<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auction_no=${list.key.auctionApplyDTO.auctionNo}">
 							<img src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }"
-								alt="">
+								alt=""></a>
 						</div>
 
 						<div class="product_info">
