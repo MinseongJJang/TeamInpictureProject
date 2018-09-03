@@ -10,10 +10,11 @@ public class AuctionApplyDTO {
 	private int auctionPromptlyPrice;
 	private int auctionBeginPrice;
 	private InpictureMemberDTO inpictureMemberDTO;
+	private String auctionState;
 	
 	public AuctionApplyDTO(String auctionTitle, String auctionContent, String auctionBeginTime, String auctionEndTime,
 			String auctionMainPic, int auctionPromptlyPrice, int auctionBeginPrice,
-			InpictureMemberDTO inpictureMemberDTO) {
+			InpictureMemberDTO inpictureMemberDTO,String auctionState) {
 		super();
 		this.auctionTitle = auctionTitle;
 		this.auctionContent = auctionContent;
@@ -23,10 +24,20 @@ public class AuctionApplyDTO {
 		this.auctionPromptlyPrice = auctionPromptlyPrice;
 		this.auctionBeginPrice = auctionBeginPrice;
 		this.inpictureMemberDTO = inpictureMemberDTO;
+		this.auctionState = auctionState;
 	}
 
 	public AuctionApplyDTO() {
 		super();
+	}
+	
+	
+	public String getAuctionState() {
+		return auctionState;
+	}
+
+	public void setAuctionState(String auctionState) {
+		this.auctionState = auctionState;
 	}
 
 	public String getAuctionNo() {

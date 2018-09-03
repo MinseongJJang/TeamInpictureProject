@@ -88,5 +88,27 @@ public class AuctionDAO {
 		return map;
 	}
 	
+	public void registerAuction(AuctionApplyDTO applyDTO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "insert into auction(auction_no,auction_title,auction_content,auction_begin_time,auction_end_time,auction_final_bid_price,auction_final_bidder,auction_seller,auction_promptly_price,auction_main_pic,auction_begin_price "
+					+ "values(?,?,?,to_date(?,'MM/DD/YYYY HH:MI'),to_date(?,'MM/DD/YYYY HH:MI'),0,'',?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, applyDTO.getAuctionNo());
+			pstmt.setString(2, applyDTO.getAuctionTitle());
+			pstmt.setString(3, applyDTO.getAuctionContent());
+			pstmt.setString(4, applyDTO.getAuctionBeginTime());
+			pstmt.setString(5, applyDTO.getAuctionEndTime());
+			pstmt.setString(6, applyDTO.getInpictureMemberDTO().getName());
+			pstmt.setInt(7, applyDTO.getAuctionPromptlyPrice());
+			pstmt.setString(8, applyDTO.getAuctionMainPic());
+			pstmt.setInt(9, applyDTO.getAuctionBeginPrice());
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
+	
 	
 }

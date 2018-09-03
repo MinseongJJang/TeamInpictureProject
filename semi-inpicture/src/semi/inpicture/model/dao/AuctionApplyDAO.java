@@ -83,10 +83,10 @@ public class AuctionApplyDAO {
 			con = getConnection();
 			//paging 처리를 하기 위하여 auction_no에 row_number를 부여.
 			//join과 subquery를 사용
-			String sql = "select a.auction_no,a.auction_title,a.id,m.name from "
-					+ "(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum from auction_apply) a "
+			String sql = "select a.auction_no,a.auction_title,a.id,m.name,a.auction_state from "
+					+ "(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum,auction_state from auction_apply) a "
 					+ ", inpicture_member m "
-					+ " where a.id=m.id and rnum between ? and ? order by a.auction_no desc";
+					+ " where a.id=m.id and rnum between ? and ? and a.auction_state = 0 order by a.auction_no desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pb.getStartRowNumber());
 			pstmt.setInt(2, pb.getEndRowNumber());
@@ -96,8 +96,10 @@ public class AuctionApplyDAO {
 				AuctionApplyDTO auctionDTO = new AuctionApplyDTO();
 				InpictureMemberDTO memberDTO = new InpictureMemberDTO();
 				memberDTO.setName(rs.getString(3));	
+				memberDTO.setId(rs.getString(4));
 				auctionDTO.setAuctionNo(rs.getString(1));
 				auctionDTO.setAuctionTitle(rs.getString(2));
+				auctionDTO.setAuctionState(rs.getString(5));
 				auctionDTO.setInpictureMemberDTO(memberDTO);
 				auctionList.add(auctionDTO);
 			}
@@ -119,8 +121,8 @@ public class AuctionApplyDAO {
 					+ "to_char(a.auction_begin_time,'YYYY-MM-DD HH:MI'),"
 					+ "to_char(a.auction_end_time,'YYYY-MM-DD HH:MI'),"
 					+ "a.auction_main_pic,a.auction_promptly_price,a.auction_begin_price,"
-					+ "m.id,m.name from auction_apply a , inpicture_member m "
-					+ "where m.id=a.id and a.auction_no=? and a.auction_state = '0'";
+					+ "m.id,m.name,a.auction_state from auction_apply a , inpicture_member m "
+					+ "where m.id=a.id and a.auction_no=? and a.auction_state = 0";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auctionNo);
 			rs = pstmt.executeQuery();
@@ -136,6 +138,7 @@ public class AuctionApplyDAO {
 				auctionDTO.setAuctionMainPic(rs.getString(5));
 				auctionDTO.setAuctionPromptlyPrice(rs.getInt(6));
 				auctionDTO.setAuctionBeginPrice(rs.getInt(7));
+				auctionDTO.setAuctionState(rs.getString(8));
 				auctionDTO.setInpictureMemberDTO(memberDTO);
 			}
 		}finally {
@@ -168,8 +171,9 @@ public class AuctionApplyDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = getConnection();
-			String sql = "delete from auction_apply where auctionNo=?";
+			String sql = "delete from auction_apply where auction_no=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, auctionNo);
 			pstmt.executeUpdate();
 			
 		}finally {

@@ -10,21 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import semi.inpicture.model.dao.ArtDAO;
 import semi.inpicture.model.dto.ArtDTO;
 
-public class DetailArtController implements Controller {
+public class UpdateMyArtFormController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String artNo=request.getParameter("artNo");
+		ArtDTO aDTO = new ArtDTO();
+		String artNo = request.getParameter("artNo");
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
-			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/art/art_detail.jsp");
-			
+			aDTO = ArtDAO.getInstance().artDetail(artNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("aDTO",aDTO);
+		request.setAttribute("url","/art/update_my_art_form.jsp");
 		return "/template/layout.jsp";
 	}
+
 }

@@ -5,9 +5,17 @@
 	$(document).ready(function(){
 		$("#deleteBtn").click(function(){
 			if(confirm("경매신청을 취소하시겠습니까?")){
-				$(this).submit();
+				$("#command").val("DeleteApplyAuction");
+				alert("삭제?0");
+				$("#auctionForm").submit();
 			}
-		});
+		});//delete click
+		
+		$("#applyBtn").click(function(){
+			if(confirm("경매신청을 승인하시곘습니까?")){
+				$("#command").val("ApplyAuction")
+			}
+		});//apply click
 	});//ready
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,7 +27,12 @@
 		<th>Writer &nbsp;&nbsp;${requestScope.auctionDTO.inpictureMemberDTO.name }&nbsp;&nbsp;</th>
 	</tr>
 	<tr>
-		<td colspan="3"><textarea readonly="readonly" cols="100" rows="1">${requestScope.auctionDTO.auctionContent }</textarea></td>
+		<td colspan="3"><img src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionMainPic}"> </td>
+	</tr>
+	<tr>
+		<td colspan="3"><textarea readonly="readonly" cols="100" rows="1">
+		${requestScope.auctionDTO.auctionContent }
+		</textarea></td>
 	</tr>
 	<tr>
 		<td colspan="3">경매 시작가 &nbsp;&nbsp;${requestScope.auctionDTO.auctionBeginPrice }</td>
@@ -36,9 +49,10 @@
 	
 </table>
 
-<form method="post" action="${pageContext.request.contextPath }/front">
+<form method="post" action="${pageContext.request.contextPath }/front" id="auctionForm">
 <input type="hidden" name="id" value="${requestScope.auctionDTO.inpictureMemberDTO.id }">
 <input type="hidden" name="auctionNo" value="${requestScope.auctionDTO.auctionNo }">
+<input type="hidden" name="command" value=""  id="command">
 <input type="button" value="승인" id="applyBtn">
 <input type="button" value="삭제" id="deleteBtn">
 </form>

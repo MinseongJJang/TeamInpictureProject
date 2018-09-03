@@ -7,24 +7,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.inpicture.model.dao.ArtDAO;
-import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dao.AuctionApplyDAO;
 
-public class DetailArtController implements Controller {
+public class DeleteApplyAuctionController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String artNo=request.getParameter("artNo");
+		String auctionNo = request.getParameter("auctionNo");
+		String url = "";
+		AuctionApplyDAO dao = AuctionApplyDAO.getInstance();
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
-			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/art/art_detail.jsp");
-			
+			dao.deleteAuctionApply(auctionNo);
+			url = "redirect:index.jsp";
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/template/layout.jsp";
+		return url;
 	}
+
 }

@@ -1,4 +1,6 @@
 package semi.inpicture.controller;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class HandlerMapping {
 	private static HandlerMapping instance;
@@ -96,6 +98,16 @@ public class HandlerMapping {
 		}else if(command.equals("ApplyAuctionDetail")) {
 			controller = new ApplyAuctionDetailController();
 			//경매신청 상세페이지
+		}else if(command.equals("DeleteApplyAuction")) {
+			controller = new DeleteApplyAuctionController();
+			//경매신청 취소
+		}else if(command.equals("RegisterAuction")) {
+			controller = new RegisterAuctionController();
+			//경매승인
+		}else if(command.equals("DeleteMyArt")) {
+			controller = new DeleteMyArtController();
+		}else if(command.equals("UpdateMyArtForm")) {
+			controller = new UpdateMyArtFormController();
 		}
 		return controller;
 	}
