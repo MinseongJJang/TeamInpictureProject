@@ -98,7 +98,7 @@ public class ArtDAO {
 			closeAll(pstmt,null,con);
 		}
 	}
-	public ArrayList<ArtDTO> artAll(PagingBean pagingBean) throws SQLException {
+	public ArrayList<ArtDTO> artAll() throws SQLException {
 	      ArrayList<ArtDTO> list = new ArrayList<ArtDTO>();
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
@@ -109,13 +109,13 @@ public class ArtDAO {
 	         sql.append("select * from art");	        
 	         pstmt = con.prepareStatement(sql.toString());
 	         // start, endRowNumber 할당해야 한다
-	         pstmt.setInt(1, pagingBean.getStartRowNumber());
-	         pstmt.setInt(2, pagingBean.getEndRowNumber());
+	         //pstmt.setInt(1, pagingBean.getStartRowNumber());
+	         //pstmt.setInt(2, pagingBean.getEndRowNumber());
 	         rs = pstmt.executeQuery();
 	         // 목록에서 게시물 content는 필요없으므로 null로 setting
 	         // select no,title,time_posted,hits,id,name
 	         while (rs.next()) {
-	            list.add(new ArtDTO(rs.getString(2),null,rs.getString(3),null));
+	            list.add(new ArtDTO(rs.getString(2),rs.getString(3),rs.getString(4),null));
 	         }
 	      } finally {
 	         closeAll(pstmt, rs , con);
