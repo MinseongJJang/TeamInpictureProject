@@ -122,4 +122,18 @@ public class ArtDAO {
 	      }
 	      return list;
 	   }
+	public void deleteMyArt(String artNo) throws SQLException {
+		 Connection con = null;
+	     PreparedStatement pstmt = null;
+	     try {
+	    	 con = getConnection();
+	    	 String sql = "delete from art where art_no=?";
+	    	 pstmt = con.prepareStatement(sql);
+	    	 pstmt.setInt(1,Integer.parseInt(artNo));
+	    	 pstmt.executeUpdate();
+	     }finally {
+	    	 closeAll(pstmt,null,con);
+	     }
+		
+	}
 }

@@ -1,4 +1,6 @@
 package semi.inpicture.controller;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class HandlerMapping {
 	private static HandlerMapping instance;
@@ -102,6 +104,8 @@ public class HandlerMapping {
 		}else if(command.equals("RegisterAuction")) {
 			controller = new RegisterAuctionController();
 			//경매승인
+		}else if(command.equals("DeleteMyArt")) {
+			controller = new DeleteMyArtController();
 		}
 		return controller;
 	}
