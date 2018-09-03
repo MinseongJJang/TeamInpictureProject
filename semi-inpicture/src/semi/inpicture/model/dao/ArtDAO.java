@@ -51,7 +51,7 @@ public class ArtDAO {
 					+ "from artist a,art b "
 					+ "where a.id=b.id and art_no=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,Integer.parseInt(art_no));
+			pstmt.setString(1,art_no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				artDTO = new ArtDTO();

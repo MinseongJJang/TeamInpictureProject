@@ -43,7 +43,14 @@
 			}//if
 		})//keyup
 
-					});//ready
+	});//ready
+	/* 취소 버튼 */
+	function back(){
+		location.href="${pageContext.request.contextPath}/index.jsp";
+		
+	}
+	
+	
 	/* 가입 눌렀을때   */
 	/* 	function registerCheck(){
 	
@@ -67,16 +74,44 @@
 	}
 	.tdcolor{
 		text-align:center;
-		background-color:#e8e8e8;
-		border-botto:1px solid #dbdbdb;
+		background-color:#F9F9F9;
+		border-botton:1px solid #dbdbdb;
 	}
 	.b{
-		border-botto:1px solid #dbdbdb;
+		border-botton:1px solid #dbdbdb;
 	}
 
 	.table2{
 		border-top:1px solid #dbdbdb;
 		border-botto:1px solid #dbdbdb;
+	}	
+	
+	/* 버튼 속성  */
+	
+	.ab{
+		width:136px;
+		height:64px;
+		line-height:61px;
+		font-size:14px;
+	}
+	.ab:hover{
+		background:#6c6c6c;
+	}
+	.ab2{
+		color:#fff;
+		background:black;
+		border:1px solid #black;
+	}
+	.ac{
+		width:136px;
+		height:64px;
+		line-height:61px;
+		font-size:14px;
+	}
+	.ac2{
+		color:black;
+		background:#fff;
+		border:1px solid #black;
 	}
 </style>
 
@@ -90,49 +125,69 @@
 						action="${pageContext.request.contextPath }/front" id="idForm"
 						onsubmit="return registerCheck()">
 						<input type="hidden" name="command" value="RegisterMember">
-						<table class="table table2">
+						<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb">
 							<tr>
 								<td class="tdcolor">아이디</td>
-								<td><input type="text" name="id" id="id" placeholder="아이디"
-									required="required"></td>
+								<td><input type="text" name="id" id="id" placeholder="아이디" required="required"></td>																	
+							</tr>
+							<tr>
+								<td></td>
 								<td colspan="2"><sapn id="checkResult"></sapn></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">비밀번호</td>
 								<td><input type="password" name="password" id="pass"
 									placeholder="비밀번호" required="required"></td>
-								<td><span id="passcheckResultView"></span></td>
+								
+							</tr>
+							<tr>
+								<td></td>
+								<td colspan="2"><span id="passcheckResultView"></span></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">비밀번호확인</td>
-								<td><input type="password" id="passcheck"
-									placeholder="비밀번호확인"></td>
+								<td colspan="2"><input type="password" id="passcheck"
+									placeholder="비밀번호확인"></td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">이름</td>
-								<td><input type="text" name="name" placeholder="이름"
-									required="required"></td>
+								<td colspan="2"><input type="text" name="name" placeholder="이름"
+									required="required"></td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">주소</td>
-								<td><input type="text" name="address" placeholder="주소"
-									required="required"></td>
+								<td colspan="2"><input type="text" name="address" placeholder="주소"
+									required="required"></td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">주민등록번호</td>
-								<td><input type="text" name="ssn" required="required"
-									placeholder="주민등록번호"></td>
+								<td colspan="2"><input type="text" name="ssn" required="required"
+									placeholder="주민등록번호"></td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
 							</tr>
 							<tr>
 								<td class="tdcolor">이메일</td>
-								<td><input type="text" name="email" placeholder="이메일"
-									required="required"></td>
-							</tr>
-							<tr>
-								<td><input type="submit" value="가입"></td>
-								<td><span id="registerCheck"></span></td>
-							</tr>
+								<td colspan="2"><input type="text" name="email" placeholder="이메일"
+									required="required"></td>								
+							</tr>							
 						</table>
+						<!-- <tr align="center"> -->
+						<div align="center">
+								<input class="ab ab2" type="submit" value="가입">&nbsp;<input class="ac ac2" type="button" value="취소" onclick="back()">
+								<span id="registerCheck"></span>
+						</div>		
+						<!-- 	</tr> -->
 					</form>
 				</div>
 			</div>

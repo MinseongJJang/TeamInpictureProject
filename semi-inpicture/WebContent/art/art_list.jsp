@@ -12,7 +12,9 @@
 					<table class="table">
 						<tr>
 							<c:forEach var="avo" items="${requestScope.list }">
-								<td><img src="${pageContext.request.contextPath }/art_images/${avo.artMainPic }" class="img-art"></td>
+								<td><a href="${pageContext.request.contextPath }/front?command=DetailArt&artNo=${avo.artNo}">
+								<img src="${pageContext.request.contextPath }/art_images/${avo.artMainPic }" class="img-art"></a>
+								</td>
 							</c:forEach>
 							</tr>
 							<tr>
