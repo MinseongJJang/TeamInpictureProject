@@ -49,6 +49,9 @@ public class HandlerMapping {
 		}else if(command.equals("ArtistList")) {
 			controller=new ArtistListController();
 			//작가 목록을 불러오는 controller
+		}else if(command.equals("DetailArtist")) {
+			controller=new DetailArtistController();
+			//작가 상세보기 controller
 		}else if(command.equals("DetailArt")) {
 			controller=new DetailArtController();
 			//작품의 상세정보를 불러오는 controller

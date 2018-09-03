@@ -34,10 +34,11 @@ public class UpdateController implements Controller {
 		 *  그 후 MultiPartRequest의 getparameter command값으로 if , else if 조건문을 통해
 		 *  요청에 따른 로직 수행을 하도록 한다.
 		 */
+		
 		String url = "";
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
-		String oriPath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
-		String afterPath ="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
+		String oriPath="C:\\Users\\15zd\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+		String afterPath ="C:\\Users\\15zd\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
 		//String afterPath = "";
 		String fileName = "";
 		//String savePath = request.getServletContext().getRealPath(afterPath);	
