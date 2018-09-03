@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dto.ArtistDTO;
 import semi.inpicture.model.dto.InpictureMemberDTO;
 
 public class ArtistDAO {
@@ -69,4 +70,49 @@ public class ArtistDAO {
 	      }
 	      return list;
 	   }
+	public ArtistDTO detailArtist(String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArtistDTO dto = null;
+		try {
+			con=getConnection();
+	        StringBuilder sql=new StringBuilder();
+	        sql.append("select a.artist_intro, im.name, im.email ");
+	        sql.append("from (select artist_intro from artist) a, inpicture_member im ");
+	        sql.append("where a.id=im.id and a.id=?");
+	        pstmt = con.prepareStatement(sql.toString());
+	        pstmt.setString(1, id);
+	        rs=pstmt.executeQuery();
+	        while(rs.next()) {
+	        	InpictureMemberDTO idto = new InpictureMemberDTO();
+	        	idto.setId(id);
+	        	idto.setName(rs.getString(3));
+	        	idto.setEmail(rs.getString(4));
+	        	dto = new ArtistDTO();
+	        	dto.setArtistIntro(rs.getString(2));
+	        	dto.setInpictureMemberDTO(idto);
+	        }
+		} finally {
+			closeAll(pstmt,rs,con);
+		}
+		return dto;
+	}
+	public int getTotalPostCount() throws SQLException {
+		int totalCount=0;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select count(*) from artist";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				totalCount=rs.getInt(1);
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return totalCount;
+	}
 }

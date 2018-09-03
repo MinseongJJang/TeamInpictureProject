@@ -13,7 +13,8 @@
 		
 		$("#applyBtn").click(function(){
 			if(confirm("경매신청을 승인하시곘습니까?")){
-				$("#command").val("ApplyAuction")
+				$("#command").val("RegisterAuction");
+				$("#auctionForm").submit();
 			}
 		});//apply click
 	});//ready
