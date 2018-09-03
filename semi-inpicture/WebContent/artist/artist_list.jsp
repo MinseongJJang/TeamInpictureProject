@@ -6,16 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#doCheckBtn").click(function(){
-			$("#mailing").prop("checked",true);
-		});
-		$("#notDoCheckBtn").click(function(){
-			$("#mailing").prop("checked",false); // 체크 속성을 할당
-		});
-	});
-</script>
 </head>
 <body>
 	<div class="main_slider" style="background-image:url(images/slider_1.jpg)">
@@ -23,25 +13,17 @@
 			<div class="row align-items-center fill_height">
 				<div class="col">
 					<div class="main_slider_content">
-						<input type="button" id="doCheckBtn" value="전체선택">
-						<input type="button" id="notDoCheckBtn" value="전체선택해제">
-						<input type="button" id="adminBtn" value="선택승인"><br>
 						<table class="table table-bordered  table-hover boardlist">
 							<thead>
 								<tr>
-									<th>선택</th><th>글 번호</th><th>제목</th><th>아이디</th><th>등록일</th>
+									<th>작가 이름</th><th></th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="ldto" items="${requestScope.ldto.artistApplyList}">
+								<c:forEach var="ldto" items="${requestScope.ldto.artList}">
 									<tr>
-										<td>
-											<input type="checkbox" id="mailing" value="${ldto.artistPostNo }">
-										</td>
-										<td>${ldto.artistPostNo }</td>
-										<td><a href="${pageContext.request.contextPath}/front?command=ApplyArtistDetail&artistApplyNo=${ldto.artistPostNo }">${ldto.artistApplyTitle }</a></td>
-										<td>${ldto.inpictureMemberDTO.id }</td>
-										<td>${ldto.regdate }</td>
+										<td>${ldto.inpictureMemberDTO.name  }</td>
+										<td><img src="${pageContext.request.contextPath}/artist_upload/${ldto.artMainPic }"></td>
 									</tr>
 								</c:forEach>
 							</tbody>
