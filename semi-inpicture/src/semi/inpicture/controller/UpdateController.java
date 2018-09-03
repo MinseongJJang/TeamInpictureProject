@@ -3,6 +3,7 @@ package semi.inpicture.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +14,12 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import semi.inpicture.model.dao.ArtDAO;
+import semi.inpicture.model.dao.ArtistApplyBoardDAO;
+import semi.inpicture.model.dao.ArtistAttachmentPathDAO;
 import semi.inpicture.model.dao.AuctionApplyDAO;
 import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dto.ArtistApplyBoardDTO;
+import semi.inpicture.model.dto.ArtistAttachmentPathDTO;
 import semi.inpicture.model.dto.AuctionApplyDTO;
 import semi.inpicture.model.dto.InpictureMemberDTO;
 
@@ -44,7 +49,71 @@ public class UpdateController implements Controller {
 		String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
 		
 		if(command.equals("ApplyArtist")) {
+
+			HttpSession session = request.getSession(false);
+			InpictureMemberDTO idto = (InpictureMemberDTO) session.getAttribute("mvo");
 			
+			ArtistApplyBoardDTO dto = new ArtistApplyBoardDTO();
+			dto.setArtistApplyTitle(multi.getParameter("title"));
+			dto.setArtistApplyContent(multi.getParameter("content"));
+			dto.setInpictureMemberDTO(idto);
+			// 글번호 리턴
+			int artist_post_no=0;
+			try {
+				artist_post_no = ArtistApplyBoardDAO.getInstance().applyArtist(dto);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			//사용자가 업로드한 파일 이름
+			//실제로 서버에 업로드된 파일 시스템 이름
+			//String fileRealName = multi.getFilesystemName("artist_attachment_file_0");
+			//ArrayList<String> saveFiles = new ArrayList<String>();
+			ArtistAttachmentPathDTO attachDto = null;
+			@SuppressWarnings("unchecked")
+			// 다중 파일을 받아옵니다.
+			// 여러 개의 파일 데이터가 있을 때 파일을 하나씩 분석하기 위함
+			
+			Enumeration<String> fileNames = multi.getFileNames();
+			// while문을 이용해 파일을 한개씩 반복적으로 실행
+			while(fileNames.hasMoreElements()) {
+				String formName = (String)fileNames.nextElement();
+				//실제로 서버에 업로드된 파일 시스템 이름
+				fileName = multi.getOriginalFileName(formName);
+				System.out.println("fileName : "+fileName);
+				if(fileName == null) {
+					//fileName이 null일때 continue
+					continue;
+				}
+				attachDto = new ArtistAttachmentPathDTO(fileName, artist_post_no);
+				try {
+					ArtistAttachmentPathDAO.getInstance().upload(attachDto);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//saveFiles.add(fileName);
+	/*			if(!fileOriName.endsWith(".doc") && !fileOriName.endsWith(".hwp") && !fileOriName.endsWith(".png") && !fileOriName.endsWith(".jpg") && !fileOriName.endsWith(".xls")) {
+					String error = "파일을 업로드할 수 없습니다.";
+					//request.setAttribute("error", error);
+					File file = new File(workspacePath + fileName);
+					file.delete();
+				} else {
+					saveFiles.add(fileName);
+				}*/
+			}
+			/*for(int i=0; i<saveFiles.size(); i++) {
+				System.out.println("size : "+saveFiles.size());
+				System.out.println(i+": "+saveFiles.get(i));
+				ArtistAttachmentPathDTO attachDto = new ArtistAttachmentPathDTO(saveFiles.get(i), artist_post_no);
+				try {
+					ArtistAttachmentPathDAO.getInstance().upload(attachDto);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}*/
+			url = "redirect:index.jsp";
 		}else if(command.equals("ApplyAuctionArt")) {
 			
 			//form에서 받아온 값들

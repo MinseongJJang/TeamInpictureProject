@@ -24,7 +24,7 @@ public class ApplyArtistController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MultipartRequest multi = null;
-		String workspacePath="C:\\java-kosta\\InPictureProject\\semi-inpicture-test\\WebContent\\artist_upload\\";
+		String workspacePath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
 		//String savePath = request.getServletContext().getRealPath("artist_upload");	
 		
@@ -55,6 +55,7 @@ public class ApplyArtistController implements Controller {
 		@SuppressWarnings("unchecked")
 		// 다중 파일을 받아옵니다.
 		// 여러 개의 파일 데이터가 있을 때 파일을 하나씩 분석하기 위함
+		
 		Enumeration<String> fileNames = multi.getFileNames();
 		// while문을 이용해 파일을 한개씩 반복적으로 실행
 		while(fileNames.hasMoreElements()) {
