@@ -96,6 +96,12 @@ public class HandlerMapping {
 		}else if(command.equals("ApplyAuctionDetail")) {
 			controller = new ApplyAuctionDetailController();
 			//경매신청 상세페이지
+		}else if(command.equals("DeleteApplyAuction")) {
+			controller = new DeleteApplyAuctionController();
+			//경매신청 취소
+		}else if(command.equals("RegisterAuction")) {
+			controller = new RegisterAuctionController();
+			//경매승인
 		}
 		return controller;
 	}
