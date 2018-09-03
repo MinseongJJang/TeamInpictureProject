@@ -15,5 +15,4 @@ public class RegisterMemberFormController implements Controller {
 		request.setAttribute("url","/member/registermember.jsp");
 		return "/template/layout.jsp";
 	}
-
 }

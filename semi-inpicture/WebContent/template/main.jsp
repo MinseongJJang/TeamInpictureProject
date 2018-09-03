@@ -533,9 +533,8 @@
 
 <div class="newsletter">
 	<div class="container">
-
-		<a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> <img
-			src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg"
+		<a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> 
+		<img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg"
 			class="newsletter_img"></img>
 			<div class="newsletter_text">
 				<p>
@@ -543,7 +542,6 @@
 				</p>
 			</div>
 		</a>
-
 	</div>
 </div>
 

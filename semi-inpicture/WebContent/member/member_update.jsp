@@ -72,8 +72,7 @@
     								주소
     							</td>
      							<td>     								 
-     								<input type="text" name="address" >
-     								val="${requestScope.imDTO.address }"
+     								<input type="text" name="address" value="${requestScope.im.address }">
      							</td>     							
     						</tr>
     						<tr>
@@ -89,7 +88,7 @@
     								이메일
     							</td>
      							<td>       								
-     								<input type="text" name="email">
+     								<input type="text" name="email" value="${requestScope.im.email }">
      							</td>     							
     						</tr>  
     						<tr>
