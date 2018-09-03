@@ -47,6 +47,12 @@ public class HandlerMapping {
 		}else if(command.equals("ArtistList")) {
 			controller=new ArtistListController();
 			//작가 목록을 불러오는 controller
+		}else if(command.equals("DetailArtist")) {
+			controller=new DetailArtistController();
+			//작가 상세보기 controller
+		}else if(command.equals("ArtList")) {
+			controller=new ArtListController();
+			//작가 목록을 불러오는 controller
 		}else if(command.equals("DetailArt")) {
 			controller=new DetailArtController();
 			//작품의 상세정보를 불러오는 controller
@@ -102,6 +108,10 @@ public class HandlerMapping {
 		}else if(command.equals("RegisterAuction")) {
 			controller = new RegisterAuctionController();
 			//경매승인
+		}else if(command.equals("DeleteMyArt")) {
+			controller = new DeleteMyArtController();
+		}else if(command.equals("UpdateMyArtForm")) {
+			controller = new UpdateMyArtFormController();
 		}
 		return controller;
 	}

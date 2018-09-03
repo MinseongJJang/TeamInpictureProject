@@ -4,8 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
+
+import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dto.ArtistDTO;
+import semi.inpicture.model.dto.InpictureMemberDTO;
 
 public class ArtistDAO {
 	private DataSource dataSource;
@@ -35,5 +40,79 @@ public class ArtistDAO {
 
 	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
 		closeAll(pstmt, null, con);
+	}
+	public ArrayList<ArtDTO> getArtistList(PagingBean pagingBean) throws SQLException{
+	      ArrayList<ArtDTO> list=new ArrayList<ArtDTO>();
+	      Connection con=null;
+	      PreparedStatement pstmt=null;
+	      ResultSet rs=null;
+	      try {
+	         con=getConnection();
+	         StringBuilder sql=new StringBuilder();
+	         sql.append("select im.id, im.name, a.art_main_pic ");
+	         sql.append("from ( select id, name, row_number() over(order by id desc) as rnum from inpicture_member ");
+	         sql.append(") im, art a where im.id=a.id and rnum between ? and ?");
+	         pstmt=con.prepareStatement(sql.toString());
+		 	 pstmt.setInt(1, pagingBean.getStartRowNumber());
+		 	 pstmt.setInt(2, pagingBean.getEndRowNumber());
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            InpictureMemberDTO dto=new InpictureMemberDTO();
+	            dto.setId(rs.getString(1));
+	            dto.setName(rs.getString(2));
+	            ArtDTO adto = new ArtDTO();
+	            adto.setArtMainPic(rs.getString(3));
+	            adto.setInpictureMemberDTO(dto);
+	            list.add(adto);
+	         }
+	      }finally {
+	         closeAll(pstmt,rs,con);
+	      }
+	      return list;
+	   }
+	public ArtistDTO detailArtist(String id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArtistDTO dto = null;
+		try {
+			con=getConnection();
+	        StringBuilder sql=new StringBuilder();
+	        sql.append("select a.artist_intro, im.name, im.email ");
+	        sql.append("from (select artist_intro from artist) a, inpicture_member im ");
+	        sql.append("where a.id=im.id and a.id=?");
+	        pstmt = con.prepareStatement(sql.toString());
+	        pstmt.setString(1, id);
+	        rs=pstmt.executeQuery();
+	        while(rs.next()) {
+	        	InpictureMemberDTO idto = new InpictureMemberDTO();
+	        	idto.setId(id);
+	        	idto.setName(rs.getString(3));
+	        	idto.setEmail(rs.getString(4));
+	        	dto = new ArtistDTO();
+	        	dto.setArtistIntro(rs.getString(2));
+	        	dto.setInpictureMemberDTO(idto);
+	        }
+		} finally {
+			closeAll(pstmt,rs,con);
+		}
+		return dto;
+	}
+	public int getTotalPostCount() throws SQLException {
+		int totalCount=0;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select count(*) from artist";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				totalCount=rs.getInt(1);
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return totalCount;
 	}
 }

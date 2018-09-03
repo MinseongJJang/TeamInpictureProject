@@ -1823,3 +1823,8 @@ section {
 	color: red;
 	background-color: rgba(0, 0, 0, 0);
 }
+/* art img 크기 css */
+.img-art{
+	width:130px;
+	height:160px;
+}
