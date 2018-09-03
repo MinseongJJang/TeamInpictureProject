@@ -26,9 +26,9 @@
 									사진  <input type="file" name="picture" > <br>
 									<input type="submit" value="등록" >
 									
-     								</td>
-    							</tr> 
-     						</table>    
+     							</td>
+    						</tr> 
+     					</table>    
      					</form>     					
 					</div>
 				</div>
