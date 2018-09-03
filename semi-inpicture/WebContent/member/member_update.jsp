@@ -72,7 +72,8 @@
     								주소
     							</td>
      							<td>     								 
-     								<input type="text" name="address">
+     								<input type="text" name="address" >
+     								val="${requestScope.imDTO.address }"
      							</td>     							
     						</tr>
     						<tr>

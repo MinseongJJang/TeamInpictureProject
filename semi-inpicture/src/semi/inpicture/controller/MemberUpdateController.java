@@ -27,6 +27,7 @@ public class MemberUpdateController implements Controller {
 	      imDTO.setAddress(address);
 	      imDTO.setEmail(email);
 	      imDTO.setId(im.getId());
+	      request.setAttribute("imDTO", imDTO);
 	      try {
 	         InpictureMemberDAO.getInstance().memberUpdate(imDTO);
 	      } catch (SQLException e) {

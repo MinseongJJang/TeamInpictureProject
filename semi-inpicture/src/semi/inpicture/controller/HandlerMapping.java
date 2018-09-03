@@ -1,6 +1,4 @@
 package semi.inpicture.controller;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class HandlerMapping {
 	private static HandlerMapping instance;
@@ -48,6 +46,9 @@ public class HandlerMapping {
 			//작가 신청 후 관리자가 멤버 타입을 변경시켜주는 controller
 		}else if(command.equals("ArtistList")) {
 			controller=new ArtistListController();
+			//작가 목록을 불러오는 controller
+		}else if(command.equals("ArtList")) {
+			controller=new ArtListController();
 			//작가 목록을 불러오는 controller
 		}else if(command.equals("DetailArt")) {
 			controller=new DetailArtController();
