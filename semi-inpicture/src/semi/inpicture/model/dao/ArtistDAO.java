@@ -78,15 +78,15 @@ public class ArtistDAO {
 		try {
 			con=getConnection();
 	        StringBuilder sql=new StringBuilder();
-	        sql.append("select a.artist_intro, im.name, im.email ");
-	        sql.append("from (select artist_intro from artist) a, inpicture_member im ");
+	        sql.append("select a.id, a.artist_intro, im.name, im.email ");
+	        sql.append("from ( select id, artist_intro from artist ) a, inpicture_member im ");
 	        sql.append("where a.id=im.id and a.id=?");
 	        pstmt = con.prepareStatement(sql.toString());
 	        pstmt.setString(1, id);
 	        rs=pstmt.executeQuery();
 	        while(rs.next()) {
 	        	InpictureMemberDTO idto = new InpictureMemberDTO();
-	        	idto.setId(id);
+	        	idto.setId(rs.getString(1));
 	        	idto.setName(rs.getString(3));
 	        	idto.setEmail(rs.getString(4));
 	        	dto = new ArtistDTO();
