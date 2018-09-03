@@ -15,11 +15,11 @@ public class DetailArtController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String art_no=request.getParameter("art_no");
+		String artNo=request.getParameter("artNo");
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(art_no);
+			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
 			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/layout/artdetail.jsp");
+			request.setAttribute("url", "/art/art_detail.jsp");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
