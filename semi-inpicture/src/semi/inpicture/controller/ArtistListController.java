@@ -20,7 +20,7 @@ public class ArtistListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException{
 		try {
-		int totalPostCount=ArtistApplyBoardDAO.getInstance().getTotalPostCount();
+		int totalPostCount=ArtistDAO.getInstance().getTotalPostCount();
 		String pageNo=request.getParameter("pageNo");
 		PagingBean pagingBean=null;
 		if(pageNo==null) {
@@ -40,4 +40,5 @@ public class ArtistListController implements Controller {
 		request.setAttribute("url", "/artist/artist_list.jsp");		
 		return "/template/layout.jsp";
 	}
+	
 }

@@ -98,4 +98,21 @@ public class ArtistDAO {
 		}
 		return dto;
 	}
+	public int getTotalPostCount() throws SQLException {
+		int totalCount=0;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select count(*) from artist";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				totalCount=rs.getInt(1);
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return totalCount;
+	}
 }

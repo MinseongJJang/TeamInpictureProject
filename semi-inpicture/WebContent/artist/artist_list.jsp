@@ -37,14 +37,14 @@
 	<ul class="pagination">
 		<c:if test="${pb.previousPageGroup}">
 			<li><a
-				href="front?command=List&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
+				href="front?command=ArtistList&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
 			</li>
 		</c:if>
 		<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 			end="${pb.endPageOfPageGroup}">
 			<c:choose>
 				<c:when test="${pb.nowPage!=i}">
-					<li><a href="front?command=List&pageNo=${i}">${i}</a></li>
+					<li><a href="front?command=ArtistList&pageNo=${i}">${i}</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="active"><a href="#">${i}</a></li>
@@ -54,7 +54,7 @@
 	</c:forEach>
 		<c:if test="${pb.nextPageGroup}">
 			<li><a
-				href="front?command=List&pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+				href="front?command=ArtistList&pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 		</c:if>
 	</ul>
 </div>
