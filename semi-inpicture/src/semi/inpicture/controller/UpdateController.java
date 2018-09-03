@@ -33,9 +33,16 @@ public class UpdateController implements Controller {
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
 		String oriPath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
 		String afterPath ="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
-		//String savePath = request.getServletContext().getRealPath("artist_upload");	
+		//String afterPath = "";
+		String fileName = "";
+		//String savePath = request.getServletContext().getRealPath(afterPath);	
+		File oriFile = new File(oriPath) ;
+		if(!oriFile.isDirectory()) {
+			oriFile.mkdirs();
+		}
 		MultipartRequest multi = new MultipartRequest(request, oriPath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());
 		String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
+		
 		if(command.equals("ApplyArtist")) {
 			
 		}else if(command.equals("ApplyAuctionArt")) {
@@ -47,24 +54,10 @@ public class UpdateController implements Controller {
 			String beginTime2 = multi.getParameter("beginTime2");
 			String endTime1 = multi.getParameter("endTime1");
 			String endTime2 = multi.getParameter("endTime2");
-			String auctionMainPic = multi.getFilesystemName("auctionMainPic");
+			fileName = multi.getFilesystemName("auctionMainPic");
 			int auctionPromptlyPrice = Integer.parseInt(multi.getParameter("promptlyPrice"));
 			int auctionBeginPrice = Integer.parseInt(multi.getParameter("beginPrice"));
-			
-			/*
-			 *  모든 파일을 uploadImages라는 folder에 저장시키기 때문에
-			 *  command값별로 File을 이동시키는 부분
-			 *  kms
-			 */
-			File file1 = new File(oriPath+auctionMainPic);
-			File file2 = new File(afterPath+auctionMainPic);
-			if(!file2.isDirectory()) {
-				//해당 디렉토리가 존재하지 않는다면 생성
-				new File(afterPath).mkdirs();
-			}
-			file1.renameTo(file2);
-			
-			
+
 			//auction을 신청하기 위해서 session에 저장된 ID를 받아와 MEMBER를 반환받는다.
 			HttpSession session = request.getSession(false);
 			InpictureMemberDTO member = null;
@@ -77,7 +70,7 @@ public class UpdateController implements Controller {
 				dto.setAuctionContent(auctionContent);
 				dto.setAuctionBeginTime(beginTime1+ " "+beginTime2);
 				dto.setAuctionEndTime(endTime1 + " " + endTime2);
-				dto.setAuctionMainPic(auctionMainPic);
+				dto.setAuctionMainPic(fileName);
 				dto.setAuctionPromptlyPrice(auctionPromptlyPrice);
 				dto.setAuctionBeginPrice(auctionBeginPrice);
 				dto.setInpictureMemberDTO(member);
@@ -104,7 +97,7 @@ public class UpdateController implements Controller {
 					// 작품등록할때 등록한 작품명,소개 등등
 					aDTO.setArtTitle(multi.getParameter("artName"));
 					aDTO.setArtContent(multi.getParameter("content"));
-					String fileName = multi.getFilesystemName("picture");
+					fileName = multi.getFilesystemName("picture");
 					aDTO.setArtMainPic(fileName);
 					imDTO.setId(mvo.getId());
 					aDTO.setInpictureMemberDTO(imDTO);
@@ -118,6 +111,23 @@ public class UpdateController implements Controller {
 			}
 			url = "redirect:index.jsp";
 		}
+		
+		
+		/*
+		 *  모든 파일을 uploadImages라는 folder에 저장시키기 때문에
+		 *  command값별로 File을 이동시키는 부분
+		 *  kms
+		 */
+		File file1 = new File(oriPath+fileName);
+		File file2 = new File(afterPath+fileName);
+		if(!file2.isDirectory()) {
+			//해당 디렉토리가 존재하지 않는다면 생성
+			new File(afterPath).mkdirs();
+		}
+		file1.renameTo(file2);
+		
+		
+		
 		
 		return url;
 	}
