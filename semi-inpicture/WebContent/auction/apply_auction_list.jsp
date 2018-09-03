@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div style="padding-top: 200px;">
-
+	
 	<table class="table table-hover">
 		<tr>
 			<th>No</th>
@@ -12,7 +12,7 @@
 		</tr>
 		<c:forEach items="${requestScope.lvo.auctionApplyList}" var="item"
 			end="${requestScope.lvo.pb.postCountPerPage}">
-			<c:if test="${item.auctionState == 0 }">
+			<c:if test="${item.auctionState eq '0' }">
 				<tr>
 					<td>${item.auctionNo }</td>
 					<td><a
