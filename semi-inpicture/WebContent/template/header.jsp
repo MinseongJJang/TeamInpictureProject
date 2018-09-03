@@ -15,11 +15,7 @@
 						<ul class="navbar_menu">
 							
 							<li><a href="#">SERVICE</a></li>
-<<<<<<< HEAD
 							<li><a href="${pageContext.request.contextPath}/front?command=ArtistList">ARTIST</a></li>
-=======
-							<li><a href="${pageContext.request.contextPath }/front?command=ArtList">ARTIST</a></li>
->>>>>>> branch 'master' of https://github.com/MinseongJJang/TeamInpictureProject.git
 							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
 							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLYARTIST</a></li>
 							<c:choose>
