@@ -6,7 +6,7 @@
 	<div class="col">
 		<div class="product-grid"
 			data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-			<c:forEach items="${requestScope.auctionList}" var="list">
+			<c:forEach items="${requestScope.lvo.mapList}" var="list" end="${requestScope.lvo.pb.postCountPerPage}">
 
 
 				<div class="product-item women">

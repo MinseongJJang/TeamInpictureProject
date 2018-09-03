@@ -2,13 +2,14 @@ package semi.inpicture.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.inpicture.model.dao.AuctionDAO;
+import semi.inpicture.model.dao.ListVO;
 import semi.inpicture.model.dao.PagingBean;
 import semi.inpicture.model.dto.AuctionDTO;
 import semi.inpicture.model.dto.BidderDTO;
@@ -34,8 +35,11 @@ public class AuctionArtListController implements Controller {
 					pb = new PagingBean(totalPostCount, page);
 				}
 			}
-			HashMap<AuctionDTO, BidderDTO> map = (HashMap<AuctionDTO, BidderDTO>) dao.getAuctionList(pb);
-			request.setAttribute("auctionList", map);
+			LinkedHashMap<AuctionDTO, BidderDTO> map = (LinkedHashMap<AuctionDTO, BidderDTO>) dao.getAuctionList(pb);
+			ListVO lvo = new ListVO();
+			lvo.setMapList(map);
+			lvo.setPb(pb);
+			request.setAttribute("lvo", lvo);
 			request.setAttribute("url", "/auction/auction_list.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();

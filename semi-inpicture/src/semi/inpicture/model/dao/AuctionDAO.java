@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -50,20 +50,25 @@ public class AuctionDAO {
 	 * @kms
 	 */
 	public Map<AuctionDTO,BidderDTO> getAuctionList(PagingBean pb) throws SQLException{
-		Map<AuctionDTO, BidderDTO> map = new HashMap<AuctionDTO,BidderDTO>();
+		Map<AuctionDTO, BidderDTO> map = new LinkedHashMap<AuctionDTO,BidderDTO>();
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = getConnection();
-			String sql = "select a.auction_no,a.auction_title,a.auction_promptly_price," + 
-					"a.auction_bid_price,auction_begin_time,auction_end_time, " + 
-					"from "+
-					"(select auction_no,auction_title,auction_promptly_price,(select max(auction_bid_price) from bid where auction_no = a.auction_no),"+
-					"to_char(auction_begin_time, 'HH24:MI'),to_char(auction_end_time, 'HH24:MI'),row_number() over(order by auction_no desc) as rnum from auction) a "+
-					"where rnum between ? and ? a.auction_state = '0' order by a.auction_no desc";
-					// 현재 경매 진행중인 전체 경매 상품의 no,title,promptlyprice,최고입찰가,endtime을 받아온다.
+			// 현재 경매 진행중인 전체 경매 상품의 no,title,promptlyprice,최고입찰가,endtime을 받아온다.
+			// 그리고 paging 처리를 위해 row_number over를 사용해 auction_no를 desc로 정렬한다.
+			String sql = "select a.auction_no,a.auction_title,a.auction_promptly_price,a.bid_price, " + 
+					"a.begin_time,a.end_time,a.auction_state,a.auction_seller from " + 
+					"(select auction_no,auction_title,auction_promptly_price, " + 
+					"(select max(auction_bid_price) from bid where auction_no = a.auction_no) as bid_price, " + 
+					"to_char(auction_begin_time, 'HH24:MI') as begin_time, " + 
+					"to_char(auction_end_time, 'HH24:MI') as end_time,row_number() over(order by auction_no desc) as rnum, " + 
+					"auction_state,auction_seller " + 
+					"from auction a) a " + 
+					"where rnum between ? and ? and a.auction_state=0 order by a.auction_no desc";
+					
 			
 			// 각각의 no의 해당되는 최고입찰가를 받아옴
 			pstmt = con.prepareStatement(sql);
