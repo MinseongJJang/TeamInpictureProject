@@ -42,6 +42,7 @@ from ( select id, name, row_number() over(order by id desc) as rnum from inpictu
 ) im, art a where im.id=a.id and rnum between 1 and 5
 
 
+
 create sequence auction_apply_seq 
 start with 1
 nocache;
