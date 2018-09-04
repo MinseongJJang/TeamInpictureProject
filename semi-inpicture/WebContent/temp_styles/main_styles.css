@@ -1623,8 +1623,8 @@ section {
 	width: 160px;
 	height: 46px;
 	border: none;
-	background: #fe4c50;
-	color: #FFFFFF;
+	background: #000000;
+	color: #ffffff;
 	font-size: 14px;
 	font-weight: 500;
 	text-transform: uppercase;
@@ -1632,9 +1632,127 @@ section {
 }
 
 .newsletter_submit_btn:hover {
-	background: #FE7C7F;
+	background: #ffffff;
+	color: #000000;
+	border:1px solid black;
 }
 
+.file_submit_btn {
+	width: 110px;
+	height: 30px;
+	border: none;
+	background: #000000;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.file_submit_btn:hover {
+	background: #ffffff;
+	color: #000000;
+	border:1px solid black;
+}
+/* 하단 폼 만들기 */
+.newsletter_foot {
+	width:1110px;
+	height: 300px;
+	position: relative;
+}
+/* 로그인 폼 */
+.login {
+	background: #f2f2f2;
+	margin-top: 100px;
+	
+}
+.login_form {
+	height: 120px;
+}
+
+#login_text {
+	width: 300px;
+	height: 46px;
+	background: #FFFFFF;
+	border: solid 1px;
+	padding-left: 20px;
+	
+}
+
+#login_text:focus {
+	border: solid 1px #7f7f7f !important;
+	box-shadow: none !important;
+}
+
+:focus {
+	outline: none !important;
+}
+
+#login_text::-webkit-input-placeholder {
+	font-size: 14px !important;
+	font-weight: 400;
+	color: #b9b4c7 !important;
+}
+
+#login_text:-moz-placeholder /* older Firefox*/ {
+	font-size: 14px !important;
+	font-weight: 400;
+	color: #b9b4c7 !important;
+}
+
+#login_text::-moz-placeholder /* Firefox 19+ */ {
+	font-size: 14px !important;
+	font-weight: 400;
+	color: #b9b4c7 !important;
+}
+
+#login_text:-ms-input-placeholder {
+	font-size: 14px !important;
+	font-weight: 400;
+	color: #b9b4c7 !important;
+}
+
+#login_text::input-placeholder {
+	font-size: 14px !important;
+	font-weight: 400;
+	color: #b9b4c7 !important;
+}
+/* 테이블 */
+
+.login_table {
+	padding:15px;
+	border-spacing:10px;
+}
+
+/* input type*/
+
+.input {       
+	width: 200px;
+	height: 100px;
+	border-radius: 3px;
+	font-weight: 600;
+	border-color: transparent;
+	font-size: 25px;
+	background: hotpink;
+	color: #fff;
+	cursor: pointer;
+}
+.input upload {  
+    opacity: 0;       
+    position: relative;
+}
+.button replace {    
+  	position: absolute;
+	width: 200px;
+	height: 100px;
+	border-radius: 3px;
+	font-weight: 600;
+	border-color: transparent;
+	font-size: 25px;
+	background: #ffffff;
+	color: #000000;
+	cursor: pointer;
+}
 /*********************************
 11. Footer
 *********************************/

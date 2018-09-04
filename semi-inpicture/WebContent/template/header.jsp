@@ -7,9 +7,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-right">
 					<div class="logo_container">
-						<a href="#"><img
-							src="${pageContext.request.contextPath}/temp_images/logo.jpg"
-							width="80px"></a>
+						<a href="${pageContext.request.contextPath}/front?command=GetAllInfoList"><img src="${pageContext.request.contextPath}/temp_images/logo.jpg" width="80px"></a>
 					</div>
 					<nav class="navbar">
 						<ul class="navbar_menu">

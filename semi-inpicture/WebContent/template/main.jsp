@@ -497,7 +497,7 @@
 					</div>
 					<div class="benefit_content">
 						<h6>Invaluable</h6>
-						<p>지불한 금액의 가치를 넘어서는 경매품을 제공하여 높은 만족도를 제공</p>
+						<p>지불한 금액의 가치를 넘어서는 경매품을<br> 제공하여 높은 만족도를 제공</p>
 					</div>
 				</div>
 			</div>
@@ -529,22 +529,35 @@
 	</div>
 </div>
 
-
-
 <div class="newsletter">
-	<div class="container">
-		<a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> 
-		<img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg"
-			class="newsletter_img"></img>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5">
+					<div class="newsletter_foot d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+						<h4>작가 신청</h4>
+						<p>그림에 대한 꿈을 가지고 계신분이라면 인픽쳐와 함께 하세요.  인픽쳐가 많은 작가들에게 기회의 장을 제공합니다.</p>
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<form action="front">
+						<input type="hidden" name="command" value="ApplyArtistForm">
+						<div class="newsletter_foot d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+							<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">작가 신청 하기</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		 <%-- <a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> <img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg" class="newsletter_img"></img>
 			<div class="newsletter_text">
 				<p>
 				<h3>Apply Artist</h3>
 				</p>
 			</div>
-		</a>
-	</div>
-</div>
-
+		</a> --%>
 
 
 
