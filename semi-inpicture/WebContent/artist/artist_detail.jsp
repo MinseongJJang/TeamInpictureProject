@@ -8,7 +8,6 @@
  	align:center;
  	margin:auto;
  }
-
 </style>
 <div class="main_slider" align="center">
 	<div class="main_slider_content">
@@ -32,6 +31,7 @@
 			</tr>
 		</table>
 		<hr>
-		<c:import url="${pageContext.request.contextPath }/art/art_list"/>
+		<%-- <c:import url="${pageContext.request.contextPath }/art/art_list"/> --%>
+		<c:import url="${pageConext.request.contextPath }/art/art_list.jsp"/>
 	</div>
 </div>
