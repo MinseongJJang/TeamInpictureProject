@@ -70,7 +70,7 @@
      								<input type="text" name="id" id="id" placeholder="id" required="required">
     							</td>
     							<td>
-    								<sapn id="checkResult"></sapn>
+    								<span id="checkResult"></sapn>
     							</td>
     						</tr>   
     						<tr>
