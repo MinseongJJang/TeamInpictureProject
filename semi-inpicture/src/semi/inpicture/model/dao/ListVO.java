@@ -1,20 +1,35 @@
 package semi.inpicture.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import semi.inpicture.model.dto.ArtDTO;
 import semi.inpicture.model.dto.ArtistApplyBoardDTO;
 import semi.inpicture.model.dto.AuctionApplyDTO;
+import semi.inpicture.model.dto.AuctionDTO;
+import semi.inpicture.model.dto.BidderDTO;
 
 public class ListVO {
 	private PagingBean pb;
 	private ArrayList<AuctionApplyDTO> auctionApplyList;
 	private ArrayList<ArtistApplyBoardDTO> artistApplyList;
 	private ArrayList<ArtDTO> artList;
+	private LinkedHashMap<AuctionDTO, BidderDTO> mapList;
 	
 	public ListVO() {
 		super();
 	}
+	
+	public LinkedHashMap<AuctionDTO, BidderDTO> getMapList() {
+		return mapList;
+	}
+
+	public void setMapList(LinkedHashMap<AuctionDTO, BidderDTO> mapList) {
+		this.mapList = mapList;
+	}
+
+
 
 	public PagingBean getPb() {
 		return pb;
