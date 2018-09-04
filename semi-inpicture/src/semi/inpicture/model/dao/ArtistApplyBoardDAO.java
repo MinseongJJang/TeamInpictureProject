@@ -53,7 +53,7 @@ public class ArtistApplyBoardDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getArtistApplyTitle());
 			pstmt.setString(2, dto.getArtistApplyContent());
-			pstmt.setString(3, "main");
+			pstmt.setString(3, dto.getArtistMainPic());
 			pstmt.setString(4, dto.getInpictureMemberDTO().getId());
 			pstmt.executeUpdate();
 			pstmt.close();
