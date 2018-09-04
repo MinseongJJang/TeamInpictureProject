@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style type="text/css">
+	.abc{
+		box-shadow:0 0 16px rgba(0, 0, 0, 0.15);
+	}
+</style>
+<div class="abc">
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -27,3 +33,4 @@
 			</div>
 		</div>
 	</footer>
+	</div>
