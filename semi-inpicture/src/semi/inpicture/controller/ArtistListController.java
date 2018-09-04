@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.inpicture.model.dao.ArtistApplyBoardDAO;
 import semi.inpicture.model.dao.ArtistDAO;
 import semi.inpicture.model.dao.PagingBean;
 import semi.inpicture.model.dto.ArtDTO;

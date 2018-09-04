@@ -14,9 +14,8 @@ public class ChangeMemberTypeController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("id"));
 		try {
-			InpictureMemberDAO.getInstance().changeMemberType(request.getParameter("id"));
+			InpictureMemberDAO.getInstance().changeMemberType(request.getParameter("id"), request.getParameter("content"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

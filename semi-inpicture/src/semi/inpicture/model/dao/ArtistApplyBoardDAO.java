@@ -76,10 +76,10 @@ public class ArtistApplyBoardDAO {
 		try {
 			con = getConnection();
 			StringBuilder sql=new StringBuilder();		
-			sql.append("select aab.artist_post_no,aab.artist_apply_title,aab.reg_date,aab.id,im.name ");
+			sql.append("select aab.artist_post_no,aab.artist_apply_title,aab.reg_date, aab.artist_main_pic, aab.id, im.name ");
 			sql.append("from ( ");
 			sql.append("select artist_post_no, artist_apply_title, to_char(reg_date,'YYYY.MM.DD') ");			
-			sql.append("as reg_date,id,row_number() over(order by artist_post_no desc) ");
+			sql.append("as reg_date, artist_main_pic, id, row_number() over(order by artist_post_no desc) ");
 			sql.append("as rnum from artist_apply_board ");
 			sql.append(") aab, inpicture_member im ");
 			sql.append("where aab.id=im.id and rnum between ? and ? ");
@@ -93,6 +93,7 @@ public class ArtistApplyBoardDAO {
 				dto.setArtistPostNo(rs.getString(1));
 				dto.setArtistApplyTitle(rs.getString(2));
 				dto.setRegdate(rs.getString(3));
+				dto.setArtistMainPic(rs.getString(4));
 				InpictureMemberDTO idto = new InpictureMemberDTO();
 				idto.setId(rs.getString(4));
 				idto.setName(rs.getString(5));

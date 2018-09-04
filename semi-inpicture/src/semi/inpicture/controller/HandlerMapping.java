@@ -96,7 +96,6 @@ public class HandlerMapping {
 		}else if(command.equals("MemberUpdate")){
 			controller = new MemberUpdateController();
 		}else if(command.equals("ApplyAuctionArtList")) {
-		
 			controller = new ApplyAuctionArtListController();
 			//Auction을 신청한 list를 받아오는 controller
 		}else if(command.equals("ApplyAuctionDetail")) {
@@ -112,7 +111,9 @@ public class HandlerMapping {
 			controller = new DeleteMyArtController();
 		}else if(command.equals("UpdateMyArtForm")) {
 			controller = new UpdateMyArtFormController();
-		}
+		}else if(command.equals("LoginCheck")) {
+			controller = new LoginCheckController();
+		} 
 		return controller;
 	}
 }

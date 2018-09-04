@@ -4,10 +4,11 @@
 <script type="text/javascript">
 	function adminBtn() {
 		if(confirm("작가 신청을 승인하시겠습니까?")) {
-			location.href="${pageContext.request.contextPath}/front?command=ChangeMemberType&id=${requestScope.dto.inpictureMemberDTO.id}";
+			location.href="${pageContext.request.contextPath}/front?command=ChangeMemberType&id=${requestScope.dto.inpictureMemberDTO.id}&content=${requestScope.dto.artistApplyContent}";
 		}
 	}
 </script>
+
 <table class="table">
 	<tr>
 		<td>글번호 ${requestScope.dto.artistPostNo }</td>
@@ -23,7 +24,7 @@
 		<c:forEach var="list" items="${requestScope.list}" varStatus="info">
 		<tr>
 			<td colspan="4" align="center">
-				<img src="${pageContext.request.contextPath}/artist_upload/${list.artAttachmentPath}"><br>
+				<img src="${pageContext.request.contextPath}/artist_images/${list.artAttachmentPath}"><br>
 			</td>
 		</tr>
 		</c:forEach>
