@@ -13,7 +13,7 @@
 	<div class="main_slider_content">
 		<h2>작가 detail</h2>
 		<table class="table a">
-			<tr >
+			<tr>
 				<td rowspan="3">
 				<img  src="" width="400px" height="400px"></td>
 				<td>이름</td>
@@ -31,7 +31,6 @@
 			</tr>
 		</table>
 		<hr>
-		<%-- <c:import url="${pageContext.request.contextPath }/art/art_list"/> --%>
-		<c:import url="${pageConext.request.contextPath }/art/art_list.jsp"/>
+	  <c:import url="${requestScope.url2 }"/>
 	</div>
 </div>

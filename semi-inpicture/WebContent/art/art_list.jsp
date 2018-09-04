@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-		<div class="trans_300">
-            <div class="main_slider_content">
-               <h1>작가 작품 목록</h1>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>			
+			        작가 작품 목록
                <table class="table">
                   <tr>
                    <td rowspan="2">
                     <c:if test="${requestScope.paging.previous}">  
-                      <a href="${pageContext.request.contextPath}/front?command=ArtList&rnum=${requestScope.paging.start-1}">&laquo;</a>
+                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}">&laquo;</a>
                     </c:if>
                    </td>
                      <c:forEach var="avo" items="${requestScope.list }">
@@ -19,7 +16,7 @@
                      </c:forEach>
                    <td rowspan="2">
                     <c:if test="${requestScope.paging.next}">
-                     <a href="${pageContext.request.contextPath}/front?command=ArtList&rnum=${requestScope.paging.start+1}">&raquo;</a>
+                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}">&raquo;</a>
 					</c:if>
                    </td>
                   </tr>
@@ -29,6 +26,4 @@
 	                  </c:forEach>
                   </tr>
                </table>
-            </div>
-			</div>
 

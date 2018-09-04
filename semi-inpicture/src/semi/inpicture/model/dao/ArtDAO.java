@@ -132,13 +132,13 @@ public class ArtDAO {
 	         String sql = "select a.art_no,a.art_title,a.art_main_pic,b.id "
 	               + "from( "
 	               + "select row_number() over(order by art_no desc) as rnum,art_no, "
-	               + "art_title,art_main_pic,id from art where id=? "
+	               + "art_title,art_main_pic,id from art where id='java' "
 	               + ")a , artist b where a.id=b.id and rnum between ? and ? "
 	               + "order by a.art_no desc";
 	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1,id);
-	         pstmt.setInt(2, paging.getStart());
-	         pstmt.setInt(3, paging.getEnd());
+	         /*pstmt.setString(1,id);*/
+	         pstmt.setInt(1, paging.getStart());
+	         pstmt.setInt(2, paging.getEnd());
 	         rs=pstmt.executeQuery();
 	         while(rs.next()) {
 	            list.add(new ArtDTO(rs.getString(1),rs.getString(2),null,rs.getString(3),null));
@@ -155,9 +155,9 @@ public class ArtDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select count(*) from art where id=?";
+			String sql="select count(*) from art where id='java'";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,id);
+			/*pstmt.setString(1,id);*/
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
