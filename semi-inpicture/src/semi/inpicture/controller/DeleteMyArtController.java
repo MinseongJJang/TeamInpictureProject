@@ -8,23 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.inpicture.model.dao.ArtDAO;
-import semi.inpicture.model.dto.ArtDTO;
 
-public class DetailArtController implements Controller {
+public class DeleteMyArtController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String artNo=request.getParameter("artNo");
+		String artNo = request.getParameter("artNo");
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
-			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/art/art_detail.jsp");
-			
+			ArtDAO.getInstance().deleteMyArt(artNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/template/layout.jsp";
+		
+		return "redirect:index.jsp";
 	}
+
 }

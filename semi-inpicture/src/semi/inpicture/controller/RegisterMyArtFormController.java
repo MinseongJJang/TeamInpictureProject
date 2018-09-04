@@ -11,7 +11,7 @@ public class RegisterMyArtFormController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("url","/template/artregister.jsp");
+		request.setAttribute("url","/art/artregister.jsp");
 		return "/template/layout.jsp";
 	}
 

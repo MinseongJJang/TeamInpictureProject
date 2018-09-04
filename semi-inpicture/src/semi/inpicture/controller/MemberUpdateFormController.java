@@ -24,7 +24,7 @@ public class MemberUpdateFormController implements Controller {
 	         e.printStackTrace();
 	      }
 	      request.setAttribute("im",imDTO);
-	      request.setAttribute("url","/template/member_update.jsp");
+	      request.setAttribute("url","/member/member_update.jsp");
 	      return "/template/layout.jsp";
 	}
 

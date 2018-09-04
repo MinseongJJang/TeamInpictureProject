@@ -29,7 +29,7 @@ public class ApplyArtistDetailController implements Controller {
 		}	
 		request.setAttribute("dto", dto);
 		request.setAttribute("list", list);
-		request.setAttribute("url", "/artist/artist_detail.jsp");
+		request.setAttribute("url", "/artist/apply_artist_detail.jsp");
 		return "/template/layout.jsp";	
 	}
 }

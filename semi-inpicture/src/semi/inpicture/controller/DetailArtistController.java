@@ -2,29 +2,31 @@ package semi.inpicture.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.inpicture.model.dao.ArtDAO;
-import semi.inpicture.model.dto.ArtDTO;
+import semi.inpicture.model.dao.ArtistDAO;
+import semi.inpicture.model.dto.ArtistDTO;
 
-public class DetailArtController implements Controller {
+public class DetailArtistController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String artNo=request.getParameter("artNo");
+		String id = request.getParameter("id");
+		ArtistDTO adto = null;
 		try {
-			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
-			request.setAttribute("dto", dto);
-			request.setAttribute("url", "/art/art_detail.jsp");
-			
+			adto = ArtistDAO.getInstance().detailArtist(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/template/layout.jsp";
+		request.setAttribute("adto",adto);
+		request.setAttribute("url", "/artist/artist_detail.jsp");
+		return "/template/layout.jsp";	
 	}
+
 }
