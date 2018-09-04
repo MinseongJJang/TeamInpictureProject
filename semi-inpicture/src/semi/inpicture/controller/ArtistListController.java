@@ -23,7 +23,7 @@ public class ArtistListController implements Controller {
 		String pageNo=request.getParameter("pageNo");
 		PagingBean pagingBean=null;
 		if(pageNo==null) {
-			pagingBean=new PagingBean(totalPostCount);	
+			pagingBean=new PagingBean(totalPostCount);
 		}
 		else {
 			pagingBean=new PagingBean(totalPostCount,Integer.parseInt(pageNo));	
