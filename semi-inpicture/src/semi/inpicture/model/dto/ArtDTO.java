@@ -6,7 +6,17 @@ public class ArtDTO {
 	private String artContent;
 	private String artMainPic;
 	private InpictureMemberDTO InpictureMemberDTO;
-	
+
+	public ArtDTO(String artNo, String artTitle, String artContent, String artMainPic,
+			semi.inpicture.model.dto.InpictureMemberDTO inpictureMemberDTO) {
+		super();
+		this.artNo = artNo;
+		this.artTitle = artTitle;
+		this.artContent = artContent;
+		this.artMainPic = artMainPic;
+		InpictureMemberDTO = inpictureMemberDTO;
+	}
+
 	public ArtDTO(String artTitle, String artContent, String artMainPic,
 			semi.inpicture.model.dto.InpictureMemberDTO inpictureMemberDTO) {
 		super();

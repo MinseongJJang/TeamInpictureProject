@@ -115,7 +115,7 @@
 	}
 </style>
 
-<div class="main_slider">
+ <div class="main_slider">
 	<div>
 		<div class="a">
 			<div class="col-sm-8">
@@ -125,80 +125,6 @@
 						action="${pageContext.request.contextPath }/front" id="idForm"
 						onsubmit="return registerCheck()">
 						<input type="hidden" name="command" value="RegisterMember">
-<<<<<<< HEAD
-						<table class="table">
-    						<tr>
-    							<td>
-    								아이디
-    							</td>
-    							<td>
-    								     								
-     								<input type="text" name="id" id="id" placeholder="id" required="required">
-    							</td>
-    							<td>
-    								<span id="checkResult"></sapn>
-    							</td>
-    						</tr>   
-    						<tr>
-    							<td>
-    								비밀번호
-    							</td>
-     							<td>     								 
-     								<input type="password" name="password" id="pass" placeholder="비밀번호" required="required">
-     							</td>  
-     							<td>
-     								<span id="passcheckResultView"></span>
-     							</td>  							
-    						</tr> 
-    						<tr>
-    							<td>
-    								비밀번호확인
-    							</td>
-    							<td>
-    								<input type="password" id="passcheck" placeholder="비밀번호확인">
-    							</td>
-    						</tr>   						 
-    						<tr>
-    							<td>
-    								이름
-    							</td>
-     							<td>     								 
-     								<input type="text" name="name" placeholder="이름" required="required">
-     							</td>     							
-    						</tr>
-    						<tr>
-    							<td>
-    								주소
-    							</td>
-     							<td>     								 
-     								<input type="text" name="address" placeholder="address" required="required">
-     							</td>     							
-    						</tr>
-    						<tr>
-    							<td>
-    								주민등록번호
-    							</td>
-     							<td>      								 
-     								<input type="text" name="ssn" required="required" placeholder="주민등록번호">
-     							</td>     							
-    						</tr> 
-    						<tr>
-    							<td>
-    								이메일
-    							</td>
-     							<td>       								
-     								<input type="text" name="email" placeholder="이메일" required="required">
-     							</td>     							
-    						</tr>  
-    						<tr>
-     							<td>         								
-     								<input type="submit" value="가입">
-     							</td>     							
-    						</tr>  
-     						</table>    
-     					</form>       					  					
-					</div>
-=======
 						<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb">
 							<tr>
 								<td class="tdcolor">아이디</td>
@@ -263,7 +189,6 @@
 						</div>		
 						<!-- 	</tr> -->
 					</form>
->>>>>>> branch 'master' of https://github.com/MinseongJJang/TeamInpictureProject.git
 				</div>
 			</div>
 		</div>

@@ -24,7 +24,7 @@ public class ApplyArtistController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MultipartRequest multi = null;
-		String workspacePath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+		String workspacePath="C:\\Users\\15zd\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
 		int fileMaxSize = 10*1024*1024; // 파일 최대 사이즈 10MB로 지정
 		//String savePath = request.getServletContext().getRealPath("artist_upload");	
 		
@@ -37,6 +37,8 @@ public class ApplyArtistController implements Controller {
 		ArtistApplyBoardDTO dto = new ArtistApplyBoardDTO();
 		dto.setArtistApplyTitle(multi.getParameter("title"));
 		dto.setArtistApplyContent(multi.getParameter("content"));
+		dto.setArtistMainPic(multi.getFilesystemName("artist_main_pic"));
+		System.out.println(multi.getFilesystemName("artist_main_pic"));
 		dto.setInpictureMemberDTO(idto);
 		// 글번호 리턴
 		int artist_post_no=0;

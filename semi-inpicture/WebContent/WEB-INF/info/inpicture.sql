@@ -20,7 +20,7 @@ create table artist(
 	constraint fk_artist_id foreign key(id) references inpicture_member(id) on delete cascade 
 )
 select * from artist;
-
+delete from artist;
 insert into artist values('test', '나는 일반회원이다');
 insert into artist values('artist', '나는 artist다');
 insert into artist values('admin', '나는 관리자다');
@@ -36,6 +36,12 @@ create table auction_apply(
 	id varchar2(100) not null,
 	constraint fk_auction_apply_id foreign key(id) references inpicture_member(id) on delete cascade
 )
+
+select im.id, im.name, a.art_main_pic
+from ( select id, name, row_number() over(order by id desc) as rnum from inpicture_member
+) im, art a where im.id=a.id and rnum between 1 and 5
+
+
 
 create sequence auction_apply_seq 
 start with 1

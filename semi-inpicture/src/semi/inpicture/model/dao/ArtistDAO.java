@@ -49,12 +49,13 @@ public class ArtistDAO {
 	      try {
 	         con=getConnection();
 	         StringBuilder sql=new StringBuilder();
-	         sql.append("select im.id, im.name, a.art_main_pic ");
-	         sql.append("from ( select id, name, row_number() over(order by id desc) as rnum from inpicture_member ");
-	         sql.append(") im, art a where im.id=a.id and rnum between ? and ?");
+	         sql.append("select im.id, im.name, a.artist_main_pic ");
+	         sql.append("from ( select id, name, row_number() over(order by id desc) as rnum, member_type from inpicture_member ");
+	         sql.append(") im, artist_apply_board a where im.id=a.id and rnum between ? and ? and member_type=?");
 	         pstmt=con.prepareStatement(sql.toString());
 		 	 pstmt.setInt(1, pagingBean.getStartRowNumber());
 		 	 pstmt.setInt(2, pagingBean.getEndRowNumber());
+		 	 pstmt.setInt(3, 2);
 	         rs=pstmt.executeQuery();
 	         while(rs.next()) {
 	            InpictureMemberDTO dto=new InpictureMemberDTO();

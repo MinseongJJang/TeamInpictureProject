@@ -78,7 +78,7 @@
 				</c:otherwise>
 			</c:choose>
 			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
-			<li class="menu_item"><a href="#">NOTICE</a></li>
+			<li class="menu_item"><a href="${pageContext.request.contextPath}/front?command=DetailArtist">NOTICE</a></li>
 			<li class="menu_item"><a href="#">FAQ</a></li>
 			<li class="menu_item"><a href="#">Q&A</a></li>
 		</ul>

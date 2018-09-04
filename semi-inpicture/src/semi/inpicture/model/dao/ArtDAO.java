@@ -122,6 +122,52 @@ public class ArtDAO {
 	      }
 	      return list;
 	   }
+	public ArrayList<ArtDTO> getArtOfArtist(PagingArt paging,String id) throws SQLException{
+	      ArrayList<ArtDTO> list = new ArrayList<ArtDTO>();
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      try {
+	         con = getConnection();
+	         String sql = "select a.art_no,a.art_title,a.art_main_pic,b.id "
+	               + "from( "
+	               + "select row_number() over(order by art_no desc) as rnum,art_no, "
+	               + "art_title,art_main_pic,id from art where id='java' "
+	               + ")a , artist b where a.id=b.id and rnum between ? and ? "
+	               + "order by a.art_no desc";
+	         pstmt = con.prepareStatement(sql);
+	         /*pstmt.setString(1,id);*/
+	         pstmt.setInt(1, paging.getStart());
+	         pstmt.setInt(2, paging.getEnd());
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            list.add(new ArtDTO(rs.getString(1),rs.getString(2),null,rs.getString(3),null));
+	         }
+	      }finally {
+	         closeAll(pstmt,rs,con);
+	      }
+	      return list;
+	   }
+	public int getTotalArt(String id) throws SQLException {
+		int totalArt=0;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select count(*) from art where id='java'";
+			pstmt=con.prepareStatement(sql);
+			/*pstmt.setString(1,id);*/
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalArt=rs.getInt(1);
+			}
+		}finally {
+			closeAll(pstmt,con);
+		}
+		return totalArt;
+	}
 	public void deleteMyArt(String artNo) throws SQLException {
 		 Connection con = null;
 	     PreparedStatement pstmt = null;
