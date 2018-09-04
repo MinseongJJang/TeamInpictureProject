@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import semi.inpicture.model.dto.AuctionApplyDTO;
-import semi.inpicture.model.dto.AuctionDTO;
 import semi.inpicture.model.dto.InpictureMemberDTO;
 
 public class AuctionApplyDAO {

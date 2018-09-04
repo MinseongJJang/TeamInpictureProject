@@ -1,10 +1,10 @@
 package semi.inpicture.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import semi.inpicture.model.dao.AuctionApplyDAO;
 import semi.inpicture.model.dao.AuctionDAO;
+import semi.inpicture.model.dao.BidderDAO;
+import semi.inpicture.model.dao.InpictureMemberDAO;
 import semi.inpicture.model.dto.AuctionApplyDTO;
+import semi.inpicture.model.dto.AuctionDTO;
+import semi.inpicture.model.dto.BidderDTO;
 
 public class RegisterAuctionController implements Controller {
 	private List<AuctionWorker> list ;
@@ -33,8 +37,8 @@ public class RegisterAuctionController implements Controller {
 			beginTime = applyDTO.getAuctionBeginTime();
 			endTime = applyDTO.getAuctionEndTime();
 			
+			
 			if(list==null || list.isEmpty()) {
-				System.out.println("첫요청 ");
 				list = Collections.synchronizedList(new ArrayList<AuctionWorker>());
 			}
 			//관리자가 승인을 했다. -> Thread 생성한다.
@@ -54,53 +58,66 @@ public class RegisterAuctionController implements Controller {
 		HttpServletRequest request ; 
 		HttpServletResponse response ;
 		AuctionApplyDTO applyDTO;
-		int result ;
 		AuctionWorker(HttpServletRequest request, HttpServletResponse response,AuctionApplyDTO applyDTO){
 			this.request = request;
 			this.response = response;
 			this.applyDTO = applyDTO;
 		}
 		
-		public void work() {
-			AuctionDAO auctionDAO = AuctionDAO.getInstance();
-			AuctionApplyDAO applyDAO = AuctionApplyDAO.getInstance();
-			try {
-				if(result == 0) {
-					System.out.println("처음 들어왔을 때");
-					result = auctionDAO.registerAuction(applyDTO);
-					System.out.println(result);
-					applyDAO.changeApplyAuctionState(auctionNo);
-				}else {
-					
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	
 		
 		@Override
 		public void run() {
-			boolean flag = true;
-			while (flag) {
+	
+			SimpleDateFormat s = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+			SimpleDateFormat ss = new SimpleDateFormat("HH:mm");
+			AuctionDAO auctionDAO = AuctionDAO.getInstance();
+			BidderDAO bidDAO = BidderDAO.getInstance();
+			InpictureMemberDAO memberDAO = InpictureMemberDAO.getInstance();
+			AuctionApplyDAO applyDAO = AuctionApplyDAO.getInstance();
+			try {
+				Date d1 = ss.parse(beginTime.substring(11));
+				Date d2 = ss.parse(s.format(new Date(System.currentTimeMillis())).substring(11));
+				if(d1.getTime()<d2.getTime()) {
+					auctionDAO.registerAuction(applyDTO);
+				}else {
+					long diff = d1.getTime() - d2.getTime();
+					long diffTime = diff/(1000*60);
+					Thread.sleep(diffTime*60*1000);
+					System.out.println("Thread 슬립종료");
+					auctionDAO.registerAuction(applyDTO);
+					applyDAO.changeApplyAuctionState(auctionNo);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
 				try {
-					Thread.sleep(60000);
-				} catch (InterruptedException e) {
+					Date d1 = ss.parse(endTime.substring(11));
+					System.out.println(d1);
+					Date d2 = ss.parse(s.format(new Date(System.currentTimeMillis())).substring(11));
+					System.out.println(d2);
+					long diff = d1.getTime() - d2.getTime();
+					long diffTime = diff/(1000*60);
+					System.out.println(diffTime);
+					Thread.sleep((diffTime*60*1000));
+					BidderDTO bidder = bidDAO.getFinalBidder(auctionNo);
+					System.out.println("마지막에 bidder 받아오자"+bidder);
+					String name = memberDAO.getMemberName(bidder.getInpictureMemberDTO().getId());
+					bidder.getInpictureMemberDTO().setName(name);
+					auctionDAO.endAuction(bidder);
+					int price = bidder.getAuctionBidPrice();
+					memberDAO.updateMemberMinusPoint(bidder.getInpictureMemberDTO().getId(), price);
+					System.out.println("낙찰자 포인트 차감");
+					AuctionDTO auctionDTO = auctionDAO.getAuctionDetailInfo(auctionNo);
+					memberDAO.updateMemberPlusPoint(auctionDTO.getAuctionApplyDTO().getInpictureMemberDTO().getId(),price);
+					System.out.println("판매자 포인트 증가");
+					list.remove(this);
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				long now = System.currentTimeMillis();
-				SimpleDateFormat dayTime = new SimpleDateFormat("YYYY-MM-dd HH:mm");
-				String nowTime = String.valueOf(dayTime.format(now));
-				System.out.println("계속해서 받아오는 현재시간 : " +  nowTime);
-				if(beginTime.equals(nowTime)) {
-					work();
-				}else if(endTime.equals(nowTime)) {
-					System.out.println("thread끝난당");
-					flag = false;
-				}else {
-					work();
-				}
 			}
+			
 
 		}
 

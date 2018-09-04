@@ -7,19 +7,19 @@
 		<div class="product-grid"
 			data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 			<c:forEach items="${requestScope.lvo.mapList}" var="list" end="${requestScope.lvo.pb.postCountPerPage}">
-
-
+				
 				<div class="product-item women">
 					<div class="product discount product_filter">
 						<div class="product_image">
-							<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auction_no=${list.key.auctionApplyDTO.auctionNo}">
+							<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}">
 							<img src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }"
-								alt=""></a>
+								alt="">
+							</a>
 						</div>
 
 						<div class="product_info">
 							<h6 class="product_name">
-								<a href="#">${list.key.auctionApplyDTO.auctionTitle }</a>
+								<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }">${list.key.auctionApplyDTO.auctionTitle }</a>
 							</h6>
 							<div class="product_price">최고 입찰가 : ${list.value.auctionBidPrice }</div>
 						</div>

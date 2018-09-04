@@ -16,11 +16,14 @@ public class AuctionArtDetailController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String auctionNo = request.getParameter("auctionNo");
+		String maxBid = request.getParameter("maxBid");
+		System.out.println(auctionNo);
 		String url = "";
 		AuctionDAO dao = AuctionDAO.getInstance();
 		try {
 			AuctionDTO dto = dao.getAuctionDetailInfo(auctionNo);
 			if(dto != null) {
+				System.out.println(dto);
 				url = "/template/layout.jsp";
 				request.setAttribute("url", "/auction/auction_detail.jsp");
 				request.setAttribute("auctionDTO", dto);
