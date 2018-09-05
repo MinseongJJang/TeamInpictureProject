@@ -3,9 +3,7 @@ package semi.inpicture.model.dao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import semi.inpicture.controller.RegisterAuctionController;
 import semi.inpicture.model.dto.AuctionApplyDTO;
 import semi.inpicture.model.dto.AuctionDTO;
 import semi.inpicture.model.dto.BidderDTO;
@@ -30,13 +28,16 @@ public class AuctionWorker implements Runnable {
 	/*
 	 *  Controller에서 사용자의 beginTime,endTime,AuctionApplyDTO,auctionNo,List를 받아온다.
 	 */
-	public AuctionWorker(String beginTime, String endTime,AuctionApplyDTO applyDTO,String auctionNo,ArrayList<AuctionWorker> list){
+	public AuctionWorker(String beginTime, String endTime,AuctionApplyDTO applyDTO,String auctionNo,
+			ArrayList<AuctionWorker> list){
 		this.beginTime = beginTime;
 		this.endTime = endTime;
 		this.applyDTO = applyDTO;
 		this.auctionNo = auctionNo;
 		this.list = list;
 	}
+	
+	
 	@Override
 	public void run() {
 		System.out.println("Thread 들어옴");
@@ -92,6 +93,7 @@ public class AuctionWorker implements Runnable {
 					//bidder가 null이라는 의미는 해당경매의 입찰자가 단 한명도 존재하지 않는다는 의미이다.
 					//따라서 bidder의 값이 null이들어온다면 아무런 작업도 수행하지 않고 Thread를 종료시킨다.
 					System.out.println("입찰자없어서 종료");
+					//경매 종료 후 경매가 종료되었다고 알려주는 page로 이동하기 위함
 					list.remove(this);
 				}else {
 					String name = memberDAO.getMemberName(bidder.getInpictureMemberDTO().getId());
@@ -103,7 +105,10 @@ public class AuctionWorker implements Runnable {
 					memberDAO.updateMemberPlusPoint(auctionDTO.getAuctionApplyDTO().getInpictureMemberDTO().getId(),price);
 					//경매 종료전 모든작업을 맞췄다면 Thread는 list에서 제거하며 그 동작을 멈추게 된다.
 					System.out.println("종료");
+					//경매 종료 후 경매가 종료되었다고 알려주는 page로 이동하기 위함
 					list.remove(this);
+					
+					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

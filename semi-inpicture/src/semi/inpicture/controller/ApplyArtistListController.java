@@ -18,6 +18,7 @@ public class ApplyArtistListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		try {
+			System.out.println("!23");
 		int totalPostCount=ArtistApplyBoardDAO.getInstance().getTotalPostCount();
 		String pageNo=request.getParameter("pageNo");
 		PagingBean pagingBean=null;

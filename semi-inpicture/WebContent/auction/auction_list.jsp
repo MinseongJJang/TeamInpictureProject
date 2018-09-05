@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<c:choose>
+<c:when test="${sessionScope.mvo != null }">
 <div class="row" style="padding-top:200px;">
 	<div class="col">
 		<div class="product-grid"
@@ -30,3 +32,10 @@
 		</div>
 	</div>
 </div>
+</c:when>
+<c:otherwise>
+	<script type="text/javascript">
+		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
+	</script>
+</c:otherwise>
+</c:choose>

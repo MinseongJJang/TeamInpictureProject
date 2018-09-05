@@ -19,7 +19,6 @@
 	});//ready
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<<c:choose>
 <div style="padding-top:200px;"></div>
 <table class="table">
 	<tr>
@@ -57,4 +56,3 @@
 <input type="button" value="승인" id="applyBtn">
 <input type="button" value="삭제" id="deleteBtn">
 </form>
-</c:choose>

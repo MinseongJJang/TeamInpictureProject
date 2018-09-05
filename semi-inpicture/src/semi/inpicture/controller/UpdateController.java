@@ -129,7 +129,7 @@ public class UpdateController implements Controller {
 			String beginTime2 = multi.getParameter("beginTime2");
 			String endTime1 = multi.getParameter("endTime1");
 			String endTime2 = multi.getParameter("endTime2");
-			fileName = time + multi.getFilesystemName("auctionMainPic");
+			fileName = multi.getFilesystemName("auctionMainPic");
 			int auctionPromptlyPrice = Integer.parseInt(multi.getParameter("promptlyPrice"));
 			int auctionBeginPrice = Integer.parseInt(multi.getParameter("beginPrice"));
 
@@ -145,7 +145,7 @@ public class UpdateController implements Controller {
 				dto.setAuctionContent(auctionContent);
 				dto.setAuctionBeginTime(beginTime1 + " " + beginTime2);
 				dto.setAuctionEndTime(endTime1 + " " + endTime2);
-				dto.setAuctionMainPic(fileName);
+				dto.setAuctionMainPic(time+fileName);
 				dto.setAuctionPromptlyPrice(auctionPromptlyPrice);
 				dto.setAuctionBeginPrice(auctionBeginPrice);
 				dto.setInpictureMemberDTO(member);
@@ -174,8 +174,8 @@ public class UpdateController implements Controller {
 					// 작품등록할때 등록한 작품명,소개 등등
 					aDTO.setArtTitle(multi.getParameter("artName"));
 					aDTO.setArtContent(multi.getParameter("content"));
-					fileName = time + multi.getFilesystemName("picture");
-					aDTO.setArtMainPic(fileName);
+					fileName = multi.getFilesystemName("picture");
+					aDTO.setArtMainPic(time+fileName);
 					imDTO.setId(mvo.getId());
 					aDTO.setInpictureMemberDTO(imDTO);
 					ArtDAO.getInstance().artRegister(aDTO);
@@ -196,7 +196,7 @@ public class UpdateController implements Controller {
 				aDTO.setArtContent(multi.getParameter("content"));
 				aDTO.setArtNo(multi.getParameter("artNo"));
 				fileName = multi.getFilesystemName("picture");
-				aDTO.setArtMainPic(fileName);
+				aDTO.setArtMainPic(time+fileName);
 				try {
 					ArtDAO.getInstance().updateMyArt(aDTO);
 				} catch (SQLException e) {
@@ -213,7 +213,7 @@ public class UpdateController implements Controller {
 		 */
 		if (!command.equals("ApplyArtist")) {
 			File file1 = new File(oriPath + fileName);
-			File file2 = new File(afterPath + fileName);
+			File file2 = new File(afterPath + time+fileName);
 			if (!file2.isDirectory()) {
 				// 해당 디렉토리가 존재하지 않는다면 생성
 				new File(afterPath).mkdirs();
