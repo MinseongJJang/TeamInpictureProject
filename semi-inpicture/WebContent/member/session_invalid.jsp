@@ -11,11 +11,9 @@
 <script>
 $(function(){
 	$('#out').click(function(){
-		location.href="${pageContext.request.contextPath}/index.jsp";
+		location.href="${pageContext.request.contextPath}/front?command=LoginForm";
 	});
-	if(${sessionScope.mvo.id == null}){
-		location.href="${pageContext.request.contextPath}/member/login_form.jsp";
-	}
+	$('#loginModal').modal();
 });
 </script>
 <style type="text/css">

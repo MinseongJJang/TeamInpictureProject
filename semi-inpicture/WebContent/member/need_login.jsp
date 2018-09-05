@@ -11,8 +11,11 @@
 <script>
 $(function(){
 	$('#out').click(function(){
-		location.href="${pageContext.request.contextPath}/member/login_form.jsp";
+		location.href="${pageContext.request.contextPath}/front?command=LoginForm";
 	});
+	
+		$('#loginModal').modal();
+	
 });
 </script>
 <style type="text/css">

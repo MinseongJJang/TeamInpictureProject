@@ -24,6 +24,7 @@
 								<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }">${list.key.auctionApplyDTO.auctionTitle }</a>
 							</h6>
 							<div class="product_price">최고 입찰가 : ${list.value.auctionBidPrice }</div>
+							<div class="product_price">최고 입찰가 : ${list.value.auctionEndTime }</div>
 						</div>
 					</div>
 				</div>

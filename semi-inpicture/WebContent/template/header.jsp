@@ -19,6 +19,7 @@
 							<c:choose>
 								<c:when test="${sessionScope.mvo.memberType eq '3'}">
 									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList">APPLY AUCTION LIST</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistList">APPLY AUCTION LIST</a></li>
 								</c:when>
 								<c:when test="${sessionScope.mvo.memberType eq '2' }">
 									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLY AUCTION</a></li>
