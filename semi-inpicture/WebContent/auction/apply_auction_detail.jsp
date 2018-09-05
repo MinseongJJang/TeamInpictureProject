@@ -19,6 +19,8 @@
 	});//ready
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<c:choose>
+<c:when test="${sessionScope.mvo != null}">
 <div style="padding-top:200px;"></div>
 <table class="table">
 	<tr>
@@ -56,3 +58,10 @@
 <input type="button" value="승인" id="applyBtn">
 <input type="button" value="삭제" id="deleteBtn">
 </form>
+</c:when>
+<c:otherwise>
+	<script type="text/javascript">
+		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
+	</script>
+</c:otherwise>
+</c:choose>

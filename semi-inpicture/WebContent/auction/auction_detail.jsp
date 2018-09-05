@@ -4,8 +4,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#bidOkBtn").click(function(){
-	 		if($("#bidPirce").val() =="" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= ${param.maxBid} ){
-	 			alert("올바른 값을 입력해주세요");
+			
+	 		if($("#bidPirce").val() =="" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= ${param.maxBid} || $("#bidPrice").val() <= $("#beginPrice").val() ){
+	 			alert("입찰가는 현재 최고입찰가보다 높아야 합니다.");
 	 		}else{
 	 			if(confirm($("#bidPrice").val()+"원 입찰하시겠습니까?")){
 	 				$.ajax({
@@ -13,7 +14,6 @@
 	 					url : "${pageContext.request.contextPath}/front",
 	 					data : $("#modalForm").serialize(),
 	 					success:function(result){
-	 						alert(result);
 	 						$("#maxBid").text(result);
 	 					}//
 	 				});//ajax
@@ -51,6 +51,7 @@
 <c:choose>
 <c:when test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
 <form action="${pageContext.request.contextPath }/front" id="endAuction">
+	<input type="hidden" id="beginPrice" value="${requestScope.auctionDTO.auctionApplyDTO.auctionBeginPrice }">
 	<input type="hidden" name="command" value="EndAuction">
 	<input type="hidden" name="auctionNo" value="${requestScope.auctionDTO.auctionApplyDTO.auctionNo }">
 </form>
@@ -77,7 +78,7 @@
 		</textarea></td>
 	</tr>
 	<tr>
-		<td colspan="3">경매 시작가
+		<td colspan="3" >경매 시작가
 			&nbsp;&nbsp;${requestScope.auctionDTO.auctionApplyDTO.auctionBeginPrice }</td>
 	</tr>
 	<tr>
@@ -94,7 +95,14 @@
 	</tr>
 	<tr>
 		<td colspan="2">최고 입찰가 &nbsp;&nbsp;</td>
-		<td id="maxBid">${param.maxBid }</td>
+		<c:choose>
+			<c:when test="${param.maxBid == 0}">
+				<td id="maxBid">${requestScope.auctionDTO.auctionApplyDTO.auctionBeginPrice }</td>
+			</c:when>
+			<c:otherwise>
+				<td id="maxBid">${param.maxBid}</td>
+			</c:otherwise>
+		</c:choose>
 	</tr>
 	<tr>
 		<td><button type="button" class="btn btn-info btn-lg"
@@ -135,7 +143,7 @@
 </c:when>
 <c:otherwise>
 	<script type="text/javascript">
-		location.href="/member/error.jsp";
+		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
 	</script>
 </c:otherwise>
 </c:choose>

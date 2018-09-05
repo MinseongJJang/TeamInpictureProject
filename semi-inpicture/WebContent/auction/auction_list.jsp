@@ -23,8 +23,16 @@
 							<h6 class="product_name">
 								<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }">${list.key.auctionApplyDTO.auctionTitle }</a>
 							</h6>
-							<div class="product_price">최고 입찰가 : ${list.value.auctionBidPrice }</div>
-							<div class="product_price">최고 입찰가 : ${list.value.auctionEndTime }</div>
+							<c:choose>
+								<c:when test="${list.value.auctionBidPrice == 0 }">
+									<div class="product_price">최고 입찰가 : ${list.key.auctionApplyDTO.auctionBeginPrice}</div>
+								</c:when>
+								<c:otherwise>
+									<div class="product_price">최고 입찰가 : ${list.value.auctionBidPrice}</div>
+								</c:otherwise>
+							</c:choose>
+							<div class="product_price">경매종료시간 :${list.key.auctionApplyDTO.auctionEndTime }
+</div>
 						</div>
 					</div>
 				</div>
