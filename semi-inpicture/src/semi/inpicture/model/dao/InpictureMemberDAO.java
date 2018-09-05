@@ -128,17 +128,37 @@ public class InpictureMemberDAO {
 	public void changeMemberType(String id, String content) throws SQLException {
 				Connection con = null;
 				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String artist_main_pic = null;
 				try {
 					con = getConnection();
+					//멤버 타입 변경
 					String sql = "update inpicture_member set member_type=2 where id=?";
-					String sql2 = "insert into artist values(?,?)";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					pstmt.close();
+					// 멤버 메인 사진
+					String sql2 = "select artist_main_pic from artist_apply_board where id=?";
 					pstmt = con.prepareStatement(sql2);
 					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						artist_main_pic = rs.getString(1);
+					}
+					// 작가 테이블 삽입
+					String sql3 = "insert into artist values(?,?,?)";
+					pstmt = con.prepareStatement(sql3);
+					pstmt.setString(1, id);
 					pstmt.setString(2, content);
+					pstmt.setString(3, artist_main_pic);
+					pstmt.executeUpdate();
+					pstmt.close();
+					
+					String sql4 = "delete from artist_apply_board where id=?";
+					pstmt = con.prepareStatement(sql4);
+					pstmt.setString(1, id);
+					
 					pstmt.executeUpdate();
 				} finally {
 					closeAll(pstmt, con);

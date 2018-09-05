@@ -1717,6 +1717,8 @@ section {
 	font-weight: 400;
 	color: #b9b4c7 !important;
 }
+/* 페이지 */
+
 /* 테이블 */
 
 .login_table {
@@ -1753,6 +1755,64 @@ section {
 	color: #000000;
 	cursor: pointer;
 }
+
+/* Center website */
+.main {
+	font-family: Arial;
+	padding: 40px;
+	background-color: #f1f1f1;
+	max-width: 1000px;
+	margin: 200px auto;
+}
+
+.main1 {
+	font-family: Arial;
+	padding: 40px;
+	background-color: #ffffff;
+	max-width: 1000px;
+	margin: 200px auto;
+}
+
+
+.main h1 {
+	font-size: 50px;
+	word-break: break-all;
+}
+
+.main myrow {
+	margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.main myrow, .myrow>.column {
+	padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.main column {
+	float: left;
+	width: 33.33%;
+	display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */
+.main myrow:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Content */
+.content {
+	background-color: white;
+	padding: 10px;`
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+	display: block;
+}
+
 /*********************************
 11. Footer
 *********************************/
@@ -1945,4 +2005,92 @@ section {
 .img-art{
 	width:130px;
 	height:160px;
+}
+
+/* 작가 승인 신청 */
+
+.element.style {
+}
+#contents {
+    padding-top: 60px;
+}
+#contents {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-bottom: 46px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.user agent stylesheet
+.div {
+    display: block;
+}
+.body {
+    margin: 0;
+    color: #222;
+    background-color: #fff;
+    line-height: 1;
+}
+.body {
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.035em;
+}
+.html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+#contents:before {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+}
+@media screen and (max-width: 1200px)
+#artist_contents {
+    margin-top: 24px;
+}
+#artist_contents {
+    width: 96%;
+    max-width: 1200px;
+    min-height: 250px;
+    line-height: 1.5;
+    margin: 36px auto 54px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.footer, header, nav, section {
+    display: block;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.user agent stylesheet
+.article, aside, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+.body {
+    margin: 0;
+    color: #222;
+    background-color: #fff;
+    line-height: 1;
+}
+.body {
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.035em;
+}
+.html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }

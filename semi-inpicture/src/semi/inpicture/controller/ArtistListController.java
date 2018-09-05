@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import semi.inpicture.model.dao.ArtistDAO;
-import semi.inpicture.model.dao.PagingBean;
-import semi.inpicture.model.dto.ArtDTO;
 import semi.inpicture.model.dao.ListVO;
+import semi.inpicture.model.dao.PagingBean;
+import semi.inpicture.model.dto.ArtistDTO;
 
 
 public class ArtistListController implements Controller {
@@ -28,9 +28,9 @@ public class ArtistListController implements Controller {
 		else {
 			pagingBean=new PagingBean(totalPostCount,Integer.parseInt(pageNo));	
 		}
-		ArrayList<ArtDTO> list = ArtistDAO.getInstance().getArtistList(pagingBean);
+		ArrayList<ArtistDTO> list = ArtistDAO.getInstance().getArtistList(pagingBean);
 		ListVO ldto=new ListVO();
-		ldto.setArtList(list);
+		ldto.setArtistList(list);
 		ldto.setPb(pagingBean);
 		request.setAttribute("ldto", ldto);
 		} catch (SQLException e) {

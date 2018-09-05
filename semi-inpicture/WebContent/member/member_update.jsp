@@ -74,28 +74,22 @@
 		
 	}	
 </script>
- 
-<div class="main_slider">
-	<div>
-		<div class="a">
-			<div class="col-sm-8">
-				<div class="my-box">
-					<h2>회원정보수정</h2>
-					<form method="post"
-						action="${pageContext.request.contextPath }/front" id="idForm"
-						onsubmit="return registerCheck()">
-						<input type="hidden" name="command" value="MemberUpdate">
-						<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb">
-							<tr>
-								<td class="tdcolor">아이디</td>
+ <div class="main1">
+	<h2>회원 정보 수정</h2>
+			<div class="content">
+				<form method="post" action="${pageContext.request.contextPath }/front" id="idForm" onsubmit="return registerCheck()">
+				<input type="hidden" name="command" value="MemberUpdate">
+					<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb" >
+							<tr >
+								<td >아이디</td>
 								<td>${requestScope.im.id}</td>																	
 							</tr>
 							<tr>
 								<td></td>
-								<td colspan="2"></td>
+								<td colspan="2"><span id="checkResult"></sapn></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">비밀번호</td>
+								<td>비밀번호</td>
 								<td><input type="password" name="password" value="${requestScope.im.password}" id="pass"></td>
 								
 							</tr>
@@ -104,48 +98,42 @@
 								<td colspan="2"><span id="passcheckResultView"></span></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">비밀번호확인</td>
+								<td>비밀번호확인</td>
 								<td colspan="2"><input type="password" value="${requestScope.im.password}" id="passcheck"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">이름</td>
+								<td>이름</td>
 								<td colspan="2">${requestScope.im.name}</td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">주소</td>
+								<td>주소</td>
 								<td colspan="2"><input type="text" name="address" value="${requestScope.im.address}"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">주민등록번호</td>
+								<td>주민등록번호</td>
 								<td colspan="2">${requestScope.im.ssn}</td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 							</tr>
 							<tr>
-								<td class="tdcolor">이메일</td>
+								<td>이메일</td>
 								<td colspan="2"><input type="text" name="email" value="${requestScope.im.email}"></td>								
 							</tr>							
 						</table>
-						<!-- <tr align="center"> -->
 						<div align="center">
-								<input class="ab ab2" type="submit" value="수정">&nbsp;<input class="ac ac2" type="button" value="취소" onclick="back()">
+								<input class="newsletter_submit_btn" type="submit" value="수정">&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
 								<span id="registerCheck"></span>
 						</div>		
-						<!-- 	</tr> -->
-					</form>
-
-				</div>
-			</div>
+				</form>
 		</div>
-	</div>
 </div>

@@ -27,6 +27,7 @@ public class ArtListController implements Controller {
 	            paging = new PagingArt(Integer.parseInt(rnum),totalArt);
 	         }
 	         list = ArtDAO.getInstance().getArtOfArtist(paging,id);
+	         System.out.println(list.size());
 	      } catch (SQLException e) {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();

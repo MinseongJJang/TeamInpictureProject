@@ -32,6 +32,7 @@ public class DetailArtistController implements Controller {
 	            paging = new PagingArt(Integer.parseInt(rnum),totalArt);
 	         }
 	         list = ArtDAO.getInstance().getArtOfArtist(paging,id);
+	         System.out.println(list.size());
 			 adto = ArtistDAO.getInstance().detailArtist(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
