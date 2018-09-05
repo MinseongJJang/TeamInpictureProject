@@ -19,7 +19,7 @@ public class ChangeMemberTypeController implements Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "redirect:front?command=ApplyArtistList";
+		return "/front?command=ApplyArtistList";
 	}
 
 }

@@ -186,6 +186,7 @@ h1 {
 								<a href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }">${list.key.auctionApplyDTO.auctionTitle }</a>
 							</h6>
 							<div class="product_price">최고 입찰가 : ${list.value.auctionBidPrice }</div>
+							<div class="product_price">최고 입찰가 : ${list.value.auctionEndTime }</div>
 						</div>
 					</div>
 				</div>
@@ -197,7 +198,7 @@ h1 {
 </c:when>
 <c:otherwise>
 	<script type="text/javascript">
-		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
+		location.href="${pageContext.request.contextPath}/member/need_login.jsp";
 	</script>
 </c:otherwise>
 </c:choose> --%>

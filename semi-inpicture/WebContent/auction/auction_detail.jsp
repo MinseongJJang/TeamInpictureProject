@@ -45,10 +45,9 @@
        
    });//ready
 </script>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
-
+<script>
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
 	<div class="main1">
 	<h2>작가 정보</h2>
 			<div class="content">

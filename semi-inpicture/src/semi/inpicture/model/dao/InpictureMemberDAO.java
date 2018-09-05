@@ -146,6 +146,8 @@ public class InpictureMemberDAO {
 					if(rs.next()) {
 						artist_main_pic = rs.getString(1);
 					}
+					pstmt.close();
+					rs.close();
 					// 작가 테이블 삽입
 					String sql3 = "insert into artist values(?,?,?)";
 					pstmt = con.prepareStatement(sql3);
