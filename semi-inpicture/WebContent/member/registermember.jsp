@@ -64,7 +64,7 @@
 					<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb" >
 							<tr >
 								<td >아이디</td>
-								<td><input type="text" name="id" placeholder="아이디" required="required"></td>																	
+								<td><input type="text" name="id" id="id" placeholder="아이디" required="required"></td>																	
 							</tr>
 							<tr>
 								<td></td>
