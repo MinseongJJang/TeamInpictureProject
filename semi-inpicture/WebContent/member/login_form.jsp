@@ -14,12 +14,13 @@
 					}else if(result == "ok"){
 						$("#hidden").val("Login");
 						$("#loginForm").submit();
+						
 					}
 				 }//success
 			 });//ajax
 		});//click
 		
-		$("#password").keydown(function(key){
+		$(".passwordEnter").keydown(function(key){
 			if(key.keyCode == 13){
 				 $.ajax({
 					 type:"post",
@@ -27,7 +28,9 @@
 					 data:$("#loginForm").serialize(),
 					 success:function(result){
 						if(result == "fail"){
-							$("#loginCheck").text("아이디 또는 비밀번호를 확인하세요").css("font-color","red");
+							$("#loginCheck").text("아이디 또는 비밀번호를 확인하세요").css("color","red");
+							$("#login_text").focus().val("");
+							$(".passwordEnter").val("");
 						}else if(result == "ok"){
 							$("#hidden").val("Login");
 							$("#loginForm").submit();
@@ -71,7 +74,7 @@ table td{
 										<input type="button" style="WIDTH: 70pt; HEIGHT: 60pt; margin-bottom:10px;" class="newsletter_submit_btn" id="checkBtn" value="로그인"></td>
 									</tr>
 									<tr>
-										<td><input type="password" name="password" placeholder="비밀번호" size="12" id="login_text"></td>
+										<td><input type="password" name="password" placeholder="비밀번호" size="12" id="login_text" class="passwordEnter"></td>
 									</tr>
 									<tr>
 										<td colspan="2"> <span id="loginCheck"></span></td>
