@@ -64,7 +64,6 @@
 		<i class="fa fa-times" aria-hidden="true"></i>
 	</div>
 	<div class="hamburger_menu_content ">
-
 		<ul class="menu_top_nav">
 			<c:choose>
 				<c:when test="${sessionScope.mvo != null }">
