@@ -113,7 +113,9 @@ public class HandlerMapping {
 			controller = new UpdateMyArtFormController();
 		}else if(command.equals("LoginCheck")) {
 			controller = new LoginCheckController();
-		} 
+		}else if(command.equals("EndAuction")) {
+			controller = new EndAuctionController();
+		}
 		return controller;
 	}
 }
