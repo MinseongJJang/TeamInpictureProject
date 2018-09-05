@@ -39,7 +39,7 @@
 	
 				$("#timer").html(hour+" 시간 " + min + " 분 " + sec + " 초 남았습니다.");
 				if(min=='0' && hour=='0' && sec=='0'){
-					$("endAuction").submit();
+					$("#endAuction").submit();
 				}
 			}, 1000);//interval
     	
@@ -52,7 +52,7 @@
 <c:when test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
 <form action="${pageContext.request.contextPath }/front" id="endAuction">
 	<input type="hidden" name="command" value="EndAuction">
-	<input type="hidden" name="auctionNo" value="${requestScope.auctionDTO.auctionApplyDTO.acutionNo }">
+	<input type="hidden" name="auctionNo" value="${requestScope.auctionDTO.auctionApplyDTO.auctionNo }">
 </form>
 <table class="table">
 	<tr>
