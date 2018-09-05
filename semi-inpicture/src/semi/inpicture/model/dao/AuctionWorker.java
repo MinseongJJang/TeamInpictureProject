@@ -52,7 +52,11 @@ public class AuctionWorker implements Runnable {
 			//초단위의 세밀한 계산까지는 필요하지 않으므로 시,분을 계산하기위해 시간과  초만 끊어낸다.
 			Date d1 = ss.parse(beginTime.substring(11));
 			Date d2 = ss.parse(s.format(new Date(System.currentTimeMillis())).substring(11));
-			if(d1.getTime()<d2.getTime()) {
+			Date d3 = ss.parse(endTime.substring(11));
+			if(d2.getTime()>d3.getTime()) {
+				System.out.println("시간 지났는디요?");
+				list.remove(this);
+			}else if(d1.getTime()<d2.getTime()) {
 				//만약 관리자의 경매승인시간이 사용자의 요청시간보다 지났다면 승인을 하는순간
 				//경매가 생성되며 바로 경매가 진행되게 된다.
 				auctionDAO.registerAuction(applyDTO);

@@ -13,8 +13,8 @@ $(function(){
 	$('#out').click(function(){
 		location.href="${pageContext.request.contextPath}/index.jsp";
 	});
-	if(${spaceuservo.id==null}){
-		$('#loginModal').modal();
+	if(${sessionScope.mvo.id == null}){
+		location.href="${pageContext.request.contextPath}/member/login_form.jsp";
 	}
 });
 </script>

@@ -6,7 +6,7 @@
                   <tr>
                    <td>
                     <c:if test="${requestScope.paging.previous}">  
-                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}">&laquo;</a>
+                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}&id=${param.id}">&laquo;</a>
                     </c:if>
                    </td>
                      <c:forEach var="avo" items="${requestScope.list }">
@@ -16,7 +16,7 @@
                      </c:forEach>
                    <td>
                     <c:if test="${requestScope.paging.next}">
-                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}">&raquo;</a>
+                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${param.id}">&raquo;</a>
 					</c:if>
                    </td>
                   </tr>

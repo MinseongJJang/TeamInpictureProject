@@ -35,7 +35,7 @@
 </c:when>
 <c:otherwise>
 	<script type="text/javascript">
-		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
+		location.href="${pageContext.request.contextPath}/member/need_login.jsp";
 	</script>
 </c:otherwise>
 </c:choose>

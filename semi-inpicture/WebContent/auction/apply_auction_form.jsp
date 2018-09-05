@@ -34,6 +34,8 @@
 		});//keyup
 	});//ready
 </script>
+<c:choose>
+<c:when test="${sessionScope.mvo != null }">
 <div class="main1">
 	<h2>경매 신청</h2>
 			<div class="content">
@@ -107,4 +109,10 @@
 				</form>
 		</div>
 </div>
-
+</c:when>
+<c:otherwise>
+	<script type="text/javascript">
+		location.href="${pageContext.request.contextPath}/member/session_invalid.jsp";
+	</script>
+</c:otherwise>
+</c:choose>

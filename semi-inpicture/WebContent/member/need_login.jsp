@@ -11,11 +11,8 @@
 <script>
 $(function(){
 	$('#out').click(function(){
-		location.href="${pageContext.request.contextPath}/index.jsp";
+		location.href="${pageContext.request.contextPath}/member/login_form.jsp";
 	});
-	if(${spaceuservo.id==null}){
-		$('#loginModal').modal();
-	}
 });
 </script>
 <style type="text/css">
@@ -115,7 +112,7 @@ body {
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
-					회원권한이 없습니다. 메인화면으로 이동합니다.
+					로그인이 필요합니다. 로그인화면으로 이동합니다.
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" id="out" value="닫기">
