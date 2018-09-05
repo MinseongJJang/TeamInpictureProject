@@ -24,10 +24,10 @@
 		</tr>
 	</thead>
 	<tbody id="artist">
-		<c:forEach var="ldto" items="${requestScope.ldto.artList}">
+		<c:forEach var="ldto" items="${requestScope.ldto.artistList}">
 			<tr>
 				<td>${ldto.inpictureMemberDTO.name  }<input type="hidden" value="${ldto.inpictureMemberDTO.id }"></td>
-				<td><img src="${pageContext.request.contextPath}/artist_images/${ldto.artMainPic }" width="100px" height="100px"> </td>
+				<td><img src="${pageContext.request.contextPath}/artist_images/${ldto.artist_main_pic }" width="100px" height="100px"> </td>
 			</tr>
 		</c:forEach>
 	</tbody>

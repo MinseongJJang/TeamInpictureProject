@@ -14,12 +14,16 @@ insert into inpicture_member values('test', '1234', '테스트', '서울', '90',
 insert into inpicture_member values('artist', '1234', '테스트', '서울', '90', 'test@test', 100,2);
 insert into inpicture_member values('admin', '1234', '테스트', '서울', '90', 'test@test', 1000,3);
 
+delete from inpicture_member where id='admin';
+
 create table artist(
 	id varchar2(100) not null,
 	artist_intro clob not null,
 	constraint fk_artist_id foreign key(id) references inpicture_member(id) on delete cascade 
 )
+
 select * from artist;
+
 delete from artist;
 insert into artist values('test', '나는 일반회원이다');
 insert into artist values('artist', '나는 artist다');
@@ -37,9 +41,26 @@ create table auction_apply(
 	constraint fk_auction_apply_id foreign key(id) references inpicture_member(id) on delete cascade
 )
 
-select im.id, im.name, a.art_main_pic
-from ( select id, name, row_number() over(order by id desc) as rnum from inpicture_member
-) im, art a where im.id=a.id and rnum between 1 and 5
+select a.id, a.artist_intro, a.artist_main_pic, im.id
+from ( select id, artist_intro, artist_main_pic row_number() over(order by id desc) as rnum from artist
+) a, inpicture_member im where a.id=im.id and rnum between 1 and 5
+
+
+
+select a.id, im.name, a.artist_main_pic
+from ( select id, artist_main_pic, row_number() over(order by id desc) as rnum from artist
+) a, inpicture_member im where im.id=a.id and rnum between 1 and 5
+
+
+select im.id, im.name, aab.artist_main_pic
+from inpicture_member im, artist_apply_board aab
+where im.id=aab.id
+and im.member_type='1'
+
+SELECT e.emp_no, e.name, e.salary, d.dept_no, d.dname, d.location
+FROM department d, emp e
+WHERE d.dept_no=e.dept_no
+AND e.emp_no='2'
 
 
 
@@ -57,6 +78,7 @@ create table artist_apply_board(
 	constraint fk_artist_apply_board_id foreign key(id) references inpicture_member(id) on delete cascade
 )
 
+select * from artist_apply_board
 
 create sequence artist_apply_board_seq
 start with 1
@@ -66,7 +88,7 @@ insert into artist_apply_board values(artist_apply_board_seq.nextval,'1','1',sys
 select artist_apply_board_seq.currval from dual;
 
 select * from artist_apply_board;
-
+delete from artist_apply_board where id='java';
 create table art(
 	art_no number primary key,
 	art_title varchar2(100) not null,
@@ -78,6 +100,7 @@ create table art(
 
 insert into art values(art_seq.nextval, '테스트 작품', '사회의 비판이 주제다', '사진', 'artist');
 
+select artist_main_pic from artist_apply_board where id='yy';
 
 create sequence art_seq
 start with 1
@@ -153,5 +176,11 @@ alter table auction drop(auction_final_bidder)
 select * from inpicture_member;
 
 
-
-
+drop table artist;
+create table artist(
+   id varchar2(100) not null,
+   artist_intro clob not null,
+   artist_main_pic varchar2(100) not null,
+   constraint fk_artist_id foreign key(id) references inpicture_member(id) on delete cascade 
+)
+alter table artist add(artist_main_pic varchar2(100));
