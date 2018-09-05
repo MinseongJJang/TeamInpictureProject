@@ -88,9 +88,8 @@ h1 {
 		<div class="row myrow">
 			<c:forEach var="ldto" items="${requestScope.ldto.artistApplyList}">
 				<div class="column nature">
-					<div class="content">
-						<a href="${pageContext.request.contextPath}/front?command=ApplyArtistDetail&artistApplyNo=${ldto.artistPostNo }">
-							<img src="${pageContext.request.contextPath}/artist_images/${ldto.artistMainPic}" style="width: 100%"></a>
+					<div class="content" onclick="location.href='${pageContext.request.contextPath}/front?command=ApplyArtistDetail&artistApplyNo=${ldto.artistPostNo }'">
+							<img src="${pageContext.request.contextPath}/artist_images/${ldto.artistMainPic}" style="width: 100%">
 						<h4>${ldto.inpictureMemberDTO.name }</h4>
 						<p>${ldto.regdate }</p>
 					</div>
