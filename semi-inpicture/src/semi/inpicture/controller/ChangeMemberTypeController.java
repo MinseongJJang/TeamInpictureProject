@@ -12,9 +12,9 @@ import semi.inpicture.model.dao.InpictureMemberDAO;
 public class ChangeMemberTypeController implements Controller {
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		try {
+			System.out.println("change");
 			InpictureMemberDAO.getInstance().changeMemberType(request.getParameter("id"), request.getParameter("content"));
 		} catch (SQLException e) {
 			e.printStackTrace();

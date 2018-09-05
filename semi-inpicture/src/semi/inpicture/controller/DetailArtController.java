@@ -16,6 +16,7 @@ public class DetailArtController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String artNo=request.getParameter("artNo");
+		String id=request.getParameter("id");
 		try {
 			ArtDTO dto = ArtDAO.getInstance().artDetail(artNo);
 			request.setAttribute("dto", dto);

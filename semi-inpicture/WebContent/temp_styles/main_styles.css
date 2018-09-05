@@ -1772,6 +1772,13 @@ section {
 	max-width: 1000px;
 	margin: 200px auto;
 }
+.main2 {
+	font-family: Arial;
+	padding: 40px;
+	background-color: #ffffff;
+	max-width: 1200px;
+	margin:100px auto;
+}
 
 
 .main h1 {

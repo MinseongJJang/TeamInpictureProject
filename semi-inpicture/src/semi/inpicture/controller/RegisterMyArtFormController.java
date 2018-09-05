@@ -14,5 +14,4 @@ public class RegisterMyArtFormController implements Controller {
 		request.setAttribute("url","/art/artregister.jsp");
 		return "/template/layout.jsp";
 	}
-
 }

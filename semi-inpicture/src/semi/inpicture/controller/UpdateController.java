@@ -41,13 +41,12 @@ public class UpdateController implements Controller {
 		// String afterPath = "";
 		String fileName = "";
 		// String oriPath = request.getServletContext().getRealPath("uploadImages");
-		System.out.println(oriPath);
+		System.out.println("update"+oriPath);
 		File oriFile = new File(oriPath);
 		if (!oriFile.isDirectory()) {
 			oriFile.mkdirs();
 		}
-		MultipartRequest multi = new MultipartRequest(request, oriPath, fileMaxSize, "utf-8",
-				new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, oriPath, fileMaxSize, "utf-8", new DefaultFileRenamePolicy());
 		String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
 		if (command.equals("ApplyArtist")) {
 			afterPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_images\\";
