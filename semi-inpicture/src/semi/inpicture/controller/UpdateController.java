@@ -36,7 +36,7 @@ public class UpdateController implements Controller {
 		String url = "";
 		int fileMaxSize = 10 * 1024 * 1024; // 파일 최대 사이즈 10MB로 지정
 		// String
-		String oriPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+		String oriPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
 		String afterPath = "";
 		// String afterPath = "";
 		String fileName = "";
@@ -50,7 +50,7 @@ public class UpdateController implements Controller {
 				new DefaultFileRenamePolicy());
 		String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
 		if (command.equals("ApplyArtist")) {
-			afterPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_images\\";
+			afterPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_images\\";
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				InpictureMemberDTO idto = (InpictureMemberDTO) session.getAttribute("mvo");
@@ -121,7 +121,7 @@ public class UpdateController implements Controller {
 			 */
 
 		} else if (command.equals("ApplyAuctionArt")) {
-			afterPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
+			afterPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\auction_apply_images\\";
 			// form에서 받아온 값들
 			String auctionTitle = multi.getParameter("auctionTitle");
 			String auctionContent = multi.getParameter("auctionContent");
@@ -162,7 +162,7 @@ public class UpdateController implements Controller {
 			}
 			
 		} else if (command.equals("RegisterMyArt")) {
-			afterPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\art_images\\";
+			afterPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\art_images\\";
 			try {
 
 				HttpSession session = request.getSession(false);
@@ -188,7 +188,7 @@ public class UpdateController implements Controller {
 			}
 			url = "redirect:index.jsp";
 		} else if (command.equals("UpdateMyArt")) {
-			afterPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\art_images\\";
+			afterPath = System.getProperty("user.home")+"\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\art_images\\";
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				ArtDTO aDTO = new ArtDTO();
