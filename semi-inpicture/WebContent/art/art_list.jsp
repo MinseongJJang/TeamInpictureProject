@@ -1,12 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>			
-			        작가 작품 목록
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>					        
+
+<style type="text/css">
+ #abcdef{
+ 	font-size:20px;
+ 	font-weight:bold;
+ 	margin-bottom:14px;
+ }
+</style>			        
+			        <div id="abcdef">작가 작품 목록</div>
                <table class="table">
                   <tr>
                    <td rowspan="3">
                     <c:if test="${requestScope.paging.previous}">  
-                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}">
+                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}&id=${requestScope.adto.inpictureMemberDTO.id}">
                       	<img width="40"  src="${pageContext.request.contextPath }/temp_images/left2.jpg">
                       </a>
                     </c:if>
@@ -18,7 +26,7 @@
                      </c:forEach>
                     <td rowspan="3">
                     <c:if test="${requestScope.paging.next}">
-                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}">
+                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${requestScope.adto.inpictureMemberDTO.id}">
                      	<img width="40" src="${pageContext.request.contextPath }/temp_images/right2.jpg">
                      </a>
 					</c:if>

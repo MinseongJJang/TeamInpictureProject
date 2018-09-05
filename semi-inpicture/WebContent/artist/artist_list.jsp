@@ -37,7 +37,7 @@
 	<ul class="pagination">
 		<c:if test="${pb.previousPageGroup}">
 			<li><a
-				href="front?command=List&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
+				href="front?command=List&pageNo=${pb.startPageOfPageGroup-1}&id=${requestScope.adto.id}">&laquo;</a>
 			</li>
 		</c:if>
 		<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
@@ -54,7 +54,7 @@
 	</c:forEach>
 		<c:if test="${pb.nextPageGroup}">
 			<li><a
-				href="front?command=List&pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+				href="front?command=List&pageNo=${pb.endPageOfPageGroup+1}&id=${requestScope.adto.id}">&raquo;</a></li>
 		</c:if>
 	</ul>
 </div>
