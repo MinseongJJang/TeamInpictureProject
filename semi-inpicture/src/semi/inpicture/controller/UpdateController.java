@@ -3,7 +3,6 @@ package semi.inpicture.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -37,7 +36,7 @@ public class UpdateController implements Controller {
       String url = "";
       int fileMaxSize = 10 * 1024 * 1024; // 파일 최대 사이즈 10MB로 지정
       // String
-       String oriPath="C:\\Users\\user\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
+       String oriPath="C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\uploadImages\\";
        String afterPath ="";
       //String afterPath = "";
       String fileName = "";
@@ -51,7 +50,7 @@ public class UpdateController implements Controller {
             new DefaultFileRenamePolicy());
       String command = multi.getParameter("command"); // hidden값으로 받아온 command값을 받아 조건문을 수행
       if (command.equals("ApplyArtist")) {
-         afterPath = "C:\\Users\\user\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_images\\";
+         afterPath = "C:\\Users\\kms\\git\\TeamInpictureProject\\semi-inpicture\\WebContent\\artist_images\\";
          HttpSession session = request.getSession(false);
          InpictureMemberDTO idto = (InpictureMemberDTO) session.getAttribute("mvo");
          String mainPic = time+multi.getFilesystemName("aritst_main_pic");
@@ -148,6 +147,7 @@ public class UpdateController implements Controller {
             AuctionApplyDAO dao = AuctionApplyDAO.getInstance();
             try {
                dao.appyAuction(dto);
+               dao.changeApplyAuctionState(dto.getAuctionNo());
             } catch (Exception e) {
                e.printStackTrace();
             }

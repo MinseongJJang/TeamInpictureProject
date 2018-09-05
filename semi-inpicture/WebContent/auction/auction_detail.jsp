@@ -25,6 +25,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div style="padding-top: 200px;"></div>
+<c:choose>
+<c:when test="${requestScope.auctionDTO != null || ${sessionScope.mvo != null}">
 <form action="front" id="registerForm"></form>
 <table class="table">
 	<tr>
@@ -99,3 +101,10 @@
 		</form>
 	</div>
 </div>
+</c:when>
+<c:otherwise>
+	<script type="text/javascript">
+		location.href="/member/error.jsp";
+	</script>
+</c:otherwise>
+</c:choose>

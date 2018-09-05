@@ -11,6 +11,7 @@ public class ApplyAuctionArtFormController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("123");
 		String url = "/template/layout.jsp";
 		request.setAttribute("url", "/auction/apply_auction_form.jsp");
 		return url;

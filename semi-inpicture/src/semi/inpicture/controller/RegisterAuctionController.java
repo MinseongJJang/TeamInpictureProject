@@ -1,26 +1,17 @@
 package semi.inpicture.controller;
-
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import semi.inpicture.model.dao.AuctionApplyDAO;
-import semi.inpicture.model.dao.AuctionDAO;
-import semi.inpicture.model.dao.BidderDAO;
-import semi.inpicture.model.dao.InpictureMemberDAO;
+import semi.inpicture.model.dao.AuctionWorker;
 import semi.inpicture.model.dto.AuctionApplyDTO;
-import semi.inpicture.model.dto.AuctionDTO;
-import semi.inpicture.model.dto.BidderDTO;
 
 public class RegisterAuctionController implements Controller {
-	private List<AuctionWorker> list ;
+	private ArrayList<AuctionWorker> list ;
 	String beginTime ;
 	String endTime;
 	String auctionNo;
@@ -28,7 +19,7 @@ public class RegisterAuctionController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auctionNo = request.getParameter("auctionNo");
+		auctionNo = request.getParameter("auctionNo");
 		String url = "";
 		AuctionApplyDAO applyDAO = AuctionApplyDAO.getInstance();
 		
@@ -36,13 +27,11 @@ public class RegisterAuctionController implements Controller {
 			AuctionApplyDTO applyDTO = applyDAO.getAuctionApplyDetailInfo(auctionNo);
 			beginTime = applyDTO.getAuctionBeginTime();
 			endTime = applyDTO.getAuctionEndTime();
-			
-			
 			if(list==null || list.isEmpty()) {
-				list = Collections.synchronizedList(new ArrayList<AuctionWorker>());
+				list = new ArrayList<AuctionWorker>();
 			}
 			//관리자가 승인을 했다. -> Thread 생성한다.
-			AuctionWorker worker = new AuctionWorker(request,response,applyDTO);
+			AuctionWorker worker = new AuctionWorker(beginTime, endTime, applyDTO, auctionNo,list);
 			Thread thread = new Thread(worker);
 			thread.setDaemon(true);
 			list.add(worker);
@@ -54,7 +43,7 @@ public class RegisterAuctionController implements Controller {
 		return url;
 	}
 
-	class AuctionWorker implements Runnable {
+	/*class AuctionWorker implements Runnable {
 		HttpServletRequest request ; 
 		HttpServletResponse response ;
 		AuctionApplyDTO applyDTO;
@@ -121,5 +110,5 @@ public class RegisterAuctionController implements Controller {
 
 		}
 
-	}
+	}*/
 }
