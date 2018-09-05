@@ -6,7 +6,6 @@
 		$("#deleteBtn").click(function(){
 			if(confirm("경매신청을 취소하시겠습니까?")){
 				$("#command").val("DeleteApplyAuction");
-				alert("삭제?0");
 				$("#auctionForm").submit();
 			}
 		});//delete click
@@ -20,6 +19,7 @@
 	});//ready
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<<c:choose>
 <div style="padding-top:200px;"></div>
 <table class="table">
 	<tr>
@@ -57,3 +57,4 @@
 <input type="button" value="승인" id="applyBtn">
 <input type="button" value="삭제" id="deleteBtn">
 </form>
+</c:choose>
