@@ -4,26 +4,25 @@
 			        작가 작품 목록
                <table class="table">
                   <tr>
-                   <td>
+                   <td rowspan="2">
                     <c:if test="${requestScope.paging.previous}">  
                       <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}">&laquo;</a>
                     </c:if>
                    </td>
                      <c:forEach var="avo" items="${requestScope.list }">
                         <td><a href="${pageContext.request.contextPath }/front?command=DetailArt&artNo=${avo.artNo}">
-                          <img src="${pageContext.request.contextPath }/art_images/${avo.artMainPic}" class="img-art"></a>
+                          <img src="${pageContext.request.contextPath }/art_images/${avo.artMainPic }" class="img-art"></a>
                         </td>
                      </c:forEach>
-                   <td>
+                   <td rowspan="2">
                     <c:if test="${requestScope.paging.next}">
                      <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}">&raquo;</a>
 					</c:if>
                    </td>
                   </tr>
                   <tr>
-                  
-	                  <c:forEach var="avo" items="${requestScope.list }" varStatus="info">
-	                        <td>${avo.artTitle } </td>
+	                  <c:forEach var="avo" items="${requestScope.list }">
+	                        <td>${avo.artTitle }</td>
 	                  </c:forEach>
                   </tr>
                </table>
