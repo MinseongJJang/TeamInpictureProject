@@ -64,7 +64,7 @@
 					<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb" >
 							<tr >
 								<td >아이디</td>
-								<td><input type="text" name="id" id="id" placeholder="아이디" required="required"></td>																	
+								<td><input type="text" name="id" id="id" size="30" placeholder="아이디" required="required"></td>																	
 							</tr>
 							<tr>
 								<td></td>
@@ -73,7 +73,7 @@
 							<tr>
 								<td>비밀번호</td>
 								<td><input type="password" name="password" id="pass"
-									placeholder="비밀번호" required="required"></td>
+									size="30" placeholder="비밀번호" required="required"></td>
 								
 							</tr>
 							<tr>
@@ -83,7 +83,7 @@
 							<tr>
 								<td>비밀번호확인</td>
 								<td colspan="2"><input type="password" id="passcheck"
-									placeholder="비밀번호확인"></td>								
+									size="30" placeholder="비밀번호확인"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -91,7 +91,7 @@
 							<tr>
 								<td>이름</td>
 								<td colspan="2"><input type="text" name="name" placeholder="이름"
-									required="required"></td>								
+									size="30" required="required"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -99,7 +99,7 @@
 							<tr>
 								<td>주소</td>
 								<td colspan="2"><input type="text" name="address" placeholder="주소"
-									required="required"></td>								
+									size="30" required="required"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -107,7 +107,7 @@
 							<tr>
 								<td>주민등록번호</td>
 								<td colspan="2"><input type="text" name="ssn" required="required"
-									placeholder="주민등록번호"></td>								
+									size="30" placeholder="주민등록번호"></td>								
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -115,7 +115,7 @@
 							<tr>
 								<td>이메일</td>
 								<td colspan="2"><input type="text" name="email" placeholder="이메일"
-									required="required"></td>								
+									size="30" required="required"></td>								
 							</tr>							
 						</table>
 						<div align="center">

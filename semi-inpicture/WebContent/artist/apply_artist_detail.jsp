@@ -9,28 +9,66 @@
 	}
 </script>
 
-<table class="table">
-	<tr>
-		<td>글번호 ${requestScope.dto.artistPostNo }</td>
-		<td>제목: ${requestScope.dto.artistApplyTitle} </td>
-		<td>작성자 :  ${requestScope.dto.inpictureMemberDTO.name }</td>
-		<td>${requestScope.dto.regdate }</td>
-	</tr>		
-	<tr>
-		<td colspan="5" >
-		<pre>${requestScope.dto.artistApplyContent}</pre>
-		</td>
-	</tr>
-		<c:forEach var="list" items="${requestScope.list}" varStatus="info">
-		<tr>
-			<td colspan="4" align="center">
-				<img src="${pageContext.request.contextPath}/artist_images/${list.artAttachmentPath}"><br>
-			</td>
-		</tr>
-		</c:forEach>
-	<tr>
-		<td colspan="5" class="btnArea">
-		 <button type="button" class="btn" onclick="adminBtn()">승인</button>
-		 </td>
-	</tr>
-</table>
+<div class="main1">
+	<h2>작가 신청</h2>
+			<div class="content">
+				<form method="post" action="${pageContext.request.contextPath}/front" enctype="multipart/form-data">
+				<input type="hidden" name="command" value="ApplyArtist">
+					<table class="table" style="border-bottom:1px solid #dbdbdb" style="border-top:1px solid #dbdbdb" >
+							<tr>
+								<td>글번호</td>
+								<td colspan="2"> ${requestScope.dto.artistPostNo }</td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+							<tr>
+								<td>제목</td>
+								<td colspan="2">
+									${requestScope.dto.artistApplyTitle}
+								</td>								
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+							<tr>
+								<td>작성자</td>
+								<td colspan="2">
+									 ${requestScope.dto.inpictureMemberDTO.name }
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+							<tr>
+								<td>작성 날짜</td>
+								<td colspan="2">
+									${requestScope.dto.regdate }
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+							<tr>
+								<td>작성 내용</td>
+								<td colspan="2">
+									<pre>${requestScope.dto.artistApplyContent}</pre>
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+							<c:forEach var="list" items="${requestScope.list}" varStatus="info">
+								<tr>
+									<td>
+										<img src="${pageContext.request.contextPath}/artist_images/${list.artAttachmentPath}" style="width: 100%"><br>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<div align="center">
+								<button type="submit" class="newsletter_submit_btn" onclick="adminBtn()">승인</button>&nbsp;<button type="button" class="newsletter_submit_btn">거절</button>
+						</div>		
+				</form>
+		</div>
+</div>

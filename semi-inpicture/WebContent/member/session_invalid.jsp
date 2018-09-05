@@ -11,11 +11,9 @@
 <script>
 $(function(){
 	$('#out').click(function(){
-		location.href="${pageContext.request.contextPath}/index.jsp";
+		location.href="${pageContext.request.contextPath}/front?command=LoginForm";
 	});
-	if(${spaceuservo.id==null}){
-		$('#loginModal').modal();
-	}
+	$('#loginModal').modal();
 });
 </script>
 <style type="text/css">
@@ -115,7 +113,7 @@ body {
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
-					세션이 만료되었습니다. 메인화면으로 이동합니다.
+					세션이 만료되었습니다. 로그인화면으로 이동합니다.
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" id="out" value="닫기">

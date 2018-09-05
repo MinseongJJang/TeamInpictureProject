@@ -16,7 +16,7 @@
             });	
 		});
 	</script>
-	<div class="main1">
+<div class="main1">
 	<h2>작가 신청</h2>
 			<div class="content">
 				<form method="post" action="${pageContext.request.contextPath}/front" enctype="multipart/form-data">

@@ -13,9 +13,7 @@ $(function(){
 	$('#out').click(function(){
 		location.href="${pageContext.request.contextPath}/index.jsp";
 	});
-	if(${spaceuservo.id==null}){
-		$('#loginModal').modal();
-	}
+	$('#loginModal').modal();
 });
 </script>
 <style type="text/css">
