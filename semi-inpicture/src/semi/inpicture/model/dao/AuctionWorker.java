@@ -89,17 +89,18 @@ public class AuctionWorker implements Runnable {
 				//그 낙찰자의 입찰금액을 낙찰금액으로 선정한다.
 				//또 낙찰자의 point는 차감되며 경매를 등록한 판매자는 point가 증가된다.
 				BidderDTO bidder = bidDAO.getFinalBidder(auctionNo);
-				if(bidder == null) {
+				if(bidder.getInpictureMemberDTO().getName() == null) {
 					//bidder가 null이라는 의미는 해당경매의 입찰자가 단 한명도 존재하지 않는다는 의미이다.
 					//따라서 bidder의 값이 null이들어온다면 아무런 작업도 수행하지 않고 Thread를 종료시킨다.
 					System.out.println("입찰자없어서 종료");
 					//경매 종료 후 경매가 종료되었다고 알려주는 page로 이동하기 위함
+					auctionDAO.endAuction(auctionNo);
 					list.remove(this);
 				}else {
 					String name = memberDAO.getMemberName(bidder.getInpictureMemberDTO().getId());
 					bidder.getInpictureMemberDTO().setName(name);
-					auctionDAO.endAuction(bidder);
 					int price = bidder.getAuctionBidPrice();
+					auctionDAO.endAuction(bidder);
 					memberDAO.updateMemberMinusPoint(bidder.getInpictureMemberDTO().getId(), price);
 					AuctionDTO auctionDTO = auctionDAO.getAuctionDetailInfo(auctionNo);
 					memberDAO.updateMemberPlusPoint(auctionDTO.getAuctionApplyDTO().getInpictureMemberDTO().getId(),price);

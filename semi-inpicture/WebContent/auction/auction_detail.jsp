@@ -20,6 +20,29 @@
 	 			}//if	
 	 		}//else
  		});//click
+ 		
+	    	var nowTime = new Date();
+ 			var endTime = $("#endTime").text().substring(23).split(":");
+ 			var endHour =endTime[0];
+ 			var endMinute = endTime[1];
+ 			var endTime = new Date();
+ 			endTime.setHours(endHour);
+ 			endTime.setMinutes(endMinute);
+ 			var diff = endTime.getTime() - nowTime.getTime();
+			setInterval(function ()
+			{
+				diff = diff-1000;
+				var time = (diff-1000)/1000;
+				var hour = Math.floor(time/3600);
+				var min = Math.floor(time/60);
+				var sec = Math.floor(time%60);
+	
+				$("#timer").html(hour+" 시간 " + min + " 분 " + sec + " 초 남았습니다.");
+				if(min=='0' && hour=='0' && sec=='0'){
+					$("endAuction").submit();
+				}
+			}, 1000);//interval
+    	
 	});//ready
 </script>
 <script
@@ -27,7 +50,10 @@
 <div style="padding-top: 200px;"></div>
 <c:choose>
 <c:when test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
-<form action="front" id="registerForm"></form>
+<form action="${pageContext.request.contextPath }/front" id="endAuction">
+	<input type="hidden" name="command" value="EndAuction">
+	<input type="hidden" name="auctionNo" value="${requestScope.auctionDTO.auctionApplyDTO.acutionNo }">
+</form>
 <table class="table">
 	<tr>
 		<th>No
@@ -41,6 +67,9 @@
 		<td colspan="3"><img
 			src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionApplyDTO.auctionMainPic}">
 		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><span id="timer"></span></td>
 	</tr>
 	<tr>
 		<td colspan="3"><textarea readonly="readonly" cols="100" rows="1">
@@ -60,7 +89,7 @@
 			&nbsp;&nbsp;${requestScope.auctionDTO.auctionApplyDTO.auctionBeginTime}</td>
 	</tr>
 	<tr>
-		<td colspan="3">경매 종료시간
+		<td colspan="3" id="endTime">경매 종료시간
 			&nbsp;&nbsp;${requestScope.auctionDTO.auctionApplyDTO.auctionEndTime }</td>
 	</tr>
 	<tr>
@@ -96,6 +125,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal"
 						id="bidOkBtn">입찰</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="promptlyBtn">즉시구매</button>
 				</div>
 			</div>
 		</form>

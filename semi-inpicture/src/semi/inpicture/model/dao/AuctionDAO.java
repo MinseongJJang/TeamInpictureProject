@@ -223,5 +223,17 @@ public class AuctionDAO {
 		}
 	}
 	
+	public void endAuction(String auctionNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "update auction set auction_state=1 where auction_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
 	
 }
