@@ -131,12 +131,17 @@ public class InpictureMemberDAO {
 				try {
 					con = getConnection();
 					String sql = "update inpicture_member set member_type=2 where id=?";
-					String sql2 = "insert into artist values(?,?)";
+					String sql2 = "delete from artist_apply_board where id=?";
+					String sql3 = "insert into artist values(?,?)";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					pstmt.close();
 					pstmt = con.prepareStatement(sql2);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+					pstmt.close();
+					pstmt = con.prepareStatement(sql3);
 					pstmt.setString(1, id);
 					pstmt.setString(2, content);
 					pstmt.executeUpdate();
