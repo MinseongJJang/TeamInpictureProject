@@ -77,7 +77,7 @@ h1 {
 	<c:when
 		test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
 		<div class="main">
-			<h2>경매 신청 리스트</h2>
+			<h2>경매 목록</h2>
 			<div class="row myrow">
 				<c:forEach items="${requestScope.lvo.mapList}" var="list"
 					end="${requestScope.lvo.pb.postCountPerPage}">

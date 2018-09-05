@@ -9,7 +9,7 @@
  	margin-bottom:14px;
  }
 </style>			        
-			        <div id="abcdef">작가 작품 목록</div>
+        <div id="abcdef">작가 작품 목록</div>
                <table class="table">
                   <tr>
                    <td rowspan="3">
