@@ -15,24 +15,30 @@
 							<li><a href="#">SERVICE</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=ArtistList">ARTIST</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
-							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLY ARTIST</a></li>
+							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLYARTIST</a></li>
 							<c:choose>
 								<c:when test="${sessionScope.mvo.memberType eq '3'}">
-									<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistList">APPLY ARTIST LIST</a></li>
-									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList">APPLY AUCTION LIST</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistList">작가신청목록</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList">경매신청목록</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLY AUCTION</a></li>
+									<li><a href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtForm">APPLYAUCTION</a></li>
 								</c:otherwise>
 							</c:choose>
 						</ul>
 						<ul class="navbar_user">
 							<li><a href="#"><i class="fa fa-search"
-									aria-hidden="true"></i></a></li>
-							<c:if test="${sessionScope.mvo == null }">
+									aria-hidden="true"></i></a></li>							
+							<c:choose>			
+							<c:when test="${sessionScope.mvo == null }">
 								<li><a href="${pageContext.request.contextPath }/front?command=LoginForm"><i
 										class="fa fa-user" aria-hidden="true"></i></a></li>
-							</c:if>
+							</c:when>
+							<c:otherwise>	
+							<li><a href="${pageContext.request.contextPath }/front?command=Logout"><i class="fa fa-sign-out"></i>
+									</a></li>
+							</c:otherwise>					
+							</c:choose>	
 						</ul>
 						<div class="hamburger_container">
 							<i class="fa fa-bars" aria-hidden="true"></i>
@@ -58,26 +64,26 @@
 		<i class="fa fa-times" aria-hidden="true"></i>
 	</div>
 	<div class="hamburger_menu_content ">
-
 		<ul class="menu_top_nav">
 			<c:choose>
 				<c:when test="${sessionScope.mvo != null }">
 					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
 					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
-					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=MemberUpdateForm&id=${sessionScope.mvo.id}">UPDATE MEMBER</a></li>
-					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMyArtForm">REGISTER ART</a></li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=MemberUpdateForm&id=${sessionScope.mvo.id}">회원정보수정</a></li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMyArtForm">작품등록</a></li>
 					<li class="menu_item has-children"><a
 						href="${pageContext.request.contextPath }/front?command=Logout">
-							LOGOUT</a></li>
+							로그아웃</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="menu_item has-children"><a
 						href="${pageContext.request.contextPath }/front?command=LoginForm">
-							LOGIN </a></li>
-					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMemberForm"> REGISTER </a></li>
+							로그인 </a></li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMemberForm"> 회원가입 </a></li>
 				</c:otherwise>
 			</c:choose>
-			<li class="menu_item"><a href="${pageContext.request.contextPath}/front?command=DetailArtist">NOTICE</a></li>
+			<li class="menu_item has-children"><a href="#"> 공지사항 </a></li>
+			<li class="menu_item"><a href="#">NOTICE</a></li>
 			<li class="menu_item"><a href="#">FAQ</a></li>
 			<li class="menu_item"><a href="#">Q&A</a></li>
 		</ul>
