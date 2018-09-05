@@ -14,20 +14,13 @@
 </script>
 <!-- ---------------------------------- -->
 <style>
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background-color: #f1f1f1;
-	padding: 20px;
-	font-family: Arial;
-}
-
 /* Center website */
 .main {
+	font-family: Arial;
+	padding: 40px;
+	background-color: #f1f1f1;
 	max-width: 1000px;
-	margin: auto;
+	margin: 200px auto;
 }
 
 h1 {
@@ -35,12 +28,12 @@ h1 {
 	word-break: break-all;
 }
 
-.row {
+.myrow {
 	margin: 10px -16px;
 }
 
 /* Add padding BETWEEN each column */
-.row, .row>.column {
+.myrow, .myrow>.column {
 	padding: 8px;
 }
 
@@ -52,7 +45,7 @@ h1 {
 }
 
 /* Clear floats after rows */
-.row:after {
+.myrow:after {
 	content: "";
 	display: table;
 	clear: both;
@@ -68,18 +61,35 @@ h1 {
 .show {
 	display: block;
 }
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 </style>
 
 	<!-- MAIN (Center website) -->
+	<div >
 	<div class="main">
 		<h2>작가 신청 리스트</h2>
 		<!-- Portfolio Gallery Grid -->
-		<div class="row">
+		<div class="row myrow">
 			<c:forEach var="ldto" items="${requestScope.ldto.artistApplyList}">
 				<div class="column nature">
 					<div class="content">
-${ldto.artistMainPic}						<a href="${pageContext.request.contextPath}/front?command=ApplyArtistDetail&artistApplyNo=${ldto.artistPostNo }">
+						<a href="${pageContext.request.contextPath}/front?command=ApplyArtistDetail&artistApplyNo=${ldto.artistPostNo }">
 							<img src="${pageContext.request.contextPath}/artist_images/${ldto.artistMainPic}" style="width: 100%"></a>
 						<h4>${ldto.inpictureMemberDTO.name }</h4>
 						<p>${ldto.regdate }</p>
@@ -88,8 +98,8 @@ ${ldto.artistMainPic}						<a href="${pageContext.request.contextPath}/front?com
 			</c:forEach>
 		</div>
 		<c:set var="pb" value="${requestScope.ldto.pb}"></c:set>
-	<div class="pagingArea">
-		<ul class="pagination">
+	<div class="pagingArea" align="center">
+		<ul class="pagination" >
 			<c:if test="${pb.previousPageGroup}">
 				<li><a
 					href="front?command=ApplyArtistList&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a>
@@ -112,6 +122,7 @@ ${ldto.artistMainPic}						<a href="${pageContext.request.contextPath}/front?com
 					href="front?command=ApplyArtistList&pageNo=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 			</c:if>
 		</ul>
+	</div>
 	</div>
 	</div>
 	
