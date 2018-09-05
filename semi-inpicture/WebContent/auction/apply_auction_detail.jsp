@@ -21,10 +21,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <c:choose>
-		<div style="padding-top: 200px;"></div>
 		<c:when test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
 			<div class="main1">
-				<h2>경매 그림 신청</h2>
+				<h2>경매 신청</h2>
 				<div class="content">
 					<table class="table" style="border-bottom: 1px solid #dbdbdb"
 						style="border-top:1px solid #dbdbdb">
