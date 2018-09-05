@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>			
+<script type="text/javascript">
+	function moveNext(){
+		alert("123");
+		location.href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${param.id}";
+	}
+</script>
 			        작가 작품 목록
                <table class="table">
                   <tr>
@@ -18,7 +24,7 @@
                      </c:forEach>
                     <td rowspan="3">
                     <c:if test="${requestScope.paging.next}">
-                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${param.id}">
+                     <a href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${param.id}" >
                      	<img width="40" src="${pageContext.request.contextPath }/temp_images/right2.jpg">
                      </a>
 					</c:if>

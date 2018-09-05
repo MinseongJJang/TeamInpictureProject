@@ -184,3 +184,17 @@ create table artist(
    constraint fk_artist_id foreign key(id) references inpicture_member(id) on delete cascade 
 )
 alter table artist add(artist_main_pic varchar2(100));
+
+
+select a.auction_no,a.auction_title,a.id,m.name,a.auction_state from 
+(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum,
+auction_state from auction_apply) a 
+, inpicture_member m 
+where a.id=m.id and rnum between 1 and 5 and a.auction_state = 1 order by a.auction_no desc
+
+delete from auction_apply 
+
+
+
+
+
