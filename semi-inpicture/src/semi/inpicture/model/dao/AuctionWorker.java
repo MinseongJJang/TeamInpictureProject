@@ -40,15 +40,17 @@ public class AuctionWorker implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Thread 들어옴");
-		// Date 타입의 연산을 위해 우선 현재시간과 사용자 요청 시간의 Format을 맞춰준다.
-		SimpleDateFormat s = new SimpleDateFormat("YYYY-MM-dd HH:mm");
-		SimpleDateFormat ss = new SimpleDateFormat("HH:mm");
 		AuctionDAO auctionDAO = AuctionDAO.getInstance();
 		BidderDAO bidDAO = BidderDAO.getInstance();
 		InpictureMemberDAO memberDAO = InpictureMemberDAO.getInstance();
 		AuctionApplyDAO applyDAO = AuctionApplyDAO.getInstance();
+		SimpleDateFormat s = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+		SimpleDateFormat ss = new SimpleDateFormat("HH:mm");
 		try {
+			applyDAO.changeApplyAuctionState(auctionNo);
+			// Date 타입의 연산을 위해 우선 현재시간과 사용자 요청 시간의 Format을 맞춰준다.
+			
+
 			// 초단위의 세밀한 계산까지는 필요하지 않으므로 시,분을 계산하기위해 시간과 초만 끊어낸다.
 			Date d1 = ss.parse(beginTime.substring(11));
 			Date d2 = ss.parse(s.format(new Date(System.currentTimeMillis())).substring(11));
@@ -60,7 +62,6 @@ public class AuctionWorker implements Runnable {
 				// 만약 관리자의 경매승인시간이 사용자의 요청시간보다 지났다면 승인을 하는순간
 				// 경매가 생성되며 바로 경매가 진행되게 된다.
 				auctionDAO.registerAuction(applyDTO);
-				applyDAO.changeApplyAuctionState(auctionNo);
 				flag = true;
 			} else {
 				// 요청시간보다 현재시간이 적은경우에는 요청시간 - 현재시간을 한 뒤
@@ -70,7 +71,6 @@ public class AuctionWorker implements Runnable {
 				Thread.sleep(diffTime * 60 * 1000);
 				System.out.println("경매생성 후 슬립");
 				auctionDAO.registerAuction(applyDTO);
-				applyDAO.changeApplyAuctionState(auctionNo);
 				flag = true;
 			}
 		} catch (Exception e) {
@@ -121,7 +121,7 @@ public class AuctionWorker implements Runnable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			System.out.println("시간지난거 승인해서 아무것도 안하고 list에서 쓰레드만 지울거에요");
 			list.remove(this);
 		}

@@ -75,7 +75,7 @@ h1 {
 <!-- MAIN (Center website) -->
 <c:choose>
 	<c:when
-		test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
+		test="${sessionScope.mvo != null}">
 		<div class="main">
 			<h2>경매 목록</h2>
 			<div class="row myrow">
@@ -117,7 +117,7 @@ h1 {
 						end="${pb.endPageOfPageGroup }">
 
 						<c:choose>
-							<c:when test="${page==requestScope.lvo.pb.nowPage}">
+							<c:when test="${page==pb.nowPage}">
 								<li class="active"><a>${page}</a></li>
 							</c:when>
 							<c:otherwise>
@@ -127,7 +127,7 @@ h1 {
 						</c:choose>
 
 					</c:forEach>
-					<c:if test="${requestScope.lvo.pb.nextPageGroup}">
+					<c:if test="${pb.nextPageGroup}">
 						<li><a
 							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 					</c:if>
