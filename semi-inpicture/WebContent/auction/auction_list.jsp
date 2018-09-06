@@ -85,7 +85,7 @@ h1 {
 						<div class="content"
 							onclick="location.href='${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }'">
 							<img
-								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }" style="width: 100%; height:300px;">
+								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }" style="width: 100%">
 							<h6 class="product_name">
 								${list.key.auctionApplyDTO.auctionTitle }</h6>
 							<c:choose>
