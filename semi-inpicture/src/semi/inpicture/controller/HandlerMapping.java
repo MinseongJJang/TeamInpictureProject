@@ -115,6 +115,10 @@ public class HandlerMapping {
 			controller = new LoginCheckController();
 		}else if(command.equals("EndAuction")) {
 			controller = new EndAuctionController();
+		}else if(command.equals("FindMemberPassword")) {
+			controller = new FindMemberPasswordController();
+		}else if(command.equals("FindMemberPasswordForm")) {
+			controller = new FindMemberPasswordFormController();
 		}
 		return controller;
 	}

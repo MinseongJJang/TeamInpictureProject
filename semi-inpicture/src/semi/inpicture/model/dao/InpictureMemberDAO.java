@@ -146,8 +146,6 @@ public class InpictureMemberDAO {
 					if(rs.next()) {
 						artist_main_pic = rs.getString(1);
 					}
-					pstmt.close();
-					rs.close();
 					// 작가 테이블 삽입
 					String sql3 = "insert into artist values(?,?,?)";
 					pstmt = con.prepareStatement(sql3);
@@ -250,5 +248,20 @@ public class InpictureMemberDAO {
 		}
 
 		return name;
+	}
+
+	public void tempSetPassword(String id, String password) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "update inpicture_member set password = ? where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, password);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
 	}
 }
