@@ -42,13 +42,18 @@
 				}
 			}//if
 		})//keyup
+		
 
 	});//ready
 	/* 취소 버튼 */
 	function back(){
+		alert(1);
 		location.href="${pageContext.request.contextPath}/index.jsp";
 		
 	}
+	 function loginback(){
+		alert("회원가입 되었습니다!\n\n이제 로그인하세요~");
+	} 
 </script>
 <style>
 .text_option {
@@ -119,7 +124,7 @@
 							</tr>							
 						</table>
 						<div align="center">
-								<input class="newsletter_submit_btn" type="submit" value="가입">&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
+								<input class="newsletter_submit_btn" type="submit" value="가입" onclick="loginback()">&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
 								<span id="registerCheck"></span>
 						</div>		
 				</form>

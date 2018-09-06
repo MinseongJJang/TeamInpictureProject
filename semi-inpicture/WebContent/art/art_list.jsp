@@ -7,7 +7,8 @@
 		alert("123");
 		location.href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${param.id}";
 	}
-</script>
+</script>    
+
 			       			       
 <style type="text/css">
  #abcdef{
