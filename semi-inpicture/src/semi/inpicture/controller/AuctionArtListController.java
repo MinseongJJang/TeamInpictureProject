@@ -23,17 +23,14 @@ public class AuctionArtListController implements Controller {
 		String url = "/template/layout.jsp";
 		int totalPostCount = 0;
 		String nowPage = request.getParameter("nowPage");
+		PagingBean pb = null;
 		try {
 			totalPostCount = dao.getAuctionListCount();
-			PagingBean pb = new PagingBean(totalPostCount);
-			if (nowPage != null) {
-				pb.setNowPage(Integer.parseInt(request.getParameter("nowPage")));
+			
+			if (nowPage == null) {
+				 pb = new PagingBean(totalPostCount);
 			} else {
-				if (pb.getNowPage() != 1) {
-					int page = Integer.parseInt(request.getParameter("nowPage"));
-					// nowPage가 1이 아니라면 view에서 nowPage를 가져온다
-					pb = new PagingBean(totalPostCount, page);
-				}
+				pb = new PagingBean(totalPostCount,Integer.parseInt(nowPage));
 			}
 			LinkedHashMap<AuctionDTO, BidderDTO> map = (LinkedHashMap<AuctionDTO, BidderDTO>) dao.getAuctionList(pb);
 			ListVO lvo = new ListVO();

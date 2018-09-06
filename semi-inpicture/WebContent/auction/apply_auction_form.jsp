@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet" href="/temp_plugins/jquery_timepicker.css">
-<script src="/temp_plugins/jquery_timepicker_min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -19,9 +16,6 @@
 		$(function(){
 			$( "#datepicker2" ).datepicker();
 		});//datepicker
-		
-		
-		
 		
 		$("#beginTime").keyup(function(){
 			var bTime = $(this).val();
@@ -67,7 +61,7 @@
 								<td>경매시작시간 : </td>
 								<td colspan="2">
 									<input type="text" id="datepicker1" name="beginTime1">&nbsp;&nbsp;
-									<input type="text" id="time1" name="beginTime2" id="beginTime">
+									<input type="text" name="beginTime2" id="beginTime">
 								</td>								
 							</tr>
 							<tr>
