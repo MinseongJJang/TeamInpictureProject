@@ -13,13 +13,13 @@
  }
  
 </style>
-<div class="main2" id="div3" align="center">
+<div class="main1" id="div3" align="center">
 	<div class="main_slider_content">
 		<h2>작가 detail</h2>
 		<table class="table">
 			<tr>
 				<td rowspan="3">
-				<img src="" width="400px" height="400px"></td>
+				<img src="${pageContext.request.contextPath }/artist_images/${requestScope.adto.artist_main_pic}" width="400px" height="400px"></td>
 				<td width="500px">이름</td>
 				<td>${requestScope.adto.inpictureMemberDTO.name}</td>
 			</tr>
