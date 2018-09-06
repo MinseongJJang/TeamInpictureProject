@@ -123,6 +123,8 @@ public class HandlerMapping {
 			controller = new FindIdFormController();
 		}else if(command.equals("FindId")) {
 			controller = new FindIdController();
+		}else if(command.equals("emailCheck")) {
+			controller = new EmailCheckController();
 		}
 		return controller;
 	}
