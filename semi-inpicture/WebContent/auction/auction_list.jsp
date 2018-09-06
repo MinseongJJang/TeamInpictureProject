@@ -117,7 +117,7 @@ h1 {
 						end="${pb.endPageOfPageGroup }">
 
 						<c:choose>
-							<c:when test="${page==requestScope.lvo.pb.nowPage}">
+							<c:when test="${page==pb.nowPage}">
 								<li class="active"><a>${page}</a></li>
 							</c:when>
 							<c:otherwise>
@@ -127,7 +127,7 @@ h1 {
 						</c:choose>
 
 					</c:forEach>
-					<c:if test="${requestScope.lvo.pb.nextPageGroup}">
+					<c:if test="${pb.nextPageGroup}">
 						<li><a
 							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 					</c:if>
