@@ -85,7 +85,7 @@ table td{
 				               			<td colspan="3" align="right">아직 회원이 아니시라면? <a href="${pageContext.request.contextPath }/front?command=RegisterMemberForm">인픽쳐 회원가입</a></td>
 									</tr>
 									<tr>
-				                		<td colspan="3" align="right"><a href="">아이디 찾기</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/front?command=FindMemberPasswordForm">비밀번호 찾기</a></td>
+				                		<td colspan="3" align="right"><a href="${pageContext.request.contextPath }/front?command=FindIdForm">아이디 찾기</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/front?command=FindMemberPasswordForm">비밀번호 찾기</a></td>
 									</tr>
 								</table>
 							</form>

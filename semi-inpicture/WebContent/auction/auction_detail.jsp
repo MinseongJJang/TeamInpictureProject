@@ -62,7 +62,7 @@
       <script
          src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <div class="main1">
-         <h2>작가 정보</h2>
+         <h2>경매 정보</h2>
          <div class="content">
             <form method="post"
                action="${pageContext.request.contextPath }/front" id="endAuction"
@@ -72,6 +72,11 @@
                   value="${requestScope.auctionDTO.auctionApplyDTO.auctionNo }">
                <table class="table" style="border-bottom: 1px solid #dbdbdb"
                   style="border-top:1px solid #dbdbdb">
+                  <tr>
+                     <td>경매 그림</td>
+                     <td colspan="2"><img
+                        src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionApplyDTO.auctionMainPic}"></td>
+                  </tr>
                   <tr>
                      <td>경매 번호</td>
                      <td colspan="2">${requestScope.auctionDTO.auctionApplyDTO.auctionNo }</td>
@@ -93,11 +98,6 @@
                   </tr>
                   <tr>
                      <td colspan="3"></td>
-                  </tr>
-                  <tr>
-                     <td>경매 그림</td>
-                     <td colspan="2"><img
-                        src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionApplyDTO.auctionMainPic}"></td>
                   </tr>
                   <tr>
                      <td colspan="3"></td>

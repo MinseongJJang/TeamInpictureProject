@@ -119,7 +119,10 @@ public class HandlerMapping {
 			controller = new FindMemberPasswordController();
 		}else if(command.equals("FindMemberPasswordForm")) {
 			controller = new FindMemberPasswordFormController();
-		}
+		}else if(command.equals("FindIdForm")) {
+			controller = new FindIdFormController();
+		}else if(command.equals("FindId")) {
+			controller = new FindIdController();
 		return controller;
 	}
 }
