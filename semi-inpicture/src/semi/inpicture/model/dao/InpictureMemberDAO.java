@@ -250,7 +250,7 @@ public class InpictureMemberDAO {
 		return name;
 	}
 
-	public InpictureMemberDTO findId(String name, String password) throws SQLException {
+	public InpictureMemberDTO findId(String name, String ssn) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -260,7 +260,7 @@ public class InpictureMemberDAO {
 			String sql = "select id from inpicture_member where name=? and ssn=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
-			pstmt.setString(2, password);
+			pstmt.setString(2, ssn);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				dto.setId(rs.getString(1));

@@ -16,10 +16,10 @@ public class FindIdController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name");
-		String password = request.getParameter("password");
+		String ssn = request.getParameter("ssn");
 		InpictureMemberDTO dto = null;
 		try {
-			dto = InpictureMemberDAO.getInstance().findId(name, password);
+			dto = InpictureMemberDAO.getInstance().findId(name, ssn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

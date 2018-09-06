@@ -41,7 +41,7 @@ table td{
 									</td>
 								</tr>
 								<tr>
-									<td><input type="password" name="password" placeholder="주민등록번호" size="12" id="login_text" class="passwordEnter"></td>
+									<td><input type="password" name="ssn" placeholder="주민등록번호" size="12" id="login_text" class="passwordEnter"></td>
 								</tr>
 								</table>
 							</form>
