@@ -13,7 +13,7 @@
  }
  
 </style>
-<div class="main1" id="div3" align="center">
+<div class="main2" id="div3" align="center">
 	<div class="main_slider_content">
 		<h2>작가 detail</h2>
 		<table class="table">

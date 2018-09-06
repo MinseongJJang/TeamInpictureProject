@@ -26,7 +26,7 @@ public class RegisterMemberController implements Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		return "redirect:index.jsp";
+		return "redirect:front?command=LoginForm";
 	}
 
 }
