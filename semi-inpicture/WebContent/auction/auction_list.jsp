@@ -75,7 +75,7 @@ h1 {
 <!-- MAIN (Center website) -->
 <c:choose>
 	<c:when
-		test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
+		test="${sessionScope.mvo != null}">
 		<div class="main">
 			<h2>경매 목록</h2>
 			<div class="row myrow">
@@ -85,7 +85,7 @@ h1 {
 						<div class="content"
 							onclick="location.href='${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }'">
 							<img
-								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }" style="width: 100%">
+								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }" style="width: 100%; height:300px;">
 							<h6 class="product_name">
 								${list.key.auctionApplyDTO.auctionTitle }</h6>
 							<c:choose>
