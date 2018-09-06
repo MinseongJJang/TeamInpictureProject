@@ -1783,14 +1783,14 @@ section {
 	max-width: 1000px;
 	margin: 200px auto;
 }
-<<<<<<< HEAD
 .main1 {
 	font-family: Arial;
 	padding: 40px;
 	background-color: #ffffff;
 	max-width: 1000px;
 	margin: 200px auto;
-=======
+}
+
 .main2{
 	font-family: Arial;
 	padding: 40px;
@@ -1799,7 +1799,6 @@ section {
 	margin: 200px auto;
 	margin-top:100px;
 	
->>>>>>> branch 'master' of https://github.com/MinseongJJang/TeamInpictureProject.git
 }
 
 
