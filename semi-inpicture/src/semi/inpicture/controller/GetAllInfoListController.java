@@ -33,7 +33,9 @@ public class GetAllInfoListController implements Controller {
 		String artNowPage = request.getParameter("artNowPage");
 		String artistNowPage = request.getParameter("artistNowPage");
 		String auctionNowPage = request.getParameter("artistNowPage");
-		ArrayList<AuctionDTO> carouselList = null;
+		ArrayList<AuctionDTO> carouselList1 = null;
+		ArrayList<ArtDTO> carouselList2 = null;
+		int size = 0;
 		try {
 				int totalArt = artDAO.getTotalArt();
 				if (artNowPage == null) {
@@ -66,12 +68,18 @@ public class GetAllInfoListController implements Controller {
 				listVO3.setPbMain(pbMain);
 			int totalAuction2 = auctionDAO.getAuctionListCount();
 			pbCarousel = new PagingMainCarousel(totalAuction2);
-			carouselList = auctionDAO.getMainAuctionList(pbCarousel);
+			carouselList1 = auctionDAO.getMainAuctionList(pbCarousel);
+			size = carouselList1.size();
+			int totalArt2 = artDAO.getTotalArt();
+			pbCarousel = new PagingMainCarousel(totalArt2);
+			carouselList2 = artDAO.getArtOfArtist(pbCarousel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String url = "/template/layout.jsp";
-		request.setAttribute("carousel", carouselList);
+		request.setAttribute("size", size);
+		request.setAttribute("carousel1", carouselList1);
+		request.setAttribute("carousel2", carouselList2);
 		request.setAttribute("lvo1", listVO1);
 		request.setAttribute("lvo2", listVO2);
 		request.setAttribute("lvo3", listVO3);

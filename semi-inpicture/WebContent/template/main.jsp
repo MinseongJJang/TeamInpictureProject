@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
+
 	});//ready
 </script>
 <!-- 새로운 carousel -->
@@ -13,14 +14,32 @@
 			<div class="background"></div>
 			<section class="carousel_container">
 				<div id="carousel">
-					<c:forEach items="${requestScope.carousel }" var="carousel">
-						<figure>
-							<a href="#"> <img
-								src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auction_main_pic}" />
-								<h3>${carousel.auctionApplyDTO.auction_title}</h3>
-							</a>
-						</figure>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${requestScope.size > 1}">
+							<c:forEach items="${requestScope.carousel1 }" var="carousel">
+								<figure>
+									<a
+										href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${carousel.auctionApplyDTO.auctionNo}">
+										<img
+										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" />
+										<h3>${carousel.auctionApplyDTO.auctionTitle}</h3>
+									</a>
+								</figure>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${requestScope.carousel2 }" var="carousel">
+								<figure>
+									<a
+										href="${pageContext.request.contextPath}/front?command=DetailArt&artNo=${carousel.artNo}">
+										<img
+										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}" / height="300px;">
+										<h3>${carousel.artTitle}</h3>
+									</a>
+								</figure>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</section>
 			<nav id="navigation">
@@ -44,24 +63,18 @@
 			</div>
 			<div class="row align-items-center">
 				<div class="col text-center">
-					<div class="new_arrivals_sorting">
+					<div class="new_arrivals_sorting" id="abcdefg">
 						<ul
 							class="arrivals_grid_sorting clearfix button-group filters-button-group">
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active"
-								data-filter=".women" id="art">
-								ART
-							</li>
+								data-filter=".women" id="art">ART</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center "
+								data-filter=".accessories" id="artist">ARTIST</li>
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								data-filter=".accessories" id="artist">
-								ARTIST
-								</li>
-							<li
-								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								data-filter=".men" id="auction">
-								AUCTION
-								</li>
+								data-filter=".men" id="auction">AUCTION</li>
 						</ul>
 					</div>
 				</div>
@@ -71,8 +84,9 @@
 					<div class="product-grid"
 						data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
-						<c:forEach items="${requestScope.lvo1.artList}" var="art" end="${requestScope.lvo1.pbMain.end}">
-						
+						<c:forEach items="${requestScope.lvo1.artList}" var="art"
+							end="${requestScope.lvo1.pbMain.end}">
+
 							<div class="product-item women">
 								<div class="product discount product_filter">
 									<div class="product_image">
@@ -83,16 +97,18 @@
 
 									<div class="product_info">
 										<div class="product_price">
-										<a href="${pageContext.request.contextPath }/fornt?command=DetailArt&art_no=">
-											${art.artTitle}
-										</a>
+											<a
+												href="${pageContext.request.contextPath }/front?command=DetailArt&artNo=${art.artNo}">
+												${art.artTitle} </a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
 
-						<c:forEach items="${requestScope.lvo2.artistList }" var="artist" end="${requestScope.lvo2.pbMain.end }">
+
+						<c:forEach items="${requestScope.lvo2.artistList }" var="artist"
+							end="${requestScope.lvo2.pbMain.end }">
 							<div class="product-item accessories">
 								<div class="product discount product_filter">
 									<div class="product_image">
@@ -102,15 +118,18 @@
 									</div>
 									<div class="product_info">
 										<div class="product_price">
-										<a href="${pageContext.request.contextPath }/fornt?command=DetailArt&art_no=">
-											${artist.inpictureMemberDTO.name}
-										</a>
+											<a
+												href="${pageContext.request.contextPath }/front?command=DetailArtist&id=${artist.inpictureMemberDTO.id}">
+												${artist.inpictureMemberDTO.name} </a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-						<c:forEach items="${requestScope.lvo3.auctionList}" var="auction" end="${requestScope.lvo3.pbMain.end }">
+
+
+						<c:forEach items="${requestScope.lvo3.auctionList}" var="auction"
+							end="${requestScope.lvo3.pbMain.end }">
 							<div class="product-item men">
 								<div class="product product_filter">
 									<div class="product_image">
@@ -120,9 +139,9 @@
 									</div>
 									<div class="product_info">
 										<div class="product_price">
-										<a href="${pageContext.request.contextPath }/fornt?command=DetailArt&art_no=">
-											${auction.auctionApplyDTO.auctionTitle}
-										</a>
+											<a
+												href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${auction.auctionApplyDTO.auctionNo}">
+												${auction.auctionApplyDTO.auctionTitle} </a>
 										</div>
 									</div>
 								</div>
@@ -236,7 +255,3 @@
 				</p>
 			</div>
 		</a> --%>
-
-
-
-

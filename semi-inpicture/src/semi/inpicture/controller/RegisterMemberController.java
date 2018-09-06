@@ -19,7 +19,9 @@ public class RegisterMemberController implements Controller {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String ssn = request.getParameter("ssn");
-		String email = request.getParameter("email");
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		String email = email1+"@"+email2;
 		try {
 			InpictureMemberDAO.getInstance().registerInpictureMember(id, password, name, address, ssn, email);
 			
