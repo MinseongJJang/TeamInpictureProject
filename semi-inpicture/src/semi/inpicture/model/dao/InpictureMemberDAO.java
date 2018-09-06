@@ -163,10 +163,7 @@ public class InpictureMemberDAO {
 				} finally {
 					closeAll(pstmt, con);
 				}
-
-			}
-
-
+	}
 
 	public void memberUpdate(InpictureMemberDTO imDTO) throws SQLException {
 		Connection con = null;
@@ -249,7 +246,6 @@ public class InpictureMemberDAO {
 
 		return name;
 	}
-
 	public void tempSetPassword(String id, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -263,5 +259,26 @@ public class InpictureMemberDAO {
 		} finally {
 			closeAll(pstmt, con);
 		}
+}
+	public InpictureMemberDTO findId(String name, String ssn) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		InpictureMemberDTO dto = new InpictureMemberDTO();
+		try {
+			con = getConnection();
+			String sql = "select id from inpicture_member where name=? and ssn=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, ssn);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString(1));
+				dto.setName(name);
+			}
+		} finally {
+			closeAll(pstmt,rs,con);
+		}
+		return dto;
 	}
 }

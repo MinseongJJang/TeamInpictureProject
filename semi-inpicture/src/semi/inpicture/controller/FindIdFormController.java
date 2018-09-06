@@ -6,15 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GetAllInfoListController implements Controller {
+public class FindIdFormController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String url = "/template/layout.jsp";
-		request.setAttribute("url", "/template/main.jsp");
-		return url;
+		request.setAttribute("url", "/member/find_id_form.jsp");
+		return "/template/layout.jsp";
 	}
-
 }

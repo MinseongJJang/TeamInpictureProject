@@ -123,6 +123,7 @@ public class HandlerMapping {
 			controller = new FindIdFormController();
 		}else if(command.equals("FindId")) {
 			controller = new FindIdController();
+		}
 		return controller;
 	}
 }

@@ -34,6 +34,7 @@ public class DetailArtistController implements Controller {
 	         list = ArtDAO.getInstance().getArtOfArtist(paging,id);
 	         System.out.println(list.size());
 			 adto = ArtistDAO.getInstance().detailArtist(id);
+			 System.out.println(adto.getArtist_main_pic());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -5,7 +5,7 @@
    $(document).ready(function(){
       $("#bidOkBtn").click(function(){
          
-          if($("#bidPirce").val() =="" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= ${param.maxBid} || $("#bidPrice").val() <= $("#beginPrice").val() ){
+          if($("#bidPirce").val() =="" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= $("#maxBid").val() || $("#bidPrice").val() <= $("#beginPrice").val() ){
              alert("입찰가는 현재 최고입찰가보다 높아야 합니다.");
           }else{
              if(confirm($("#bidPrice").val()+"원 입찰하시겠습니까?")){
@@ -14,7 +14,7 @@
                    url : "${pageContext.request.contextPath}/front",
                    data : $("#modalForm").serialize(),
                    success:function(result){
-                      $("#maxBid").text(result);
+                      $("#maxBidPrice").text(result);
                    }//
                 });//ajax
              }//if   
@@ -22,7 +22,7 @@
        });//click
        
           var nowTime = new Date();
-          var endTime = $("#endTime").text().substring(23).split(":");
+          var endTime = $("#endTime").text().substring(11).split(":");
           var endHour =endTime[0];
           var endMinute = endTime[1];
           var endTime = new Date();
@@ -67,9 +67,10 @@
             <form method="post"
                action="${pageContext.request.contextPath }/front" id="endAuction"
                enctype="multipart/form-data">
-               <input type="hidden" name="command" value="EndAuction"> <input
-                  type="hidden" name="auctionNo"
+               <input type="hidden" name="command" value="EndAuction"> 
+               <input type="hidden" name="auctionNo"
                   value="${requestScope.auctionDTO.auctionApplyDTO.auctionNo }">
+               <input type="hidden" id="maxBid" value="${param.maxBid }">
                <table class="table" style="border-bottom: 1px solid #dbdbdb"
                   style="border-top:1px solid #dbdbdb">
                   <tr>
@@ -132,7 +133,7 @@
                   </tr>
                   <tr>
                      <td>경매 종료시간</td>
-                     <td colspan="2">${requestScope.auctionDTO.auctionApplyDTO.auctionEndTime }</td>
+                     <td colspan="2" id="endTime">${requestScope.auctionDTO.auctionApplyDTO.auctionEndTime }</td>
                   </tr>
                   <tr>
                      <td colspan="3"></td>
@@ -148,10 +149,10 @@
                      <td>최고 입찰가</td>
                      <c:choose>
                         <c:when test="${param.maxBid == 0}">
-                           <td colspan="2" id="maxBid">${requestScope.auctionDTO.auctionApplyDTO.auctionBeginPrice }</td>
+                           <td colspan="2" id="maxBidPrice">${requestScope.auctionDTO.auctionApplyDTO.auctionBeginPrice }</td>
                         </c:when>
                         <c:otherwise>
-                           <td colspan="2" id="maxBid">${param.maxBid}</td>
+                           <td colspan="2" id="maxBidPrice">${param.maxBid}</td>
                         </c:otherwise>
                      </c:choose>
                   </tr>
