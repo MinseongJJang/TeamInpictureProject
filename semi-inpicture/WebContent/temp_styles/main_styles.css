@@ -1648,6 +1648,17 @@ section {
 	text-transform: uppercase;
 	cursor: pointer;
 }
+.file_del_btn {
+	width: 110px;
+	height: 30px;
+	border: none;
+	background: #000000;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
+}
 
 .file_submit_btn:hover {
 	background: #ffffff;
@@ -1772,12 +1783,22 @@ section {
 	max-width: 1000px;
 	margin: 200px auto;
 }
-.main2 {
+.main1 {
+	font-family: Arial;
+	padding: 40px;
+	background-color: #ffffff;
+	max-width: 1000px;
+	margin: 200px auto;
+}
+
+.main2{
 	font-family: Arial;
 	padding: 40px;
 	background-color: #ffffff;
 	max-width: 1200px;
-	margin:100px auto;
+	margin: 200px auto;
+	margin-top:100px;
+	
 }
 
 

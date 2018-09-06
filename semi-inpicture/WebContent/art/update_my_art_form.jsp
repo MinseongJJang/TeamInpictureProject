@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <div class="main_slider">
 		<div class="container fill_height">
-			
 			<div class="row align-items-center fill_height">
 				<div class="col">
 					<div class="main_slider_content">
