@@ -69,6 +69,35 @@ public class ArtistDAO {
 	      }
 	      return list;
 	   }
+	public ArrayList<ArtistDTO> getArtistList(PagingMain pagingBean) throws SQLException{
+	      ArrayList<ArtistDTO> list=new ArrayList<ArtistDTO>();
+	      Connection con=null;
+	      PreparedStatement pstmt=null;
+	      ResultSet rs=null;
+	      try {
+	         con=getConnection();
+	         StringBuilder sql=new StringBuilder();
+	         sql.append("select a.id, im.name, a.artist_main_pic ");
+	         sql.append("from ( select id, artist_main_pic, row_number() over(order by id desc) as rnum from artist ");
+	         sql.append(") a, inpicture_member im where im.id=a.id and rnum between ? and ?");
+	         pstmt=con.prepareStatement(sql.toString());
+		 	 pstmt.setInt(1, pagingBean.getStart());
+		 	 pstmt.setInt(2, pagingBean.getEnd());
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            InpictureMemberDTO dto=new InpictureMemberDTO();
+	            dto.setId(rs.getString(1));
+	            dto.setName(rs.getString(2));
+	            ArtistDTO adto = new ArtistDTO();
+	            adto.setArtist_main_pic(rs.getString(3));
+	            adto.setInpictureMemberDTO(dto);
+	            list.add(adto);
+	         }
+	      }finally {
+	         closeAll(pstmt,rs,con);
+	      }
+	      return list;
+	   }
 	public ArtistDTO detailArtist(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
