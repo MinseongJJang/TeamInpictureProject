@@ -147,10 +147,10 @@
 						style="border-top:1px solid #dbdbdb">
 						<tr>
 							<td rowspan="3"><img
-								src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionMainPic}">
+								src="${pageContext.request.contextPath }/auction_apply_images/${requestScope.auctionDTO.auctionMainPic}" style="width:300px;height:350px;">
 							</td>
 							<td class="auc2 ">경매 그림 제목</td>
-							<td colspan="2">${requestScope.auctionDTO.auctionTitle }</td>
+							<td colspan="2" >${requestScope.auctionDTO.auctionTitle }</td>
 							<td class="auc2">그림 작가</td>
 							<td colspan="2">
 								${requestScope.auctionDTO.inpictureMemberDTO.name }</td>

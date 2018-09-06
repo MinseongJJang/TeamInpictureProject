@@ -26,6 +26,19 @@
  	margin-top:30px;
  	margin-bottom:70px;
  }
+ .table4 td,.table4 th{
+	padding: .75rem;
+    vertical-align: middle;
+    border-top: 1px solid #e9ecef;
+    border-collapse: collapse;
+}
+.table4{
+	    border-collapse: collapse;
+}
+.th,.td{
+
+	display: table-cell;
+}
 </style>
 <%-- <div class="main2" id="div3" align="center">
 	<div class="main_slider_content">
@@ -56,7 +69,7 @@
 <div class="main_slider" align="center">
 			<div class="main_slider_content">
 				<h2>작품 detail</h2>
-				<table class="table a">
+				<table class="table4 a">
 					<tr>
 						<td rowspan="3"></td>
 						<td rowspan="3"><img src="${pageContext.request.contextPath }/artist_images/${requestScope.adto.artist_main_pic}" width="400px" height="400px"></td>
