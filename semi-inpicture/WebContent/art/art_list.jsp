@@ -12,23 +12,25 @@
 	font-weight: bold;
 	margin-bottom: 14px;
 }
+
 </style>
 <html>
 <body>
-	<div id="abcdef">작가 작품 목록</div>
 
-	<table class="table">
+	<div id="abcdef">작가 작품 목록</div>
+	
+	<table class="table abcdef">
 		<tr>
 			<td rowspan="3" ><c:if test="${requestScope.paging.previous}">
 					<a
-						href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}&id=${requestScope.adto.inpictureMemberDTO.id}"
+						href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start-1}&id=${requestScope.adto.inpictureMemberDTO.id}#abcdef"
 						id="scrollFix2">
 						<img width="40"
 						src="${pageContext.request.contextPath }/temp_images/left2.jpg">
 					</a>
 				</c:if></td>
 			<c:forEach var="avo" items="${requestScope.list }">
-				<td rowspan="2"><a
+				<td rowspan="2" align="center"><a
 					href="${pageContext.request.contextPath }/front?command=DetailArt&artNo=${avo.artNo}"
 					> <img
 						src="${pageContext.request.contextPath }/art_images/${avo.artMainPic}"
@@ -36,7 +38,7 @@
 			</c:forEach>
 			<td rowspan="3" ><c:if test="${requestScope.paging.next}">
 					<a
-						href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${requestScope.adto.inpictureMemberDTO.id}"
+						href="${pageContext.request.contextPath}/front?command=DetailArtist&rnum=${requestScope.paging.start+1}&id=${requestScope.adto.inpictureMemberDTO.id}#abcdef"
 						> <img width="40"
 						src="${pageContext.request.contextPath }/temp_images/right2.jpg">
 					</a>
@@ -46,10 +48,11 @@
 		</tr>
 		<tr>
 			<c:forEach var="avo" items="${requestScope.list }" varStatus="info">
-				<td>${avo.artTitle }</td>
+				<td align="center">${avo.artTitle }</td>
 			</c:forEach>
 		</tr>
-
+		
 	</table>
+
 </body>
 </html>

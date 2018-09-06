@@ -10,11 +10,15 @@
  	font-size:17px;
  	font-weight:bold;
  }
-
+	.b{
+		margin-bottom:-120px;
+	}
 </style>
+<div class="b">
 <div class="main_slider" align="center">
 			<div class="main_slider_content">
 				<h2>작품 detail</h2>
+				
 				<table class="table a">
 					<tr>
 						<td rowspan="3"></td>
@@ -42,7 +46,8 @@
 					<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
 					<input type="hidden" name="command" value="UpdateMyArtForm">
 					<input type="submit" value="수정">
-				</form>
+				</form>				
 				</c:if>
+				</div>
 			</div>
 </div>
