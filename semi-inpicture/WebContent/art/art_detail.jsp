@@ -10,12 +10,29 @@
  	font-size:17px;
  	font-weight:bold;
  }
+	.b{
+		margin-bottom:-120px;
+	}
+	.table3 td,.table3 th{
+	padding: .75rem;
+    vertical-align: middle;
+    border-top: 1px solid #e9ecef;
+    border-collapse: collapse;
+}
+.table3{
+	    border-collapse: collapse;
+}
+.th,.td{
 
+	display: table-cell;
+}
 </style>
+<div class="b">
 <div class="main_slider" align="center">
 			<div class="main_slider_content">
 				<h2>작품 detail</h2>
-				<table class="table a">
+				
+				<table class="table3 a">
 					<tr>
 						<td rowspan="3"></td>
 						<td rowspan="3"><img  src="${pageContext.request.contextPath}/art_images/${requestScope.dto.artMainPic}" width="400px" height="400px"></td>
@@ -42,7 +59,8 @@
 					<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
 					<input type="hidden" name="command" value="UpdateMyArtForm">
 					<input type="submit" value="수정">
-				</form>
+				</form>				
 				</c:if>
+				</div>
 			</div>
 </div>

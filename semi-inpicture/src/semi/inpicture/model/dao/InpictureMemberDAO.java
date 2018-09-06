@@ -146,8 +146,6 @@ public class InpictureMemberDAO {
 					if(rs.next()) {
 						artist_main_pic = rs.getString(1);
 					}
-					pstmt.close();
-					rs.close();
 					// 작가 테이블 삽입
 					String sql3 = "insert into artist values(?,?,?)";
 					pstmt = con.prepareStatement(sql3);
@@ -165,10 +163,7 @@ public class InpictureMemberDAO {
 				} finally {
 					closeAll(pstmt, con);
 				}
-
-			}
-
-
+	}
 
 	public void memberUpdate(InpictureMemberDTO imDTO) throws SQLException {
 		Connection con = null;
@@ -250,5 +245,40 @@ public class InpictureMemberDAO {
 		}
 
 		return name;
+	}
+	public void tempSetPassword(String id, String password) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "update inpicture_member set password = ? where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, password);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+}
+	public InpictureMemberDTO findId(String name, String ssn) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		InpictureMemberDTO dto = new InpictureMemberDTO();
+		try {
+			con = getConnection();
+			String sql = "select id from inpicture_member where name=? and ssn=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, ssn);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setId(rs.getString(1));
+				dto.setName(name);
+			}
+		} finally {
+			closeAll(pstmt,rs,con);
+		}
+		return dto;
 	}
 }

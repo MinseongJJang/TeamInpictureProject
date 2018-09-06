@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#checkBtn").click(function(){
@@ -79,11 +80,12 @@ table td{
 									<tr>
 										<td colspan="2"> <span id="loginCheck"></span></td>
 									</tr>
+									</tr>
 									<tr>
 				               			<td colspan="3" align="right">아직 회원이 아니시라면? <a href="${pageContext.request.contextPath }/front?command=RegisterMemberForm">인픽쳐 회원가입</a></td>
 									</tr>
 									<tr>
-				                		<td colspan="3" align="right"><a href="">아이디 찾기</a>&nbsp;&nbsp;<a href="">비밀번호 찾기</a></td>
+				                		<td colspan="3" align="right"><a href="${pageContext.request.contextPath }/front?command=FindIdForm">아이디 찾기</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/front?command=FindMemberPasswordForm">비밀번호 찾기</a></td>
 									</tr>
 								</table>
 							</form>
