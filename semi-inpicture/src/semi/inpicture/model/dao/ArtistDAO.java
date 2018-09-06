@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import semi.inpicture.model.dto.ArtDTO;
 import semi.inpicture.model.dto.ArtistDTO;
 import semi.inpicture.model.dto.InpictureMemberDTO;
 
