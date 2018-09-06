@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -239,4 +240,63 @@ public class AuctionDAO {
 		}
 	}
 	
+	public ArrayList<AuctionDTO> getMainAuctionList(PagingMainCarousel pb) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<AuctionDTO> list = new ArrayList<AuctionDTO>();
+		try {
+			con = getConnection();
+			String sql = "select a.auction_no,a.auction_title,a.auction_main_pic,a.auction_state from "+
+						  "(select auction_no,auction_title,auction_main_pic,row_number() over(order by auction_no desc) as rnum, " +
+					      "auction_state from auction) a where a.rnum between ? and ? and a.auction_state='0' order by a.auction_no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pb.getStart());
+			pstmt.setInt(2, pb.getEnd());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AuctionApplyDTO applyDTO = new AuctionApplyDTO();
+				AuctionDTO auctionDTO = new AuctionDTO();
+				applyDTO.setAuctionNo(rs.getString(1));
+				applyDTO.setAuctionTitle(rs.getString(2));
+				applyDTO.setAuctionMainPic(rs.getString(3));
+				applyDTO.setAuctionState(rs.getString(4));
+				auctionDTO.setAuctionApplyDTO(applyDTO);
+				list.add(auctionDTO);
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return list;
+	}
+	
+	public ArrayList<AuctionDTO> getMainAuctionList(PagingMain pb) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<AuctionDTO> list = new ArrayList<AuctionDTO>();
+		try {
+			con = getConnection();
+			String sql = "select a.auction_no,a.auction_title,a.auction_main_pic,a.auction_state from "+
+						  "(select auction_no,auction_title,auction_main_pic,row_number() over(order by auction_no desc) as rnum, " +
+					      "auction_state from auction) a where a.rnum between ? and ? and a.auction_state='0' order by a.auction_no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pb.getStart());
+			pstmt.setInt(2, pb.getEnd());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AuctionApplyDTO applyDTO = new AuctionApplyDTO();
+				AuctionDTO auctionDTO = new AuctionDTO();
+				applyDTO.setAuctionNo(rs.getString(1));
+				applyDTO.setAuctionTitle(rs.getString(2));
+				applyDTO.setAuctionMainPic(rs.getString(3));
+				applyDTO.setAuctionState(rs.getString(4));
+				auctionDTO.setAuctionApplyDTO(applyDTO);
+				list.add(auctionDTO);
+			}
+		}finally {
+			closeAll(pstmt, rs, con);
+		}
+		return list;
+	}
 }
