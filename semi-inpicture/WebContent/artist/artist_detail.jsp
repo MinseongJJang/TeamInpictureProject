@@ -28,7 +28,7 @@
 				<td>${requestScope.adto.inpictureMemberDTO.email}</td>
 			</tr>
 			<tr>
-				<td>작가 소개</td>
+				<td id="c_555">작가 소개</td>
 				<td>
 					${requestScope.adto.artistIntro}
 				</td>

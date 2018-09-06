@@ -77,7 +77,7 @@ h1 {
 			<c:forEach items="${requestScope.lvo.auctionApplyList}" var="item" end="${requestScope.lvo.pb.postCountPerPage}">
 				<div class="column nature">
 					<div class="content" onclick="location.href='${pageContext.request.contextPath}/front?command=ApplyAuctionDetail&auctionNo=${item.auctionNo }'">
-							<img src="${pageContext.request.contextPath}/auction_main_pic/${item.auctionMainPic}" style="width: 100%">
+							<img src="${pageContext.request.contextPath }/auction_apply_images/${item.auctionMainPic}" style="width: 100%;">
 						<h4>${item.auctionTitle }</h4>
 						<p>${item.inpictureMemberDTO.name }</p>
 					</div>

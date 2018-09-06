@@ -82,8 +82,8 @@ public class AuctionApplyDAO {
 			con = getConnection();
 			//paging 처리를 하기 위하여 auction_no에 row_number를 부여.
 			//join과 subquery를 사용
-			String sql = "select a.auction_no,a.auction_title,a.id,m.name,a.auction_state from "
-					+ "(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum,auction_state from auction_apply) a "
+			String sql = "select a.auction_no,a.auction_title,a.id,m.name,a.auction_state,a.auction_main_pic from "
+					+ "(select auction_no,auction_title,id,row_number() over(order by auction_no desc) as rnum,auction_state,auction_main_pic from auction_apply) a "
 					+ ", inpicture_member m "
 					+ " where a.id=m.id and rnum between ? and ? and a.auction_state = 0 order by a.auction_no desc";
 			pstmt = con.prepareStatement(sql);
@@ -99,6 +99,7 @@ public class AuctionApplyDAO {
 				auctionDTO.setAuctionNo(rs.getString(1));
 				auctionDTO.setAuctionTitle(rs.getString(2));
 				auctionDTO.setAuctionState(rs.getString(5));
+				auctionDTO.setAuctionMainPic(rs.getString(6));
 				auctionDTO.setInpictureMemberDTO(memberDTO);
 				auctionList.add(auctionDTO);
 			}

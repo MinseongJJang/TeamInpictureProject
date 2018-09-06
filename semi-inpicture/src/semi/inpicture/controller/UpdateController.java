@@ -206,13 +206,9 @@ public class UpdateController implements Controller {
 				url = "/member/session_invalid.jsp";
 			}
 		}
-		System.out.println("123123");
-		System.out.println("123123");
-		System.out.println("123123");
 		/*
 		 * 모든 파일을 uploadImages라는 folder에 저장시키기 때문에 command값별로 File을 이동시키는 부분 kms
 		 */
-		System.out.println("123123");
 		if (!command.equals("ApplyArtist")) {
 			File file1 = new File(oriPath + fileName);
 			File file2 = new File(afterPath + time+fileName);
