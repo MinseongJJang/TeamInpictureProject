@@ -75,7 +75,7 @@ h1 {
 <!-- MAIN (Center website) -->
 <c:choose>
 	<c:when
-		test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
+		test="${sessionScope.mvo != null}">
 		<div class="main">
 			<h2>경매 목록</h2>
 			<div class="row myrow">
@@ -85,16 +85,16 @@ h1 {
 						<div class="content"
 							onclick="location.href='${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${list.key.auctionApplyDTO.auctionNo}&maxBid=${list.value.auctionBidPrice }'">
 							<img
-								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }">
+								src="${pageContext.request.contextPath}/auction_apply_images/${list.key.auctionApplyDTO.auctionMainPic }" style="width: 100%">
 							<h6 class="product_name">
 								${list.key.auctionApplyDTO.auctionTitle }</h6>
 							<c:choose>
 								<c:when test="${list.value.auctionBidPrice == 0 }">
-									<div class="product_price">최고 입찰가 :
+									<div class="product_price">최고 입찰가:
 										${list.key.auctionApplyDTO.auctionBeginPrice}</div>
 								</c:when>
 								<c:otherwise>
-									<div class="product_price">최고 입찰가 :
+									<div class="product_price">최고 입찰가:
 										${list.value.auctionBidPrice}</div>
 								</c:otherwise>
 							</c:choose>
@@ -104,20 +104,20 @@ h1 {
 					</div>
 				</c:forEach>
 			</div>
-			<c:set var="pb" value="${requestScope.ldto.pb}"></c:set>
+			<c:set var="pb" value="${requestScope.lvo.pb}"></c:set>
 			<div class="pagingArea" align="center">
 				<ul class="pagination">
 					<c:if test="${requestScope.lvo.pb.previousPageGroup}">
 						<li><a
-							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${requestScope.lvo.pb.startPageOfPageGroup-1}">&laquo;</a></li>
+							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
 					</c:if>
 
 					<c:forEach var="page"
-						begin="${requestScope.lvo.pb.startPageOfPageGroup }"
-						end="${requestScope.lvo.pb.endPageOfPageGroup }">
+						begin="${pb.startPageOfPageGroup }"
+						end="${pb.endPageOfPageGroup }">
 
 						<c:choose>
-							<c:when test="${page==requestScope.lvo.pb.nowPage}">
+							<c:when test="${page==pb.nowPage}">
 								<li class="active"><a>${page}</a></li>
 							</c:when>
 							<c:otherwise>
@@ -127,9 +127,9 @@ h1 {
 						</c:choose>
 
 					</c:forEach>
-					<c:if test="${requestScope.lvo.pb.nextPageGroup}">
+					<c:if test="${pb.nextPageGroup}">
 						<li><a
-							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${requestScope.lvo.pb.endPageOfPageGroup+1}">&raquo;</a></li>
+							href="${pageContext.request.contextPath }/front?command=ApplyAuctionArtList&nowPage=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
 					</c:if>
 				</ul>
 			</div>
