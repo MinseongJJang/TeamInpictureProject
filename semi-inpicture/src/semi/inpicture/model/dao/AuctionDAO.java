@@ -61,12 +61,12 @@ public class AuctionDAO {
 			// 현재 경매 진행중인 전체 경매 상품의 no,title,promptlyprice,최고입찰가,endtime을 받아온다.
 			// 그리고 paging 처리를 위해 row_number over를 사용해 auction_no를 desc로 정렬한다.
 			String sql = "select a.auction_no,a.auction_title,a.auction_promptly_price,a.bid_price, " + 
-					"a.begin_time,a.end_time,a.auction_state,a.auction_seller from " + 
+					"a.begin_time,a.end_time,a.auction_state,a.auction_seller,a.auction_main_pic from " + 
 					"(select auction_no,auction_title,auction_promptly_price, " + 
 					"(select max(auction_bid_price) from bid where auction_no = a.auction_no) as bid_price, " + 
 					"to_char(auction_begin_time, 'HH24:MI') as begin_time, " + 
 					"to_char(auction_end_time, 'HH24:MI') as end_time,row_number() over(order by auction_no desc) as rnum, " + 
-					"auction_state,auction_seller " + 
+					"auction_state,auction_seller,auction_main_pic " + 
 					"from auction a) a " + 
 					"where rnum between ? and ? and a.auction_state=0 order by a.auction_no desc";
 					
@@ -84,7 +84,7 @@ public class AuctionDAO {
 				applyAuction.setAuctionNo(rs.getString(1));
 				applyAuction.setAuctionTitle(rs.getString(2));
 				applyAuction.setAuctionPromptlyPrice(rs.getInt(3));
-				
+				applyAuction.setAuctionMainPic(rs.getString(9));
 				bidder.setAuctionBidPrice(rs.getInt(4));
 				applyAuction.setAuctionEndTime(rs.getString(5));
 				bidder.setAuctionDTO(auction);
