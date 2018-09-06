@@ -11,6 +11,7 @@ public class GetAllInfoListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String url = "/template/layout.jsp";
 		request.setAttribute("url", "/template/main.jsp");
 		return url;
