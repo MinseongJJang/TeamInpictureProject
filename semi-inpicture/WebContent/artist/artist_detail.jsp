@@ -19,7 +19,7 @@
 		<table class="table">
 			<tr>
 				<td rowspan="3">
-				<img src="" width="400px" height="400px"></td>
+				<img src="${pageContext.request.contextPath }/artist_images/${requestScope.adto.artist_main_pic}" width="400px" height="400px"></td>
 				<td width="500px">이름</td>
 				<td>${requestScope.adto.inpictureMemberDTO.name}</td>
 			</tr>
@@ -28,7 +28,7 @@
 				<td>${requestScope.adto.inpictureMemberDTO.email}</td>
 			</tr>
 			<tr>
-				<td>작가 소개</td>
+				<td id="c_555">작가 소개</td>
 				<td>
 					${requestScope.adto.artistIntro}
 				</td>

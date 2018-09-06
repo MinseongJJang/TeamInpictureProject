@@ -4,6 +4,7 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		var idflag = false;
 		$("#id").keyup(function(){
 			//alert("keyup");
 			var idValue = $(this).val();
