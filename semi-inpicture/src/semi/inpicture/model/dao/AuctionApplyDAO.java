@@ -154,7 +154,7 @@ public class AuctionApplyDAO {
 		int totalCount = 0;
 		try {
 			con = getConnection();
-			String sql = "select count(-1) from auction_apply";
+			String sql = "select count(-1) from auction_apply where auction_state='0'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {

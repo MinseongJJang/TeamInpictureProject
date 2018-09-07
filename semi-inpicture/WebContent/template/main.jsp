@@ -21,7 +21,7 @@
 									<a
 										href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${carousel.auctionApplyDTO.auctionNo}">
 										<img
-										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" />
+										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" height="300px;"/>
 										<h3>${carousel.auctionApplyDTO.auctionTitle}</h3>
 									</a>
 								</figure>
@@ -33,7 +33,7 @@
 									<a
 										href="${pageContext.request.contextPath}/front?command=DetailArt&artNo=${carousel.artNo}">
 										<img
-										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}" / height="300px;">
+										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}"  height="300px;">
 										<h3>${carousel.artTitle}</h3>
 									</a>
 								</figure>

@@ -60,7 +60,6 @@
 	}
 	function registerPointHistory(text) {
 		var point = $("#turnover").val();
-		alert(text);
 		if (point == '') {
 			alert("충전할 금액을 입력해주세요!!");
 			return false;
