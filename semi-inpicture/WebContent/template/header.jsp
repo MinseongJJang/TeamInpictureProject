@@ -28,9 +28,10 @@
 							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLY ARTIST</a></li>
 								</c:when>
 							</c:choose>
+							
 						</ul>
 						<ul class="navbar_user">
-							<li><a href="#"><i class="fa fa-search"
+							<li><a href="#"><i
 									aria-hidden="true"></i></a></li>
 							<c:choose>			
 							<c:when test="${sessionScope.mvo == null }">

@@ -144,11 +144,11 @@
 									<option value="gmail.com">gmail.com</option>
 									<option value="yahoo.co.kr">yahoo.co.kr</option>
 									<option value="hanmail.net">hanmail.net</option>
-<<<<<<< HEAD
+
 									<option value="hotmail.com">hotmail.com</option>		
-=======
+
 									<option value="hotmail.com">hotmail.com</option>
->>>>>>> branch 'master' of https://github.com/MinseongJJang/TeamInpictureProject.git
+
 					</select>	
 								</td>		
 							</tr>							
