@@ -25,23 +25,21 @@ table td{
 		<div class="col-sm-6 text-center " 
 			style="margin-top: 100px; padding-bottom: 100px;">
 			<div style="margin-top: 200px; text-align:center;" align="center">
-		
 				<table class="test" >
 					<tr>
 						<td>
 							<h3>아이디 찾기</h3>
 						<form method="post" id="loginForm" action="${pageContext.request.contextPath}/front">
-							<input type="hidden" name="command" value="FindId" id="hidden">
+							<input type="hidden" name="command" value="FindId">
 							<table>
 								<tr>
 									<td><input type="text" name="name" placeholder="이름" size="12" id="login_text"></td>
 									<td rowspan="2">
-										<input type="submit" style="WIDTH: 70pt; HEIGHT: 60pt; margin-bottom:10px;" class="newsletter_submit_btn" id="checkBtn" value="검색">
-									
+										<input type="submit" style="WIDTH: 70pt; HEIGHT: 60pt; margin-bottom:10px;" class="newsletter_submit_btn" value="검색">
 									</td>
 								</tr>
 								<tr>
-									<td><input type="password" name="ssn" placeholder="주민등록번호" size="12" id="login_text" class="passwordEnter"></td>
+									<td><input type="password" name="ssn" placeholder="주민등록번호" size="12" id="login_text"></td>
 								</tr>
 								</table>
 							</form>
