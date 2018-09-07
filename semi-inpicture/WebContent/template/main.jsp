@@ -7,16 +7,16 @@
 	$(document).ready(function() {
 		$("#newsletter_submit").click(function() {		
 			var type = ${sessionScope.mvo.memberType};
-			if(type=="2"){
+			var type2 = ${sessionScope.mvo};
+			alert(type);
+			if(type==2){
 				alert("이미 작가입니다");
 				return false;
-			}else if(type=="3"){
+			}else if(type==3){
 				alert("관리자입니다.");
-				return false;
-			}else{
-				$("#artist23").submit();
+				return false;			
 			}
-		})
+		}) 
 	});//ready
 </script>
 <!-- 새로운 carousel -->

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -16,6 +17,8 @@
 		});  
 	});
 	</script>
+<c:choose>
+<c:when test="${sessionScope.mvo != null }">
 <div class="main1">
 	<h2>작가 신청</h2>
 			<div class="content">
@@ -57,3 +60,10 @@
 				</form>
 		</div>
 </div>
+</c:when>
+<c:otherwise>
+	<script>
+		location.href="${pageContext.request.contextPath}/member/need_login.jsp";
+	</script>
+</c:otherwise>
+</c:choose>
