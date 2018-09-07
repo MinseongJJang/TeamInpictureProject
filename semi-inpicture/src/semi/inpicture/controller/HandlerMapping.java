@@ -125,6 +125,12 @@ public class HandlerMapping {
 			controller = new FindIdController();
 		}else if(command.equals("emailCheck")) {
 			controller = new EmailCheckController();
+		}else if(command.equals("MemberPointChargeForm")) {
+			controller = new MemberPointChargeFormController();
+		}else if(command.equals("PointOperator")) {
+			controller = new PointOperatorController();
+		}else if(command.equals("MemberPointCharge")) {
+			controller = new MemberPointChargeController();
 		}
 		return controller;
 	}

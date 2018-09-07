@@ -22,7 +22,7 @@ public class ArtistListController implements Controller {
 		int totalPostCount=ArtistDAO.getInstance().getTotalPostCount();
 		String pageNo=request.getParameter("pageNo");
 		PagingBean pagingBean=null;
-		if(pageNo==null) {
+		if(pageNo==null || pageNo.equals("")) {
 			pagingBean=new PagingBean(totalPostCount);
 		}
 		else {

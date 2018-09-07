@@ -73,6 +73,7 @@
 				<c:when test="${sessionScope.mvo != null }">
 					<li class="menu_item has-children">${sessionScope.mvo.name } 님</li>
 					<li class="menu_item has-children">${sessionScope.mvo.point} &nbsp;&nbsp;보유중</li>
+					<li class="menu_item has-children"><a href="${pageContext.request.contextPath }/front?command=MemberPointChargeForm&id=${sessionScope.mvo.id}">POINT 충전</a></li>
 					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=MemberUpdateForm&id=${sessionScope.mvo.id}">UPDATE MEMBER</a></li>
 				  <c:if test="${sessionScope.mvo.memberType eq '2'}">
 					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMyArtForm">REGISTER ART</a></li>
@@ -88,9 +89,6 @@
 					<li class="menu_item has-children"><a href="${pageContext.request.contextPath}/front?command=RegisterMemberForm"> REGISTER </a></li>
 				</c:otherwise>
 			</c:choose>
-			<li class="menu_item"><a href="#">NOTICE</a></li>
-			<li class="menu_item"><a href="#">FAQ</a></li>
-			<li class="menu_item"><a href="#">Q&A</a></li>
 		</ul>
 	</div>
 </div>

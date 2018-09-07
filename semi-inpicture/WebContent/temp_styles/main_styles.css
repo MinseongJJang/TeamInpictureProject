@@ -1695,7 +1695,22 @@ section {
 	padding-left: 20px;
 	
 }
-
+#login_text1  {
+	width: 300px;
+	height: 46px;
+	background: #FFFFFF;
+	border: solid 1px;
+	padding-left: 20px;
+	
+}
+#login_text2  {
+	width: 300px;
+	height: 46px;
+	background: #FFFFFF;
+	border: solid 1px;
+	padding-left: 20px;
+	
+}
 #login_text:focus {
 	border: solid 1px #7f7f7f !important;
 	box-shadow: none !important;
