@@ -151,7 +151,7 @@
 							</tr>							
 						</table>
 						<div align="center">
-								<input class="newsletter_submit_btn" type="submit" value="가입" >&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
+								<input class="newsletter_submit_btn" type="submit" value="가입" onclick="loginback()">&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
 								<span id="registerCheck"></span>
 						</div>		
 				</form>
