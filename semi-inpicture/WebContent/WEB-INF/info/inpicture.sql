@@ -5,7 +5,7 @@ create table inpicture_member(
 	address varchar2(100) not null,
 	ssn varchar2(100) not null,
 	email varchar2(100) not null,
-	point number default 1000000,
+	point number default 50000000,
 	member_type number default 1
 )
 select * from inpicture_member;
@@ -195,6 +195,55 @@ where a.id=m.id and rnum between 1 and 5 and a.auction_state = 1 order by a.auct
 delete from auction_apply 
 
 
+select a.auction_no,a.auction_title,a.auction_main_pic,a.auction_state from
+(select auction_no,auction_title,auction_main_pic,row_number() over(order by auction_no desc) as rnum, 
+auction_state from auction) a where a.rnum between 1 and 25 and a.auction_state='0' order by a.auction_no desc
+
+select a.art_no,a.art_title,a.art_main_pic,b.id 
+	               from( 
+	               select row_number() over(order by art_no desc) as rnum,art_no, 
+	               art_title,art_main_pic,id from art 
+	               )a , artist b where a.id=b.id and rnum between 1 and 5
+	               order by a.art_no desc
+
+	               
+select a.auction_no,a.auction_title,a.auction_main_pic,a.auction_state from 
+						  (select auction_no,auction_title,auction_main_pic,row_number() over(order by auction_no desc) as rnum, 
+					      auction_state from auction) a where a.rnum between 1 and 25 and a.auction_state='0' order by a.auction_no desc	               
+	        
+					      delete from auction;
+	               
+create table point_history(
+	point_history_no number primary key,
+	reg_date date not null,
+	id varchar2(100) not null,
+	payment_method varchar2(100) not null,
+	constraint fk_point_id foreign key(id) references inpicture_member(id) on delete cascade
+)				
+alter table point_history add(point number not null)
+create sequence point_history_seq
+
+select point_history_no,to_char(reg_date,'YYYY-MM-DD HH24:MI'),id,payment_method,point from point_history
+	               
+select point_history_no,to_char(reg_date,'YYYY-MM-DD HH24:MI'),id,payment_method,point from point_history where id ='minseong'	               
+	               
+
+delete from art;
+delete from auction;
+delete from auction_apply;
+delete from artist
+delete from artist_apply
+delete from artist_apply_board
+delete from point_history
+delete from art
+delete from inpicture_member
 
 
 
+select a.auction_title,a.auction_content, 
+to_char(a.auction_begin_time,'YYYY-MM-DD HH24:MI'), 
+to_char(a.auction_end_time,'YYYY-MM-DD HH24:MI'),a.auction_seller,
+a.auction_promptly_price,a.auction_state,a.auction_main_pic, 
+a.auction_begin_price,m.id,m.name,a.auction_final_bid_price 
+from auction a , inpicture_member m 
+where a.auction_seller_id = m.id and a.auction_no = 119

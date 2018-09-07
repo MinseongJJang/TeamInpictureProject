@@ -163,13 +163,14 @@ public class AuctionDAO {
 					"to_char(a.auction_begin_time,'YYYY-MM-DD HH24:MI'), " + 
 					"to_char(a.auction_end_time,'YYYY-MM-DD HH24:MI'),a.auction_seller, " + 
 					"a.auction_promptly_price,a.auction_state,a.auction_main_pic, " + 
-					"a.auction_begin_price,m.id,m.name " + 
+					"a.auction_begin_price,m.id,m.name,a.auction_final_bid_price  " + 
 					"from auction a , inpicture_member m " + 
 					"where a.auction_seller_id = m.id and a.auction_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auctionNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				
 				AuctionApplyDTO applyDTO = new AuctionApplyDTO();
 				InpictureMemberDTO memberDTO = new InpictureMemberDTO();
 				memberDTO.setName(rs.getString(5));
@@ -181,6 +182,7 @@ public class AuctionDAO {
 				applyDTO.setAuctionPromptlyPrice(rs.getInt(6));
 				applyDTO.setAuctionMainPic(rs.getString(8));
 				applyDTO.setAuctionBeginPrice(rs.getInt(9));
+				dto.setAuctionFinalBidPrice(rs.getInt(12));
 				dto.setAuctionState(rs.getString(7));
 				applyDTO.setInpictureMemberDTO(memberDTO);
 				dto.setAuctionApplyDTO(applyDTO);

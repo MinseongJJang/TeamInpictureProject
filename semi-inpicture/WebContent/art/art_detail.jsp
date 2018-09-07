@@ -51,18 +51,22 @@
 						<td colspan="2" align="center" style=font-weight:normal>${requestScope.dto.artContent}</td>
 					</tr>
 				</table>
-				<c:if test="${requestScope.dto.inpictureMemberDTO.id==sessionScope.mvo.id}">
-				<form action="${pageContext.request.contextPath}/front">
-					<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
-					<input type="hidden" name="command" value="DeleteMyArt">
-					<input type="submit" value="삭제">
-				</form>
-				<form action="${pageContext.request.contextPath}/front" method="post">
-					<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
-					<input type="hidden" name="command" value="UpdateMyArtForm">
-					<input type="submit" value="수정">
-				</form>				
-				</c:if>
+					<br>
+					<div class="row" style="margin-left: 35%;">
+						<c:if test="${requestScope.dto.inpictureMemberDTO.id==sessionScope.mvo.id}">
+						<form action="${pageContext.request.contextPath}/front" method="post">
+							<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
+							<input type="hidden" name="command" value="UpdateMyArtForm">
+							<input type="submit" value="수정" class="newsletter_submit_btn">
+						</form>	
+						&nbsp;&nbsp;
+						<form action="${pageContext.request.contextPath}/front">
+							<input type="hidden" name="artNo" value="${requestScope.dto.artNo}">
+							<input type="hidden" name="command" value="DeleteMyArt">
+							<input type="submit" value="삭제" class="newsletter_submit_btn">
+						</form>	
+						</c:if>
+					</div>	
 				</div>
 			</div>
 </div>

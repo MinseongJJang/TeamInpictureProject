@@ -2,43 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#bidOkBtn")
-								.click(
-										function() {
-
-											if ($("#bidPirce").val() == ""
-													|| $("#bidPrice").val() == 0
-													|| $("#bidPrice").val() <= $(
-															"#maxBid").val()
-													|| $("#bidPrice").val() <= $(
-															"#beginPrice")
-															.val()) {
-												alert("입찰가는 현재 최고입찰가보다 높아야 합니다.");
-											} else {
-												if (confirm($("#bidPrice")
-														.val()
-														+ "원 입찰하시겠습니까?")) {
-													$
-															.ajax({
-																type : "post",
-																url : "${pageContext.request.contextPath}/front",
-																data : $(
-																		"#modalForm")
-																		.serialize(),
-																success : function(
-																		result) {
-																	$(
-																			"#maxBidPrice")
-																			.text(
-																					result);
-																}//
-															});//ajax
-												}//if   
-											}//else
-										});//click
+	$(document).ready(function() {
+		$("#bidOkBtn").click(function() {
+			if ($("#bidPirce").val() == "" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= $("#maxBid").val() || $("#bidPrice").val() <= $("#beginPrice").val()) {
+				alert("입찰가는 현재 최고입찰가보다 높아야 합니다.");
+			} else {
+				if (confirm($("#bidPrice").val()+ "원 입찰하시겠습니까?")) {
+					$.ajax({
+						type : "post",
+						url : "${pageContext.request.contextPath}/front",
+						data : $("#modalForm").serialize(),
+						success : function(result) {
+							$("#maxBidPrice").text(result);
+						}//
+					});//ajax
+				}//if   
+			}//else
+		});//click
 
 						var nowTime = new Date();
 						var endTime = $("#endTime").text().substring(11).split(
@@ -56,9 +36,7 @@
 							var min = Math.floor(time / 60);
 							var sec = Math.floor(time % 60);
 
-							$("#timer").html(
-									hour + " 시간 " + min + " 분 " + sec
-											+ " 초 남았습니다.").css("color", "red");
+							$("#timer").html(hour + " 시간 " + min + " 분 " + sec+ " 초 남았습니다.").css("color", "red");
 							if (min == '0' && hour == '0' && sec == '0') {
 								$("#endAuction").submit();
 							}

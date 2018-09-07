@@ -16,13 +16,13 @@
 			<section class="carousel_container">
 				<div id="carousel">
 					<c:choose>
-						<c:when test="${requestScope.size > 1}">
+						<c:when test="${requestScope.size > 10}">
 							<c:forEach items="${requestScope.carousel1 }" var="carousel">
 								<figure>
 									<a
 										href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${carousel.auctionApplyDTO.auctionNo}">
 										<img
-										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" height="300px;"/>
+										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" style="width: 300px; height: 300px;"/>
 										<h3>${carousel.auctionApplyDTO.auctionTitle}</h3>
 									</a>
 								</figure>
@@ -34,7 +34,7 @@
 									<a
 										href="${pageContext.request.contextPath}/front?command=DetailArt&artNo=${carousel.artNo}">
 										<img
-										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}"  height="300px;">
+										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}"  style="width: 300px; height: 300px;">
 										<h3>${carousel.artTitle}</h3>
 									</a>
 								</figure>
@@ -115,7 +115,7 @@
 									<div class="product_image">
 										<img
 											src="${pageContext.request.contextPath}/artist_images/${artist.artist_main_pic}"
-											alt="">
+											alt="" style="width: 200px; height: 200px;">
 									</div>
 									<div class="product_info">
 										<div class="product_price">
@@ -136,7 +136,7 @@
 									<div class="product_image">
 										<img
 											src="${pageContext.request.contextPath}/auction_apply_images/${auction.auctionApplyDTO.auctionMainPic}"
-											alt="">
+											alt="" style="width: 200px; height: 200px;">
 									</div>
 									<div class="product_info">
 										<div class="product_price">
