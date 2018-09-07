@@ -12,20 +12,30 @@ import semi.inpicture.model.dto.BidderDTO;
 
 public class ListVO {
 	private PagingBean pb;
+	private PagingMain pbMain;
+	private PagingMainCarousel pbMainCarousel;
 	private ArrayList<AuctionApplyDTO> auctionApplyList;
 	private ArrayList<ArtistApplyBoardDTO> artistApplyList;
 	private ArrayList<ArtDTO> artList;
 	private ArrayList<ArtistDTO> artistList;
-	
+	private ArrayList<AuctionDTO> auctionList;
 	private LinkedHashMap<AuctionDTO, BidderDTO> mapList;
 	
+	public ArrayList<AuctionDTO> getAuctionList() {
+		return auctionList;
+	}
+
+	public void setAuctionList(ArrayList<AuctionDTO> auctionList) {
+		this.auctionList = auctionList;
+	}
+
 	public ListVO() {
 		super();
 	}
 
 	public ListVO(PagingBean pb, ArrayList<AuctionApplyDTO> auctionApplyList,
 			ArrayList<ArtistApplyBoardDTO> artistApplyList, ArrayList<ArtDTO> artList, ArrayList<ArtistDTO> artistList,
-			LinkedHashMap<AuctionDTO, BidderDTO> mapList) {
+			LinkedHashMap<AuctionDTO, BidderDTO> mapList,PagingMain pbMain,PagingMainCarousel pbMainCarousel) {
 		super();
 		this.pb = pb;
 		this.auctionApplyList = auctionApplyList;
@@ -33,6 +43,16 @@ public class ListVO {
 		this.artList = artList;
 		this.artistList = artistList;
 		this.mapList = mapList;
+		this.pbMain = pbMain;
+		this.pbMainCarousel = pbMainCarousel;
+	}
+	
+	public PagingMainCarousel getPbMainCarousel() {
+		return pbMainCarousel;
+	}
+
+	public void setPbMainCarousel(PagingMainCarousel pbMainCarousel) {
+		this.pbMainCarousel = pbMainCarousel;
 	}
 
 	public LinkedHashMap<AuctionDTO, BidderDTO> getMapList() {
@@ -43,7 +63,13 @@ public class ListVO {
 		this.mapList = mapList;
 	}
 
+	public PagingMain getPbMain() {
+		return pbMain;
+	}
 
+	public void setPbMain(PagingMain pbMain) {
+		this.pbMain = pbMain;
+	}
 
 	public PagingBean getPb() {
 		return pb;

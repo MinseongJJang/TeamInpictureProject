@@ -26,8 +26,9 @@ public class FindMemberPasswordController extends Authenticator implements Contr
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
+		
 		char[] pass = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'};
-
+		
 		StringBuffer password = new StringBuffer();
 		Random rnd = new Random();
 		for(int i=0; i<10; i++) {
@@ -72,9 +73,8 @@ public class FindMemberPasswordController extends Authenticator implements Contr
 			System.out.println("이메일 보냈음");
 		} catch (Exception e) {
 		}
-		
-		String url = "/template/layout.jsp";
-		request.setAttribute("url","/member/find_member_password.jsp");
-		return url;
+		//String url = "/template/layout.jsp";
+		//request.setAttribute("url","/member/find_member_password.jsp");
+		return "redirect:front?command=LoginForm";
 	}
 }

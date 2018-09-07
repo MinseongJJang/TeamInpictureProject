@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});//ready
+</script>
 <!-- 새로운 carousel -->
 <div class="deal_ofthe_week">
 	<div
@@ -9,156 +14,32 @@
 			<div class="background"></div>
 			<section class="carousel_container">
 				<div id="carousel">
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
-							<h3>경매중인 인디그림1</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
-							<h3>경매중인 인디그림2</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
-							<h3>경매중인 인디그림3</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
-							<h3>경매중인 인디그림4</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
-							<h3>경매중인 인디그림5</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
-							<h3>경매중인 인디그림1</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
-							<h3>경매중인 인디그림2</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
-							<h3>경매중인 인디그림3</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
-							<h3>경매중인 인디그림4</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
-							<h3>경매중인 인디그림5</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
-							<h3>경매중인 인디그림1</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
-							<h3>경매중인 인디그림2</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
-							<h3>경매중인 인디그림3</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
-							<h3>경매중인 인디그림4</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
-							<h3>경매중인 인디그림5</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
-							<h3>경매중인 인디그림1</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
-							<h3>경매중인 인디그림2</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
-							<h3>경매중인 인디그림3</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
-							<h3>경매중인 인디그림4</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
-							<h3>경매중인 인디그림5</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart1.jpg" />
-							<h3>경매중인 인디그림1</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart2.jpg" />
-							<h3>경매중인 인디그림2</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart3.jpg" />
-							<h3>경매중인 인디그림3</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart4.jpg" />
-							<h3>경매중인 인디그림4</h3>
-						</a>
-					</figure>
-					<figure>
-						<a href="#"> <img
-							src="${pageContext.request.contextPath }/auction_main_pic/auctionart5.jpg" />
-							<h3>경매중인 인디그림5</h3>
-						</a>
-					</figure>
+					<c:choose>
+						<c:when test="${requestScope.size > 1}">
+							<c:forEach items="${requestScope.carousel1 }" var="carousel">
+								<figure>
+									<a
+										href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${carousel.auctionApplyDTO.auctionNo}">
+										<img
+										src="${pageContext.request.contextPath}/auction_apply_images/${carousel.auctionApplyDTO.auctionMainPic}" />
+										<h3>${carousel.auctionApplyDTO.auctionTitle}</h3>
+									</a>
+								</figure>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${requestScope.carousel2 }" var="carousel">
+								<figure>
+									<a
+										href="${pageContext.request.contextPath}/front?command=DetailArt&artNo=${carousel.artNo}">
+										<img
+										src="${pageContext.request.contextPath}/art_images/${carousel.artMainPic}" / height="300px;">
+										<h3>${carousel.artTitle}</h3>
+									</a>
+								</figure>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</section>
 			<nav id="navigation">
@@ -182,18 +63,18 @@
 			</div>
 			<div class="row align-items-center">
 				<div class="col text-center">
-					<div class="new_arrivals_sorting">
+					<div class="new_arrivals_sorting" id="abcdefg">
 						<ul
 							class="arrivals_grid_sorting clearfix button-group filters-button-group">
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active"
-								data-filter=".women">ARTIST</li>
+								data-filter=".women" id="art">ART</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center "
+								data-filter=".accessories" id="artist">ARTIST</li>
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								data-filter=".accessories">ART</li>
-							<li
-								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								data-filter=".men">AUCTION</li>
+								data-filter=".men" id="auction">AUCTION</li>
 						</ul>
 					</div>
 				</div>
@@ -203,263 +84,70 @@
 					<div class="product-grid"
 						data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
-						<!-- Product 1 -->
+						<c:forEach items="${requestScope.lvo1.artList}" var="art"
+							end="${requestScope.lvo1.pbMain.end}">
 
-						<div class="product-item women">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art1.jpg"
-										alt="">
-								</div>
+							<div class="product-item women">
+								<div class="product discount product_filter">
+									<div class="product_image">
+										<img
+											src="${pageContext.request.contextPath}/art_images/${art.artMainPic}"
+											alt="" style="width: 200px; height: 200px;">
+									</div>
 
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="${pageContext.request.contextPath }/fornt?command=DetailArt&art_no=">Guillaume Kashima</a>
-									</h6>
-									<div class="product_price">좋은그림1</div>
+									<div class="product_info">
+										<div class="product_price">
+											<a
+												href="${pageContext.request.contextPath }/front?command=DetailArt&artNo=${art.artNo}">
+												${art.artTitle} </a>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 
-						<!-- Product 2 -->
 
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art2.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Séverine Assous</a>
-									</h6>
-									<div class="product_price">좋은그림2</div>
+						<c:forEach items="${requestScope.lvo2.artistList }" var="artist"
+							end="${requestScope.lvo2.pbMain.end }">
+							<div class="product-item accessories">
+								<div class="product discount product_filter">
+									<div class="product_image">
+										<img
+											src="${pageContext.request.contextPath}/artist_images/${artist.artist_main_pic}"
+											alt="">
+									</div>
+									<div class="product_info">
+										<div class="product_price">
+											<a
+												href="${pageContext.request.contextPath }/front?command=DetailArtist&id=${artist.inpictureMemberDTO.id}">
+												${artist.inpictureMemberDTO.name} </a>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 
-						<!-- Product 3 -->
 
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art3.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Andrés Gallardo Albajar</a>
-									</h6>
-									<div class="product_price">좋은그림3</div>
+						<c:forEach items="${requestScope.lvo3.auctionList}" var="auction"
+							end="${requestScope.lvo3.pbMain.end }">
+							<div class="product-item men">
+								<div class="product product_filter">
+									<div class="product_image">
+										<img
+											src="${pageContext.request.contextPath}/auction_apply_images/${auction.auctionApplyDTO.auctionMainPic}"
+											alt="">
+									</div>
+									<div class="product_info">
+										<div class="product_price">
+											<a
+												href="${pageContext.request.contextPath }/front?command=AuctionArtDetail&auctionNo=${auction.auctionApplyDTO.auctionNo}">
+												${auction.auctionApplyDTO.auctionTitle} </a>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 
-						<!-- Product 4 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art4.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Tom Haugomat</a>
-									</h6>
-									<div class="product_price">좋은그림4</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 5 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art5.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Michela Picchi</a>
-									</h6>
-									<div class="product_price">좋은그림5</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 6 -->
-
-						<div class="product-item accessories">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art1.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Guillaume Kashima</a>
-									</h6>
-									<div class="product_price">좋은그림6</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 7 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art2.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Andrés Gallardo Albajar</a>
-									</h6>
-									<div class="product_price">좋은그림7</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 8 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art3.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Blue Yeti USB Microphone Blackout Edition</a>
-									</h6>
-									<div class="product_price">좋은그림8</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 9 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art4.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Tom Haugomat</a>
-									</h6>
-									<div class="product_price">좋은그림9</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Product 10 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/art_images/art5.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Michela Picchi</a>
-									</h6>
-									<div class="product_price">좋은그림10</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/auction_main_pic/auctionart1.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Five Color Mix Rice</a>
-									</h6>
-									<div class="product_price">경매그림1</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/auction_main_pic/auctionart2.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Inpicture</a>
-									</h6>
-									<div class="product_price">경매그림2</div>
-								</div>
-							</div>
-						</div>
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/auction_main_pic/auctionart3.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Minseong</a>
-									</h6>
-									<div class="product_price">경매그림3</div>
-								</div>
-							</div>
-						</div>
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/auction_main_pic/auctionart4.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Kosta</a>
-									</h6>
-									<div class="product_price">경매그림4</div>
-								</div>
-							</div>
-						</div>
-						<div class="product-item men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img
-										src="${pageContext.request.contextPath}/auction_main_pic/auctionart5.jpg"
-										alt="">
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="#">Kakao</a>
-									</h6>
-									<div class="product_price">경매그림5</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -497,7 +185,9 @@
 					</div>
 					<div class="benefit_content">
 						<h6>Invaluable</h6>
-						<p>지불한 금액의 가치를 넘어서는 경매품을<br> 제공하여 높은 만족도를 제공</p>
+						<p>
+							지불한 금액의 가치를 넘어서는 경매품을<br> 제공하여 높은 만족도를 제공
+						</p>
 					</div>
 				</div>
 			</div>
@@ -532,35 +222,36 @@
 
 
 <div class="newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5">
-					<div class="newsletter_foot d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
-						<h4>작가 신청</h4>
-						<p>그림에 대한 꿈을 가지고 계신분이라면 인픽쳐와 함께 하세요.  인픽쳐가 많은 작가들에게 기회의 장을 제공합니다.</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5">
+				<div
+					class="newsletter_foot d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+					<h4>작가 신청</h4>
+					<p>그림에 대한 꿈을 가지고 계신분이라면 인픽쳐와 함께 하세요. 인픽쳐가 많은 작가들에게 기회의 장을
+						제공합니다.</p>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<form action="front">
+					<input type="hidden" name="command" value="ApplyArtistForm">
+					<div
+						class="newsletter_foot d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+						<button id="newsletter_submit" type="submit"
+							class="newsletter_submit_btn trans_300" value="Submit">작가
+							신청 하기</button>
 					</div>
-				</div>
-				<div class="col-lg-7">
-					<form action="front">
-						<input type="hidden" name="command" value="ApplyArtistForm">
-						<div class="newsletter_foot d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-							<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">작가 신청 하기</button>
-						</div>
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
 
-		 <%-- <a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> <img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg" class="newsletter_img"></img>
+<%-- <a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm"> <img src="${pageContext.request.contextPath }/temp_images/applyArtist.jpg" class="newsletter_img"></img>
 			<div class="newsletter_text">
 				<p>
 				<h3>Apply Artist</h3>
 				</p>
 			</div>
 		</a> --%>
-
-
-
-
