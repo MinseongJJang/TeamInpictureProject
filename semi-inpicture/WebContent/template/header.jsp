@@ -12,7 +12,7 @@
 					<nav class="navbar">
 						<ul class="navbar_menu">
 							
-							<li><a href="#">SERVICE</a></li>
+							<li><a href="${pageContext.request.contextPath }/front?command=Service">SERVICE</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=ArtistList">ARTIST</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
 							

@@ -131,6 +131,8 @@ public class HandlerMapping {
 			controller = new PointOperatorController();
 		}else if(command.equals("MemberPointCharge")) {
 			controller = new MemberPointChargeController();
+		}else if(command.equals("Service")) {
+			controller = new ServiceController();
 		}
 		return controller;
 	}
