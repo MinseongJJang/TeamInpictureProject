@@ -304,4 +304,19 @@ public class InpictureMemberDAO {
 		}
 		return dto;
 	}
+	
+	public void pointCharge(String id,int point) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			String sql = "update inpicture_member set point = point + ? where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, point);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
 }

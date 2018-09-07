@@ -9,6 +9,7 @@ import semi.inpicture.model.dto.ArtistDTO;
 import semi.inpicture.model.dto.AuctionApplyDTO;
 import semi.inpicture.model.dto.AuctionDTO;
 import semi.inpicture.model.dto.BidderDTO;
+import semi.inpicture.model.dto.PointHistoryDTO;
 
 public class ListVO {
 	private PagingBean pb;
@@ -20,7 +21,16 @@ public class ListVO {
 	private ArrayList<ArtistDTO> artistList;
 	private ArrayList<AuctionDTO> auctionList;
 	private LinkedHashMap<AuctionDTO, BidderDTO> mapList;
+	private ArrayList<PointHistoryDTO> pointList;
 	
+	public ArrayList<PointHistoryDTO> getPointList() {
+		return pointList;
+	}
+
+	public void setPointList(ArrayList<PointHistoryDTO> pointList) {
+		this.pointList = pointList;
+	}
+
 	public ArrayList<AuctionDTO> getAuctionList() {
 		return auctionList;
 	}
@@ -108,5 +118,14 @@ public class ListVO {
 	public void setArtistList(ArrayList<ArtistDTO> artistList) {
 		this.artistList = artistList;
 	}
+
+	@Override
+	public String toString() {
+		return "ListVO [pb=" + pb + ", pbMain=" + pbMain + ", pbMainCarousel=" + pbMainCarousel + ", auctionApplyList="
+				+ auctionApplyList + ", artistApplyList=" + artistApplyList + ", artList=" + artList + ", artistList="
+				+ artistList + ", auctionList=" + auctionList + ", mapList=" + mapList + ", pointList=" + pointList
+				+ "]";
+	}
+	
 	
 }
