@@ -27,6 +27,8 @@
 	display: table-cell;
 }
 </style>
+<c:choose>
+<c:when test="${sessionScope.mvo!=null}">
 <div class="b">
 <div class="main_slider" align="center">
 			<div class="main_slider_content">
@@ -64,3 +66,10 @@
 				</div>
 			</div>
 </div>
+</c:when>
+<c:otherwise>
+	<script>
+		location.href="${pageContext.request.contextPath}/member/need_login.jsp";
+	</script>
+</c:otherwise>
+</c:choose>

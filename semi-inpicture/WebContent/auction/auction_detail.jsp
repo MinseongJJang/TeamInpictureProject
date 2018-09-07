@@ -113,6 +113,8 @@
  }
 </style>
 <c:choose>
+<c:when test="${sessionScope.mvo!=null}">
+<c:choose>
 	<c:when
 		test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">
 		<form action="${pageContext.request.contextPath }/front"
@@ -243,7 +245,13 @@
 		</script>
 	</c:otherwise>
 </c:choose>
-
+</c:when>
+<c:otherwise>
+	<script>
+		location.href="${pageContext.request.contextPath}/member/need_login.jsp";
+	</script>
+</c:otherwise>
+</c:choose>
 <!-- ------------------------------------------ -->
 <%-- <c:choose>
 		<c:when test="${requestScope.auctionDTO.inpictureMemberDTO.memberType != '2' || sessionScope.mvo != null}">

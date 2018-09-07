@@ -1,9 +1,22 @@
+<%@page import="semi.inpicture.model.dto.InpictureMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		$("#newsletter_submit").click(function() {		
+			var type = ${sessionScope.mvo.memberType};
+			var type2 = ${sessionScope.mvo};
+			alert(type);
+			if(type==2){
+				alert("이미 작가입니다");
+				return false;
+			}else if(type==3){
+				alert("관리자입니다.");
+				return false;			
+			}
+		}) 
 	});//ready
 </script>
 <!-- 새로운 carousel -->
@@ -233,13 +246,16 @@
 				</div>
 			</div>
 			<div class="col-lg-7">
-				<form action="front">
+				<form action="${pageContext.request.contextPath }/front" id="artist23" method="post">					
 					<input type="hidden" name="command" value="ApplyArtistForm">
 					<div
 						class="newsletter_foot d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+						
 						<button id="newsletter_submit" type="submit"
-							class="newsletter_submit_btn trans_300" value="Submit">작가
-							신청 하기</button>
+							class="newsletter_submit_btn trans_300" value="Submit">
+							작가신청 하기</button>
+							
+							
 					</div>
 				</form>
 			</div>

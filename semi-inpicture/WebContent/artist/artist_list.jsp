@@ -78,6 +78,8 @@ h1 {
 </style>
 
 	<!-- MAIN (Center website) -->
+<c:choose>
+<c:when test="${sessionScope.mvo!=null }">
 	<div class="main">
 		<h2>작가 목록</h2>
 		<!-- Portfolio Gallery Grid -->
@@ -119,7 +121,13 @@ h1 {
 			</ul>
 		</div>
 	</div>
-
+	</c:when>
+	<c:otherwise>
+		<script>
+			location.href="${pageContext.request.contextPath}/member/need_login.jsp";
+		</script>
+	</c:otherwise>
+</c:choose>
 <!-- END GRID -->
 <!-- END MAIN -->
 <script>

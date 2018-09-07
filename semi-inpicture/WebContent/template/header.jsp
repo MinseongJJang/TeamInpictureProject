@@ -12,7 +12,7 @@
 					<nav class="navbar">
 						<ul class="navbar_menu">
 							
-							<li><a href="#">SERVICE</a></li>
+							<li><a href="${pageContext.request.contextPath }/front?command=Service">SERVICE</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=ArtistList">ARTIST</a></li>
 							<li><a href="${pageContext.request.contextPath}/front?command=AuctionArtList">AUCTION</a></li>
 							
@@ -28,9 +28,10 @@
 							<li><a href="${pageContext.request.contextPath }/front?command=ApplyArtistForm">APPLY ARTIST</a></li>
 								</c:when>
 							</c:choose>
+							
 						</ul>
 						<ul class="navbar_user">
-							<li><a href="#"><i class="fa fa-search"
+							<li><a href="#"><i
 									aria-hidden="true"></i></a></li>
 							<c:choose>			
 							<c:when test="${sessionScope.mvo == null }">
