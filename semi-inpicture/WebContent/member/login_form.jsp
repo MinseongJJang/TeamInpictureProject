@@ -73,7 +73,7 @@ table td{
 									<td><input type="text" name="id" placeholder="아이디" size="12" id="login_text"></td>
 									<td rowspan="2">
 										<input type="button" style="WIDTH: 70pt; HEIGHT: 60pt; margin-bottom:10px;" class="newsletter_submit_btn" id="checkBtn" value="로그인"></td>
-									</tr>
+									</tr> 		
 									<tr>
 										<td><input type="password" name="password" placeholder="비밀번호" size="12" id="login_text" class="passwordEnter"></td>
 									</tr>

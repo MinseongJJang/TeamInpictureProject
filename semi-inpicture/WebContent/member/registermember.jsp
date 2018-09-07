@@ -18,8 +18,10 @@
 					data : $("#idForm").serialize(),
 					success : function(result) {
 						if (result == "ok") {
+							idflag = true;
 							$("#checkResult").html("사용가능").css("color","blue");
 						} else {
+							idflag = false; 	
 							$("#checkResult").html("중복").css("color","red")
 						}
 					}
@@ -44,8 +46,22 @@
 				}
 			}//if
 		})//keyup
-		
-
+		$("#idForm").submit(function() {
+			var passcheck = $('#passcheck').val();
+			var pass = $('#pass').val();
+			if(passcheck != pass){
+				$("#registerCheck").html("<font color='red' size='0.5em'>비밀번호를 확인해주세요!</font>")
+				$("#pass").val("");
+				$("#passcheck").val("");
+				return false;
+			}else if(idflag==false){
+				$("#registerCheck").html("<font color='red' size='0.5em'>아이디를 확인해주세요!</font>")
+				return false;
+			}else {
+				alert("회원가입 되었습니다!\n\n이제 로그인하세요~");
+			}
+			
+		});
 	});//ready
 	/* 취소 버튼 */
 	function back(){
@@ -53,9 +69,6 @@
 		location.href="${pageContext.request.contextPath}/index.jsp";
 		
 	}
-	 function loginback(){
-		alert("회원가입 되었습니다!\n\n이제 로그인하세요~");
-	} 
 </script>
 <style>
 .text_option {
@@ -138,7 +151,7 @@
 							</tr>							
 						</table>
 						<div align="center">
-								<input class="newsletter_submit_btn" type="submit" value="가입" onclick="loginback()">&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
+								<input class="newsletter_submit_btn" type="submit" value="가입" >&nbsp;<input class="newsletter_submit_btn" type="button" value="취소" onclick="back()">
 								<span id="registerCheck"></span>
 						</div>		
 				</form>
