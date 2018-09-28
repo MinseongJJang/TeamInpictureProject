@@ -1,22 +1,14 @@
 package semi.inpicture.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import semi.inpicture.model.dao.ArtistApplyBoardDAO;
-import semi.inpicture.model.dao.ArtistAttachmentPathDAO;
-import semi.inpicture.model.dto.ArtistApplyBoardDTO;
-import semi.inpicture.model.dto.ArtistAttachmentPathDTO;
-import semi.inpicture.model.dto.InpictureMemberDTO;
 
 public class ApplyArtistController implements Controller {
 

@@ -4,7 +4,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#bidOkBtn").click(function() {
-			if ($("#bidPirce").val() == "" || $("#bidPrice").val() == 0 || $("#bidPrice").val() <= $("#maxBid").val() || $("#bidPrice").val() <= $("#beginPrice").val()) {
+			if ($("#bidPrice").val() == 0 || $("#bidPrice").val() <= $("#maxBid").val() || $("#bidPrice").val() <= $("#beginPrice").val()) {
 				alert("입찰가는 현재 최고입찰가보다 높아야 합니다.");
 			} else {
 				if (confirm($("#bidPrice").val()+ "원 입찰하시겠습니까?")) {
@@ -37,7 +37,7 @@
 							var sec = Math.floor(time % 60);
 
 							$("#timer").html(hour + " 시간 " + min + " 분 " + sec+ " 초 남았습니다.").css("color", "red");
-							if (min == '0' && hour == '0' && sec == '0') {
+							if (min == '0' && hour == '0' && sec == '0' || min.contains('-') || hour.contains('-') || sec.contains('-')) {
 								$("#endAuction").submit();
 							}
 						}, 1000);//interval

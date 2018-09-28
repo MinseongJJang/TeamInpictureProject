@@ -3,7 +3,6 @@ package semi.inpicture.model.dao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import semi.inpicture.model.dto.AuctionApplyDTO;
 import semi.inpicture.model.dto.AuctionDTO;
 import semi.inpicture.model.dto.BidderDTO;
@@ -111,6 +110,13 @@ public class AuctionWorker implements Runnable {
 					auctionDAO.endAuction(bidder);
 					memberDAO.updateMemberMinusPoint(bidder.getInpictureMemberDTO().getId(), price);
 					AuctionDTO auctionDTO = auctionDAO.getAuctionDetailInfo(auctionNo);
+					System.out.println("판매자의 정보 :"  + auctionDTO);
+					//현재 판매자 혹은 낙찰자가 로그인중이라면 해당 session을 다시 setAttribute에 넣어주어야 하는데
+					//AuctionWorker는 해당 ID를 받아올 수 없음 .
+					//현재 접속자 중 판매자 혹은 구매자 정보를 가지고 있는 것이 필요하다.
+					//로그인시에 sessionId를 객체에 저장시킨 뒤 session이 없어질 때 지워주는 방법?
+					//sessionId는 고유값이기에 불가능한 것 같다.
+					
 					memberDAO.updateMemberPlusPoint(auctionDTO.getAuctionApplyDTO().getInpictureMemberDTO().getId(),
 							price);
 					// 경매 종료전 모든작업을 맞췄다면 Thread는 list에서 제거하며 그 동작을 멈추게 된다.
@@ -126,5 +132,9 @@ public class AuctionWorker implements Runnable {
 			list.remove(this);
 		}
 	}
+	/**
+	 *  해결해야 할 버그 -> Thread의 종료보다 JSP Page에서의 종료가 먼저 된다면
+	 *  최종낙찰금액 0원으로 표시. 포인트는 증가 감소되지만 해당 Page에서는 0원으로 표시된다.
+	 */
 
 }

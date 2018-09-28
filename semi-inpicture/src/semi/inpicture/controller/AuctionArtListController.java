@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semi.inpicture.model.dao.AuctionDAO;
 import semi.inpicture.model.dao.ListVO;

@@ -20,7 +20,7 @@ public class EndAuctionController implements Controller {
 		String url = "";
 		try {
 			AuctionDTO auction = dao.getAuctionDetailInfo(auctionNo);
-			System.out.println("경매종료될쯤 auction info"  + auction);
+			System.out.println("경매종료 실행");
 			request.setAttribute("auction", auction);
 			url = "/auction/end_auction.jsp";
 		} catch (SQLException e) {

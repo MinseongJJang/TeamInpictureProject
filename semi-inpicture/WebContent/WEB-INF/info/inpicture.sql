@@ -246,4 +246,4 @@ to_char(a.auction_end_time,'YYYY-MM-DD HH24:MI'),a.auction_seller,
 a.auction_promptly_price,a.auction_state,a.auction_main_pic, 
 a.auction_begin_price,m.id,m.name,a.auction_final_bid_price 
 from auction a , inpicture_member m 
-where a.auction_seller_id = m.id and a.auction_no = 119
+where a.auction_seller_id = m.id and a.auction_no = 139

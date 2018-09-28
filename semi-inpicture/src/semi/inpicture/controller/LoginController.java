@@ -23,6 +23,7 @@ public class LoginController implements Controller {
 			mvo = InpictureMemberDAO.getInstance().login(id, password);
 			if (mvo != null) {
 				HttpSession session = request.getSession();
+				System.out.println("session id : " + session.getId());
 				session.setAttribute("mvo", mvo);
 				url = "redirect:index.jsp";
 			} else {

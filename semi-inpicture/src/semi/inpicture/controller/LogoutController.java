@@ -14,7 +14,7 @@ public class LogoutController implements Controller {
 		String url = "";
 		HttpSession session = request.getSession(false);
 		if (session != null)
-			session.invalidate();
+			session.removeAttribute("mvo");
 		url = "redirect:index.jsp";
 		return url;
 	}

@@ -69,7 +69,7 @@ public class AuctionDAO {
 					"to_char(auction_begin_time, 'HH24:MI') as begin_time, " + 
 					"to_char(auction_end_time, 'HH24:MI') as end_time,row_number() over(order by auction_no desc) as rnum, " + 
 					"auction_state,auction_seller,auction_main_pic,auction_begin_price " + 
-					"from auction a) a " + 
+					"from auction a where auction_state=0) a " + 
 					"where rnum between ? and ? and a.auction_state=0 order by a.auction_no desc";
 					
 			
@@ -89,7 +89,8 @@ public class AuctionDAO {
 				applyAuction.setAuctionMainPic(rs.getString(9));
 				applyAuction.setAuctionBeginPrice(rs.getInt(10));
 				bidder.setAuctionBidPrice(rs.getInt(4));
-				applyAuction.setAuctionEndTime(rs.getString(5));
+				applyAuction.setAuctionEndTime(rs.getString(6));
+				applyAuction.setAuctionBeginTime(rs.getString(5));
 				bidder.setAuctionDTO(auction);
 				auction.setAuctionApplyDTO(applyAuction);
 				
@@ -174,6 +175,7 @@ public class AuctionDAO {
 				AuctionApplyDTO applyDTO = new AuctionApplyDTO();
 				InpictureMemberDTO memberDTO = new InpictureMemberDTO();
 				memberDTO.setName(rs.getString(5));
+				memberDTO.setId(rs.getString(10));
 				applyDTO.setAuctionNo(auctionNo);
 				applyDTO.setAuctionTitle(rs.getString(1));
 				applyDTO.setAuctionContent(rs.getString(2));
